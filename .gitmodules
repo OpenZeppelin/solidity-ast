@@ -1,0 +1,3 @@
+[submodule "solidity"]
+	path = solidity
+	url = git@github.com:ethereum/solidity.git
