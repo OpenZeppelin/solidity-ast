@@ -1,16 +1,17 @@
 {
-  "name": "template-typescript-ava",
+  "name": "solidity-ast",
   "version": "0.1.0",
-  "description": "Project template using TypeScript and AVA",
+  "description": "Solidity AST schema and type definitions",
   "author": "Francisco Giordano <frangio.1@gmail.com>",
-  "repository": "github:frangio/template-typescript-ava",
-  "main": "dist/index.js",
+  "repository": "github:OpenZeppelin/solidity-ast",
+  "types": "types.d.ts",
   "files": [
-    "/dist",
-    "!*.test.{js,js.map,d.ts}"
+    "/types.d.ts",
+    "/schema.json"
   ],
   "scripts": {
     "autogenerate": "bash scripts/autogenerate.sh",
+    "prepare": "json2ts schema.json types.d.ts --strictIndexSignatures",
     "test": "mocha"
   },
   "devDependencies": {
