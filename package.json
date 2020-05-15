@@ -10,7 +10,6 @@
     "/schema.json"
   ],
   "scripts": {
-    "autogenerate": "bash scripts/autogenerate.sh",
     "prepare": "json2ts schema.json types.d.ts --strictIndexSignatures",
     "test": "mocha"
   },
