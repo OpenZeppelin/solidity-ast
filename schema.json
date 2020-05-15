@@ -1588,6 +1588,37 @@
       },
       "title": "ExportedSymbols"
     },
+    "PragmaDirective": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "PragmaDirective"
+          ]
+        },
+        "literals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "literals",
+        "src"
+      ],
+      "title": "PragmaDirective"
+    },
     "ContractDefinition": {
       "type": "object",
       "additionalProperties": false,
@@ -1988,7 +2019,10 @@
     "nodes": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ContractDefinition"
+        "anyOf": [
+          { "$ref": "#/definitions/PragmaDirective" },
+          { "$ref": "#/definitions/ContractDefinition" }
+        ]
       }
     },
     "src": {
