@@ -1578,56 +1578,6 @@
       ],
       "title": "ModifierDefinition"
     },
-    "SourceUnit": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "absolutePath": {
-          "type": "string"
-        },
-        "exportedSymbols": {
-          "$ref": "#/definitions/ExportedSymbols"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "license": {
-          "anyOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "string"
-            }
-          ]
-        },
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "SourceUnit"
-          ]
-        },
-        "nodes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ContractDefinition"
-          }
-        },
-        "src": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "absolutePath",
-        "exportedSymbols",
-        "id",
-        "license",
-        "nodeType",
-        "nodes",
-        "src"
-      ],
-      "title": "SourceUnit"
-    },
     "ExportedSymbols": {
       "type": "object",
       "additionalProperties": {
@@ -2006,5 +1956,53 @@
       ],
       "title": "Visibility"
     }
-  }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "absolutePath": {
+      "type": "string"
+    },
+    "exportedSymbols": {
+      "$ref": "#/definitions/ExportedSymbols"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "license": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "nodeType": {
+      "type": "string",
+      "enum": [
+        "SourceUnit"
+      ]
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ContractDefinition"
+      }
+    },
+    "src": {
+      "$ref": "#/definitions/SourceLocation"
+    }
+  },
+  "required": [
+    "absolutePath",
+    "exportedSymbols",
+    "id",
+    "license",
+    "nodeType",
+    "nodes",
+    "src"
+  ],
+  "title": "SourceUnit"
 }
