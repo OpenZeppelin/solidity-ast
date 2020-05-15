@@ -557,10 +557,7 @@
             {
               "type": "array",
               "items": {
-                "anyOf": [
-                  { "$ref": "#/definitions/Expression" },
-                  { "$ref": "#/definitions/Identifier" }
-                ]
+                "ref": "#/definitions/Expression"
               }
             },
             {
