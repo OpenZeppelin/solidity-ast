@@ -1,0 +1,2010 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "definitions": {
+    "BaseType": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "baseType": {
+          "$ref": "#/definitions/TypeName"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "length": {
+          "type": "null"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "BaseType"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "name": {
+          "type": "string"
+        },
+        "keyType": {
+          "$ref": "#/definitions/UserDefinedTypeName"
+        },
+        "valueType": {
+          "$ref": "#/definitions/ElementaryTypeName"
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "BaseType"
+    },
+    "TypeName": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "TypeName"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "nodeType",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "TypeName"
+    },
+    "ElementaryTypeName": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "ElementaryTypeName"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "stateMutability": {
+          "$ref": "#/definitions/StateMutability"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "nodeType",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "ElementaryTypeName"
+    },
+    "UnaryOperation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TypeDescriptions"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "id": {
+          "type": "integer"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        },
+        "leftHandSide": {
+          "$ref": "#/definitions/IndexAccess"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "UnaryOperation"
+          ]
+        },
+        "operator": {
+          "$ref": "#/definitions/Operator"
+        },
+        "rightHandSide": {
+          "$ref": "#/definitions/RightHandSide"
+        },
+        "src": {
+          "type": "string"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "typeName": {
+          "$ref": "#/definitions/TypeName"
+        },
+        "commonType": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "leftExpression": {
+          "$ref": "#/definitions/Literal"
+        },
+        "rightExpression": {
+          "$ref": "#/definitions/Literal"
+        },
+        "prefix": {
+          "type": "boolean"
+        },
+        "subExpression": {
+          "$ref": "#/definitions/UserDefinedTypeName"
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "id",
+        "isConstant",
+        "isLValue",
+        "isPure",
+        "lValueRequested",
+        "nodeType",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "UnaryOperation"
+    },
+    "TypeDescriptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "typeIdentifier": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "typeString": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "typeIdentifier",
+        "typeString"
+      ],
+      "title": "TypeDescriptions"
+    },
+    "IndexAccess": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "IndexAccess"
+          ]
+        },
+        "overloadedDeclarations": {
+          "type": "array",
+          "items": {}
+        },
+        "referencedDeclaration": {
+          "type": "integer"
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "baseExpression": {
+          "$ref": "#/definitions/UserDefinedTypeName"
+        },
+        "indexExpression": {
+          "$ref": "#/definitions/UserDefinedTypeName"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "id",
+        "nodeType",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "IndexAccess"
+    },
+    "BlockParameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "constant": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "mutability": {
+          "$ref": "#/definitions/Mutability"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "BlockParameter"
+          ]
+        },
+        "overrides": {
+          "type": "null"
+        },
+        "scope": {
+          "type": "integer"
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "stateVariable": {
+          "type": "boolean"
+        },
+        "storageLocation": {
+          "$ref": "#/definitions/StorageLocation"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "typeName": {
+          "$ref": "#/definitions/FunctionTypeName"
+        },
+        "value": {
+          "type": "null"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "required": [
+        "constant",
+        "id",
+        "mutability",
+        "name",
+        "nodeType",
+        "overrides",
+        "scope",
+        "src",
+        "stateVariable",
+        "storageLocation",
+        "typeDescriptions",
+        "typeName",
+        "value",
+        "visibility"
+      ],
+      "title": "BlockParameter"
+    },
+    "FunctionTypeName": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "FunctionTypeName"
+          ]
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "stateMutability": {
+          "$ref": "#/definitions/StateMutability"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "parameterTypes": {
+          "$ref": "#/definitions/ParameterTypes"
+        },
+        "returnParameterTypes": {
+          "$ref": "#/definitions/ParameterTypes"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "FunctionTypeName"
+    },
+    "ParameterTypes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "ParameterTypes"
+          ]
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ParameterTypesParameter"
+          }
+        },
+        "src": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "parameters",
+        "src"
+      ],
+      "title": "ParameterTypes"
+    },
+    "ParameterTypesParameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "constant": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "mutability": {
+          "$ref": "#/definitions/Mutability"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "ParameterTypesParameter"
+          ]
+        },
+        "overrides": {
+          "type": "null"
+        },
+        "scope": {
+          "type": "integer"
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "stateVariable": {
+          "type": "boolean"
+        },
+        "storageLocation": {
+          "$ref": "#/definitions/StorageLocation"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "typeName": {
+          "$ref": "#/definitions/ParameterTypeName"
+        },
+        "value": {
+          "type": "null"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "nodeType",
+        "src"
+      ],
+      "title": "ParameterTypesParameter"
+    },
+    "ParameterTypeName": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "ParameterTypeName"
+          ]
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "stateMutability": {
+          "$ref": "#/definitions/StateMutability"
+        },
+        "parameterTypes": {
+          "$ref": "#/definitions/ParameterTypes"
+        },
+        "returnParameterTypes": {
+          "$ref": "#/definitions/ParameterTypes"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "ParameterTypeName"
+    },
+    "VariableDeclarationStatement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "assignments": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "declarations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Declaration"
+          }
+        },
+        "id": {
+          "type": "integer"
+        },
+        "initialValue": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/InitialValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "VariableDeclarationStatement"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "expression": {
+          "$ref": "#/definitions/UnaryOperation"
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "src"
+      ],
+      "title": "VariableDeclarationStatement"
+    },
+    "Declaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "constant": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "mutability": {
+          "$ref": "#/definitions/Mutability"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "Declaration"
+          ]
+        },
+        "overrides": {
+          "type": "null"
+        },
+        "scope": {
+          "type": "integer"
+        },
+        "src": {
+          "type": "string"
+        },
+        "stateVariable": {
+          "type": "boolean"
+        },
+        "storageLocation": {
+          "$ref": "#/definitions/StorageLocation"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "typeName": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/PlaceholderStatement"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value": {
+          "type": "null"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "required": [
+        "constant",
+        "id",
+        "mutability",
+        "name",
+        "nodeType",
+        "overrides",
+        "scope",
+        "src",
+        "stateVariable",
+        "storageLocation",
+        "typeDescriptions",
+        "typeName",
+        "value",
+        "visibility"
+      ],
+      "title": "Declaration"
+    },
+    "PlaceholderStatement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "baseType": {
+          "$ref": "#/definitions/BaseType"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "length": {
+          "type": "null"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "PlaceholderStatement"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "name": {
+          "type": "string"
+        },
+        "stateMutability": {
+          "$ref": "#/definitions/StateMutability"
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "src"
+      ],
+      "title": "PlaceholderStatement"
+    },
+    "InitialValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "baseExpression": {
+          "$ref": "#/definitions/UserDefinedTypeName"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "indexExpression": {
+          "$ref": "#/definitions/UserDefinedTypeName"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "InitialValue"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserDefinedTypeName"
+          }
+        },
+        "expression": {
+          "$ref": "#/definitions/UnaryOperation"
+        },
+        "kind": {
+          "$ref": "#/definitions/LiteralKind"
+        },
+        "names": {
+          "type": "array",
+          "items": {}
+        },
+        "tryCall": {
+          "type": "boolean"
+        },
+        "hexValue": {
+          "type": "string"
+        },
+        "subdenomination": {
+          "type": "null"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "overloadedDeclarations": {
+          "type": "array",
+          "items": {}
+        },
+        "referencedDeclaration": {
+          "type": "integer"
+        },
+        "commonType": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "leftExpression": {
+          "$ref": "#/definitions/Literal"
+        },
+        "operator": {
+          "$ref": "#/definitions/Operator"
+        },
+        "rightExpression": {
+          "$ref": "#/definitions/Literal"
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "id",
+        "nodeType",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "InitialValue"
+    },
+    "UserDefinedTypeName": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "UserDefinedTypeName"
+          ]
+        },
+        "overloadedDeclarations": {
+          "type": "array",
+          "items": {}
+        },
+        "referencedDeclaration": {
+          "type": "integer"
+        },
+        "src": {
+          "type": "string"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "contractScope": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "nodeType",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "UserDefinedTypeName"
+    },
+    "ModifierInvocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "arguments": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Literal"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "baseName": {
+          "$ref": "#/definitions/UserDefinedTypeName"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "ModifierInvocation"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "modifierName": {
+          "$ref": "#/definitions/UserDefinedTypeName"
+        }
+      },
+      "required": [
+        "arguments",
+        "id",
+        "nodeType",
+        "src"
+      ],
+      "title": "ModifierInvocation"
+    },
+    "Literal": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "hexValue": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "kind": {
+          "$ref": "#/definitions/LiteralKind"
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "Literal"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "subdenomination": {
+          "type": "null"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "hexValue",
+        "id",
+        "isConstant",
+        "isLValue",
+        "isPure",
+        "kind",
+        "lValueRequested",
+        "nodeType",
+        "src",
+        "subdenomination",
+        "typeDescriptions",
+        "value"
+      ],
+      "title": "Literal"
+    },
+    "Member": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "constant": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "mutability": {
+          "$ref": "#/definitions/Mutability"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "Member"
+          ]
+        },
+        "overrides": {
+          "type": "null"
+        },
+        "scope": {
+          "type": "integer"
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "stateVariable": {
+          "type": "boolean"
+        },
+        "storageLocation": {
+          "$ref": "#/definitions/StorageLocation"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "typeName": {
+          "$ref": "#/definitions/TypeName"
+        },
+        "value": {
+          "type": "null"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "nodeType",
+        "src"
+      ],
+      "title": "Member"
+    },
+    "Body": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "Body"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "statements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableDeclarationStatement"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "src",
+        "statements"
+      ],
+      "title": "Body"
+    },
+    "OverrideSpecifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "OverrideSpecifier"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserDefinedTypeName"
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BlockParameter"
+          }
+        },
+        "stateMutability": {
+          "$ref": "#/definitions/StateMutability"
+        },
+        "statements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableDeclarationStatement"
+          }
+        },
+        "baseType": {
+          "$ref": "#/definitions/BaseType"
+        },
+        "length": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "src"
+      ],
+      "title": "OverrideSpecifier"
+    },
+    "EnumDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "canonicalName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlaceholderStatement"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "EnumDefinition"
+          ]
+        },
+        "src": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "canonicalName",
+        "id",
+        "members",
+        "name",
+        "nodeType",
+        "src"
+      ],
+      "title": "EnumDefinition"
+    },
+    "EventDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "anonymous": {
+          "type": "boolean"
+        },
+        "documentation": {
+          "type": "null"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "EventDefinition"
+          ]
+        },
+        "parameters": {
+          "$ref": "#/definitions/ParameterList"
+        },
+        "src": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "anonymous",
+        "documentation",
+        "id",
+        "name",
+        "nodeType",
+        "parameters",
+        "src"
+      ],
+      "title": "EventDefinition"
+    },
+    "FunctionCall": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RightHandSide"
+          }
+        },
+        "expression": {
+          "$ref": "#/definitions/UnaryOperation"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "kind": {
+          "$ref": "#/definitions/LiteralKind"
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        },
+        "names": {
+          "type": "array",
+          "items": {}
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "FunctionCall"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "tryCall": {
+          "type": "boolean"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "arguments",
+        "expression",
+        "id",
+        "isConstant",
+        "isLValue",
+        "isPure",
+        "kind",
+        "lValueRequested",
+        "names",
+        "nodeType",
+        "src",
+        "tryCall",
+        "typeDescriptions"
+      ],
+      "title": "FunctionCall"
+    },
+    "RightHandSide": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "RightHandSide"
+          ]
+        },
+        "overloadedDeclarations": {
+          "type": "array",
+          "items": {}
+        },
+        "referencedDeclaration": {
+          "type": "integer"
+        },
+        "src": {
+          "type": "string"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Literal"
+          }
+        },
+        "expression": {
+          "$ref": "#/definitions/UnaryOperation"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "kind": {
+          "$ref": "#/definitions/LiteralKind"
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        },
+        "names": {
+          "type": "array",
+          "items": {}
+        },
+        "tryCall": {
+          "type": "boolean"
+        },
+        "hexValue": {
+          "type": "string",
+          "format": "integer"
+        },
+        "subdenomination": {
+          "type": "null"
+        },
+        "value": {
+          "type": "string",
+          "format": "integer"
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "id",
+        "nodeType",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "RightHandSide"
+    },
+    "FunctionDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "body": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ParameterList"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "documentation": {
+          "type": "null"
+        },
+        "functionSelector": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "implemented": {
+          "type": "boolean"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "function",
+            "receive",
+            "constructor",
+            "fallback"
+          ]
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ModifierInvocation"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "FunctionDefinition"
+          ]
+        },
+        "overrides": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/OverrideSpecifier"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "parameters": {
+          "$ref": "#/definitions/OverrideSpecifier"
+        },
+        "returnParameters": {
+          "$ref": "#/definitions/ParameterList"
+        },
+        "scope": {
+          "type": "integer"
+        },
+        "src": {
+          "type": "string"
+        },
+        "stateMutability": {
+          "$ref": "#/definitions/StateMutability"
+        },
+        "virtual": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        },
+        "baseFunctions": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": [
+        "body",
+        "documentation",
+        "id",
+        "implemented",
+        "kind",
+        "modifiers",
+        "name",
+        "nodeType",
+        "overrides",
+        "parameters",
+        "returnParameters",
+        "scope",
+        "src",
+        "stateMutability",
+        "virtual",
+        "visibility"
+      ],
+      "title": "FunctionDefinition"
+    },
+    "ParameterList": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "ParameterList"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "statements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableDeclarationStatement"
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BlockParameter"
+          }
+        },
+        "expression": {
+          "$ref": "#/definitions/UnaryOperation"
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "src"
+      ],
+      "title": "ParameterList"
+    },
+    "Mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "keyType": {
+          "$ref": "#/definitions/UserDefinedTypeName"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "Mapping"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "valueType": {
+          "$ref": "#/definitions/OverrideSpecifier"
+        }
+      },
+      "required": [
+        "id",
+        "keyType",
+        "nodeType",
+        "src",
+        "typeDescriptions",
+        "valueType"
+      ],
+      "title": "Mapping"
+    },
+    "ModifierDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "body": {
+          "$ref": "#/definitions/OverrideSpecifier"
+        },
+        "documentation": {
+          "type": "null"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "ModifierDefinition"
+          ]
+        },
+        "overrides": {
+          "type": "null"
+        },
+        "parameters": {
+          "$ref": "#/definitions/OverrideSpecifier"
+        },
+        "src": {
+          "type": "string"
+        },
+        "virtual": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "required": [
+        "body",
+        "documentation",
+        "id",
+        "name",
+        "nodeType",
+        "overrides",
+        "parameters",
+        "src",
+        "virtual",
+        "visibility"
+      ],
+      "title": "ModifierDefinition"
+    },
+    "SourceUnit": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "absolutePath": {
+          "type": "string"
+        },
+        "exportedSymbols": {
+          "$ref": "#/definitions/ExportedSymbols"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "SourceUnit"
+          ]
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContractDefinition"
+          }
+        },
+        "src": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "absolutePath",
+        "exportedSymbols",
+        "id",
+        "license",
+        "nodeType",
+        "nodes",
+        "src"
+      ],
+      "title": "SourceUnit"
+    },
+    "ExportedSymbols": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "integer"
+        }
+      },
+      "title": "ExportedSymbols"
+    },
+    "ContractDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "abstract": {
+          "type": "boolean"
+        },
+        "baseContracts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ModifierInvocation"
+          }
+        },
+        "contractDependencies": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "contractKind": {
+          "type": "string",
+          "enum": [
+            "contract",
+            "library"
+          ]
+        },
+        "documentation": {
+          "type": "null"
+        },
+        "fullyImplemented": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "linearizedBaseContracts": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "ContractDefinition"
+          ]
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              { "$ref": "#/definitions/FunctionDefinition" },
+              { "$ref": "#/definitions/ModifierDefinition" },
+              { "$ref": "#/definitions/EventDefinition" },
+              { "$ref": "#/definitions/EnumDefinition" },
+              { "$ref": "#/definitions/StructDefinition" }
+            ]
+          }
+        },
+        "scope": {
+          "type": "integer"
+        },
+        "src": {
+          "type": "string"
+        },
+        "canonicalName": {
+          "type": "string"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Member"
+          }
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "nodeType",
+        "src"
+      ],
+      "title": "ContractDefinition"
+    },
+    "StructDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "canonicalName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Member"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "StructDefinition"
+          ]
+        },
+        "scope": {
+          "type": "integer"
+        },
+        "src": {
+          "type": "string"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "required": [
+        "canonicalName",
+        "id",
+        "members",
+        "name",
+        "nodeType",
+        "scope",
+        "src",
+        "visibility"
+      ],
+      "title": "StructDefinition"
+    },
+    "UsingForDirective": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "libraryName": {
+          "$ref": "#/definitions/UserDefinedTypeName"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "UsingForDirective"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "typeName": {
+          "$ref": "#/definitions/PlaceholderStatement"
+        }
+      },
+      "required": [
+        "id",
+        "libraryName",
+        "nodeType",
+        "src",
+        "typeName"
+      ],
+      "title": "UsingForDirective"
+    },
+    "VariableDeclaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "constant": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "mutability": {
+          "$ref": "#/definitions/Mutability"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "VariableDeclaration"
+          ]
+        },
+        "overrides": {
+          "type": "null"
+        },
+        "scope": {
+          "type": "integer"
+        },
+        "src": {
+          "type": "string"
+        },
+        "stateVariable": {
+          "type": "boolean"
+        },
+        "storageLocation": {
+          "$ref": "#/definitions/StorageLocation"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "typeName": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/VariableDeclarationTypeName"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Literal"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        },
+        "functionSelector": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "constant",
+        "id",
+        "mutability",
+        "name",
+        "nodeType",
+        "overrides",
+        "scope",
+        "src",
+        "stateVariable",
+        "storageLocation",
+        "typeDescriptions",
+        "typeName",
+        "value",
+        "visibility"
+      ],
+      "title": "VariableDeclaration"
+    },
+    "VariableDeclarationTypeName": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "baseType": {
+          "$ref": "#/definitions/BaseType"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "length": {
+          "type": "null"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "VariableDeclarationTypeName"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "keyType": {
+          "$ref": "#/definitions/UserDefinedTypeName"
+        },
+        "valueType": {
+          "$ref": "#/definitions/PlaceholderStatement"
+        },
+        "name": {
+          "type": "string"
+        },
+        "stateMutability": {
+          "type": "string"
+        },
+        "parameterTypes": {
+          "$ref": "#/definitions/OverrideSpecifier"
+        },
+        "returnParameterTypes": {
+          "$ref": "#/definitions/OverrideSpecifier"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "VariableDeclarationTypeName"
+    },
+    "StateMutability": {
+      "type": "string",
+      "enum": [
+        "payable",
+        "nonpayable",
+        "view"
+      ],
+      "title": "StateMutability"
+    },
+    "LiteralKind": {
+      "type": "string",
+      "enum": [
+        "number",
+        "string",
+        "typeConversion"
+      ],
+      "title": "LiteralKind"
+    },
+    "Operator": {
+      "type": "string",
+      "enum": [
+        "=",
+        "+",
+        "++"
+      ],
+      "title": "Operator"
+    },
+    "Mutability": {
+      "type": "string",
+      "enum": [
+        "mutable",
+        "immutable",
+        "constant"
+      ],
+      "title": "Mutability"
+    },
+    "SourceLocation": {
+      "type": "string",
+      "pattern": "^\\d+:\\d+:\\d+$",
+      "title": "SourceLocation"
+    },
+    "StorageLocation": {
+      "type": "string",
+      "enum": [
+        "default",
+        "memory",
+        "storage"
+      ],
+      "title": "StorageLocation"
+    },
+    "Visibility": {
+      "type": "string",
+      "enum": [
+        "external",
+        "public",
+        "internal",
+        "private"
+      ],
+      "title": "Visibility"
+    }
+  }
+}

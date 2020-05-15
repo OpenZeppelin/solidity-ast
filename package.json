@@ -10,6 +10,7 @@
     "!*.test.{js,js.map,d.ts}"
   ],
   "scripts": {
+    "autogenerate": "bash scripts/autogenerate.sh",
     "prepare": "tsc",
     "test": "tsc && ava",
     "test:watch": "fgbg 'ava --watch' 'tsc --watch'"
@@ -18,8 +19,9 @@
     "@types/node": "^10.17.19",
     "ava": "^3.6.0",
     "fgbg": "^0.1.4",
+    "json-schema-to-typescript": "^9.1.0",
+    "quicktype": "^15.0.235",
     "typescript": "^3.8.3"
   },
-  "license": "MIT",
-  "dependencies": {}
+  "license": "MIT"
 }
