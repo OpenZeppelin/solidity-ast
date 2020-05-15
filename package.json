@@ -14,13 +14,10 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "@types/node": "^10.17.19",
     "ajv": "^6.12.2",
     "json-schema-to-typescript": "^9.1.0",
     "lodash": "^4.17.15",
-    "mocha": "^7.1.2",
-    "quicktype": "^15.0.235",
-    "typescript": "^3.8.3"
+    "mocha": "^7.1.2"
   },
   "license": "MIT"
 }
