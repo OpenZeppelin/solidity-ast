@@ -21,7 +21,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "typeDescriptions": {
           "$ref": "#/definitions/TypeDescriptions"
@@ -61,7 +61,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "typeDescriptions": {
           "$ref": "#/definitions/TypeDescriptions"
@@ -93,7 +93,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "stateMutability": {
           "$ref": "#/definitions/StateMutability"
@@ -159,7 +159,7 @@
           "$ref": "#/definitions/RightHandSide"
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "typeDescriptions": {
           "$ref": "#/definitions/TypeDescriptions"
@@ -418,7 +418,7 @@
           }
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         }
       },
       "required": [
@@ -566,7 +566,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "expression": {
           "$ref": "#/definitions/UnaryOperation"
@@ -608,7 +608,7 @@
           "type": "integer"
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "stateVariable": {
           "type": "boolean"
@@ -674,7 +674,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "typeDescriptions": {
           "$ref": "#/definitions/TypeDescriptions"
@@ -728,7 +728,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "typeDescriptions": {
           "$ref": "#/definitions/TypeDescriptions"
@@ -828,7 +828,7 @@
           "type": "integer"
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "typeDescriptions": {
           "$ref": "#/definitions/TypeDescriptions"
@@ -876,7 +876,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "modifierName": {
           "$ref": "#/definitions/UserDefinedTypeName"
@@ -925,7 +925,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "subdenomination": {
           "type": "null"
@@ -1034,7 +1034,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "statements": {
           "type": "array",
@@ -1068,7 +1068,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "typeDescriptions": {
           "$ref": "#/definitions/TypeDescriptions"
@@ -1134,7 +1134,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         }
       },
       "required": [
@@ -1173,7 +1173,7 @@
           "$ref": "#/definitions/ParameterList"
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         }
       },
       "required": [
@@ -1232,7 +1232,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "tryCall": {
           "type": "boolean"
@@ -1286,7 +1286,7 @@
           "type": "integer"
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "typeDescriptions": {
           "$ref": "#/definitions/TypeDescriptions"
@@ -1413,7 +1413,7 @@
           "type": "integer"
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "stateMutability": {
           "$ref": "#/definitions/StateMutability"
@@ -1465,7 +1465,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "statements": {
           "type": "array",
@@ -1507,7 +1507,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "typeDescriptions": {
           "$ref": "#/definitions/TypeDescriptions"
@@ -1555,7 +1555,7 @@
           "$ref": "#/definitions/OverrideSpecifier"
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "virtual": {
           "type": "boolean"
@@ -1704,7 +1704,7 @@
           "type": "integer"
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "canonicalName": {
           "type": "string"
@@ -1756,7 +1756,7 @@
           "type": "integer"
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "visibility": {
           "$ref": "#/definitions/Visibility"
@@ -1791,7 +1791,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "typeName": {
           "$ref": "#/definitions/PlaceholderStatement"
@@ -1835,7 +1835,7 @@
           "type": "integer"
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "stateVariable": {
           "type": "boolean"
@@ -1911,7 +1911,7 @@
           ]
         },
         "src": {
-          "type": "string"
+          "$ref": "#/definitions/SourceLocation"
         },
         "typeDescriptions": {
           "$ref": "#/definitions/TypeDescriptions"
