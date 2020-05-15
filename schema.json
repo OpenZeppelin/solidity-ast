@@ -762,7 +762,7 @@
           "anyOf": [
             {
               "type": "string",
-              "format": "integer"
+              "pattern": "^\\d+$"
             },
             {
               "type": "null"
@@ -937,7 +937,7 @@
           "anyOf": [
             {
               "type": "string",
-              "format": "integer"
+              "pattern": "^\\d+$"
             },
             {
               "type": "null"
@@ -1324,14 +1324,14 @@
         },
         "hexValue": {
           "type": "string",
-          "format": "integer"
+          "pattern": "^\\d+$"
         },
         "subdenomination": {
           "type": "null"
         },
         "value": {
           "type": "string",
-          "format": "integer"
+          "pattern": "^\\d+$"
         }
       },
       "required": [
