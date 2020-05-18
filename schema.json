@@ -41,10 +41,16 @@
       "additionalProperties": false,
       "properties": {
         "typeIdentifier": {
-          "type": "string"
+          "anyOf": [
+            { "type": "string" },
+            { "type": "null" }
+          ]
         },
         "typeString": {
-          "type": "string"
+          "anyOf": [
+            { "type": "string" },
+            { "type": "null" }
+          ]
         }
       },
       "required": [
