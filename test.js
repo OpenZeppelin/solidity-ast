@@ -7,22 +7,24 @@ const ajv = new Ajv({ verbose: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
 const validate = ajv.compile(require('./schema.json'));
 
-const dir = 'solidity/test/libsolidity/ASTJSON';
+describe('json samples from solidity repository', function () {
+  const dir = 'solidity/test/libsolidity/ASTJSON';
 
-// we read all jsons except those marked legacy
-const inputs = fs.readdirSync(dir).filter(e => /^.*(?<!_legacy)\.json$/.test(e));
+  // we read all jsons except those marked legacy
+  const inputs = fs.readdirSync(dir).filter(e => /^.*(?<!_legacy)\.json$/.test(e));
 
-for (const f of inputs) {
-  if (f === 'documentation.json') continue; // invalid json here
+  for (const f of inputs) {
+    if (f === 'documentation.json') continue; // invalid json here
 
-  it(f, function () {
-    const doc = require(path.resolve(dir, f));
-    if (!validate(doc)) {
-      const longest = lodash.maxBy(validate.errors, e => e.dataPath.split('.').length);
-      throw new Error(formatError(longest, doc));
-    }
-  });
-}
+    it(f, function () {
+      const doc = require(path.resolve(dir, f));
+      if (!validate(doc)) {
+        const longest = lodash.maxBy(validate.errors, e => e.dataPath.split('.').length);
+        throw new Error(formatError(longest, doc));
+      }
+    });
+  }
+});
 
 function formatError(error, doc) {
   const { params, message, data, dataPath } = error;
