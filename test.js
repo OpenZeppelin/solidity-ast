@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const Ajv = require('ajv');
 const lodash = require('lodash');
+const chalk = require('chalk');
+const util = require('util');
 
 const ajv = new Ajv({ verbose: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
@@ -40,22 +42,17 @@ describe('openzeppelin contracts', function () {
 });
 
 function formatError(error, doc) {
-  const { params, message, data, dataPath } = error;
-  const path = dataPath.slice(1);
+  const pathComponents = error.dataPath.split('.');
+  const nodeTree = pathComponents.map((c, i) => {
+    const subPath = pathComponents.slice(1, i + 1).concat('nodeType').join('.');
+    const nodeType = lodash.get(doc, subPath) || '';
+    const indent = i === 0 ? '' : '   '.repeat(i - 1) + '└─';
+    return lodash.compact([indent, nodeType, c && chalk.dim(c)]).join(' ');
+  }).join('\n');
 
-  const pathComponents = path.split('.');
-  const nodeTypes = pathComponents.map((_, i) => {
-    const subPath = pathComponents.slice(0, i).concat('nodeType').join('.');
-    return lodash.get(doc, subPath);
-  }).join(' > ');
+  const params = Object.values(error.params).join(', ');
 
-  fs.writeFileSync('failed.json', JSON.stringify(doc));
+  const dataString = util.inspect(error.data, { compact: false });
 
-  return JSON.stringify({
-    message,
-    params,
-    dataPath,
-    nodeTypes,
-    data,
-  }, null, 2);
+  return `${error.message} (${params})\n\n${nodeTree}\n\n${dataString}`;
 }

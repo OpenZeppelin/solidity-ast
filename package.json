@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "ajv": "^6.12.2",
+    "chalk": "^4.0.0",
     "json-schema-to-typescript": "^9.1.0",
     "lodash": "^4.17.15",
     "mocha": "^7.1.2"
