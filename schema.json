@@ -61,14 +61,156 @@
     },
     "Expression": {
       "anyOf": [
-        { "$ref": "#/definitions/Expression2" },
-        { "$ref": "#/definitions/Identifier" }
+        { "$ref": "#/definitions/Assignment" },
+        { "$ref": "#/definitions/BinaryOperation" },
+        { "$ref": "#/definitions/ElementaryTypeNameExpression" },
+        { "$ref": "#/definitions/FunctionCall" },
+        { "$ref": "#/definitions/Identifier" },
+        { "$ref": "#/definitions/IndexAccess" },
+        { "$ref": "#/definitions/Literal" },
+        { "$ref": "#/definitions/UnaryOperation" }
       ]
     },
-    "Expression2": {
+    "Assignment": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": false,
       "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        },
+        "leftHandSide": {
+          "$ref": "#/definitions/Expression"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "Assignment"
+          ]
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "="
+          ]
+        },
+        "rightHandSide": {
+          "$ref": "#/definitions/Expression"
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "id",
+        "isConstant",
+        "isLValue",
+        "isPure",
+        "lValueRequested",
+        "leftHandSide",
+        "nodeType",
+        "operator",
+        "rightHandSide",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "Assignment"
+    },
+    "BinaryOperation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "commonType": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        },
+        "leftExpression": {
+          "$ref": "#/definitions/Expression"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "BinaryOperation"
+          ]
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "+"
+          ]
+        },
+        "rightExpression": {
+          "$ref": "#/definitions/Expression"
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "commonType",
+        "id",
+        "isConstant",
+        "isLValue",
+        "isPure",
+        "lValueRequested",
+        "leftExpression",
+        "nodeType",
+        "operator",
+        "rightExpression",
+        "src",
+        "typeDescriptions"
+      ],
+      "title": "BinaryOperation"
+    },
+    "ElementaryTypeNameExpression": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TypeDescriptions"
+          }
+        },
         "id": {
           "type": "integer"
         },
@@ -85,7 +227,68 @@
           "type": "boolean"
         },
         "nodeType": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "ElementaryTypeNameExpression"
+          ]
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "typeName": {
+          "$ref": "#/definitions/ElementaryTypeName"
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "id",
+        "isConstant",
+        "isLValue",
+        "isPure",
+        "lValueRequested",
+        "nodeType",
+        "src",
+        "typeDescriptions",
+        "typeName"
+      ],
+      "title": "ElementaryTypeNameExpression"
+    },
+    "IndexAccess": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "baseExpression": {
+          "$ref": "#/definitions/Expression"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "indexExpression": {
+          "$ref": "#/definitions/Expression"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "IndexAccess"
+          ]
         },
         "src": {
           "$ref": "#/definitions/SourceLocation"
@@ -95,7 +298,10 @@
         }
       },
       "required": [
+        "argumentTypes",
+        "baseExpression",
         "id",
+        "indexExpression",
         "isConstant",
         "isLValue",
         "isPure",
@@ -104,7 +310,222 @@
         "src",
         "typeDescriptions"
       ],
-      "title": "Expression2"
+      "title": "IndexAccess"
+    },
+    "FunctionCall": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Expression"
+          }
+        },
+        "expression": {
+          "$ref": "#/definitions/Expression"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "typeConversion"
+          ]
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        },
+        "names": {
+          "type": "array",
+          "enum": [
+            []
+          ]
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "FunctionCall"
+          ]
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "tryCall": {
+          "type": "boolean"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "arguments",
+        "expression",
+        "id",
+        "isConstant",
+        "isLValue",
+        "isPure",
+        "kind",
+        "lValueRequested",
+        "names",
+        "nodeType",
+        "src",
+        "tryCall",
+        "typeDescriptions"
+      ],
+      "title": "FunctionCall"
+    },
+    "Literal": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "hexValue": {
+          "type": "string",
+          "pattern": "^[0-9a-f]+$"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "number",
+            "string"
+          ]
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "Literal"
+          ]
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "subdenomination": {
+          "type": "null"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        },
+        "value": {
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "string",
+              "pattern": "^\\d+$"
+            }
+          ]
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "hexValue",
+        "id",
+        "isConstant",
+        "isLValue",
+        "isPure",
+        "kind",
+        "lValueRequested",
+        "nodeType",
+        "src",
+        "subdenomination",
+        "typeDescriptions",
+        "value"
+      ],
+      "title": "Literal"
+    },
+    "UnaryOperation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argumentTypes": {
+          "type": "null"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "isConstant": {
+          "type": "boolean"
+        },
+        "isLValue": {
+          "type": "boolean"
+        },
+        "isPure": {
+          "type": "boolean"
+        },
+        "lValueRequested": {
+          "type": "boolean"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "UnaryOperation"
+          ]
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "++"
+          ]
+        },
+        "prefix": {
+          "type": "boolean"
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "subExpression": {
+          "$ref": "#/definitions/Expression"
+        },
+        "typeDescriptions": {
+          "$ref": "#/definitions/TypeDescriptions"
+        }
+      },
+      "required": [
+        "argumentTypes",
+        "id",
+        "isConstant",
+        "isLValue",
+        "isPure",
+        "lValueRequested",
+        "nodeType",
+        "operator",
+        "prefix",
+        "src",
+        "subExpression",
+        "typeDescriptions"
+      ],
+      "title": "UnaryOperation"
     },
     "BlockParameter": {
       "type": "object",
@@ -181,9 +602,6 @@
         "id": {
           "type": "integer"
         },
-        "name": {
-          "type": "string"
-        },
         "nodeType": {
           "type": "string",
           "enum": [
@@ -212,8 +630,12 @@
       "required": [
         "id",
         "nodeType",
+        "parameterTypes",
+        "returnParameterTypes",
         "src",
-        "typeDescriptions"
+        "stateMutability",
+        "typeDescriptions",
+        "visibility"
       ],
       "title": "FunctionTypeName"
     },
@@ -285,9 +707,14 @@
       },
       "required": [
         "id",
+        "name",
         "nodeType",
+        "parameterTypes",
+        "returnParameterTypes",
         "src",
-        "typeDescriptions"
+        "stateMutability",
+        "typeDescriptions",
+        "visibility"
       ],
       "title": "ParameterTypeName"
     },
@@ -312,6 +739,10 @@
         }
       },
       "required": [
+        "expression",
+        "id",
+        "nodeType",
+        "src"
       ],
       "title": "ExpressionStatement"
     },
@@ -352,92 +783,17 @@
         },
         "src": {
           "$ref": "#/definitions/SourceLocation"
-        },
-        "expression": {
-          "$ref": "#/definitions/Expression"
         }
       },
       "required": [
+        "assignments",
+        "declarations",
         "id",
+        "initialValue",
         "nodeType",
         "src"
       ],
       "title": "VariableDeclarationStatement"
-    },
-    "VariableDeclaration": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "constant": {
-          "type": "boolean"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "mutability": {
-          "$ref": "#/definitions/Mutability"
-        },
-        "name": {
-          "type": "string"
-        },
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "VariableDeclaration"
-          ]
-        },
-        "overrides": {
-          "type": "null"
-        },
-        "scope": {
-          "type": "integer"
-        },
-        "src": {
-          "$ref": "#/definitions/SourceLocation"
-        },
-        "stateVariable": {
-          "type": "boolean"
-        },
-        "storageLocation": {
-          "$ref": "#/definitions/StorageLocation"
-        },
-        "typeDescriptions": {
-          "$ref": "#/definitions/TypeDescriptions"
-        },
-        "typeName": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/TypeName"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "value": {
-          "type": "null"
-        },
-        "visibility": {
-          "$ref": "#/definitions/Visibility"
-        }
-      },
-      "required": [
-        "constant",
-        "id",
-        "mutability",
-        "name",
-        "nodeType",
-        "overrides",
-        "scope",
-        "src",
-        "stateVariable",
-        "storageLocation",
-        "typeDescriptions",
-        "typeName",
-        "value",
-        "visibility"
-      ],
-      "title": "VariableDeclaration"
     },
     "PlaceholderStatement": {
       "type": "object",
@@ -467,9 +823,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "argumentTypes": {
-          "type": "null"
-        },
         "contractScope": {
           "type": "null"
         },
@@ -484,10 +837,6 @@
           "enum": [
             "UserDefinedTypeName"
           ]
-        },
-        "overloadedDeclarations": {
-          "type": "array",
-          "items": {}
         },
         "referencedDeclaration": {
           "type": "integer"
@@ -507,6 +856,7 @@
         "contractScope",
         "name",
         "nodeType",
+        "referencedDeclaration",
         "src",
         "typeDescriptions"
       ],
