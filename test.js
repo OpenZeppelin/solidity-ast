@@ -26,6 +26,19 @@ describe('json samples from solidity repository', function () {
   }
 });
 
+describe('openzeppelin contracts', function () {
+  const { sources } = JSON.parse(fs.readFileSync('openzeppelin-contracts.json', 'utf8'));
+
+  for (const [ path, { ast } ] of Object.entries(sources)) {
+    it(path, function () {
+      if (!validate(ast)) {
+        const longest = lodash.maxBy(validate.errors, e => e.dataPath.split('.').length);
+        throw new Error(formatError(longest, ast));
+      }
+    });
+  }
+});
+
 function formatError(error, doc) {
   const { params, message, data, dataPath } = error;
   const path = dataPath.slice(1);
