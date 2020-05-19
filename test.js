@@ -16,15 +16,16 @@ describe('json samples from solidity repository', function () {
   const inputs = fs.readdirSync(dir).filter(e => /^.*(?<!_legacy)\.json$/.test(e));
 
   for (const f of inputs) {
-    if (f === 'documentation.json') continue; // invalid json here
-
-    it(f, function () {
-      const doc = require(path.resolve(dir, f));
-      if (!validate(doc)) {
-        const longest = lodash.maxBy(validate.errors, e => e.dataPath.split('.').length);
-        throw new Error(formatError(longest, doc));
-      }
-    });
+    const doc = JSON.parse(fs.readFileSync(path.resolve(dir, f), 'utf8'));
+    // Some of these files are arrays so we use concat to treat them uniformly.
+    for (const ast of [].concat(doc)) {
+      it(f, function () {
+        if (!validate(ast)) {
+          const longest = lodash.maxBy(validate.errors, e => e.dataPath.split('.').length);
+          throw new Error(formatError(longest, ast));
+        }
+      });
+    }
   }
 });
 
