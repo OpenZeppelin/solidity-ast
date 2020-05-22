@@ -1,5 +1,6 @@
 # Solidity AST Types
 
+[![Docs](https://img.shields.io/badge/docs-%F0%9F%93%84-blue)](https://solidity-ast.netlify.app/)
 [![NPM Package](https://img.shields.io/npm/v/solidity-ast.svg)](https://www.npmjs.org/package/solidity-ast)
 
 **TypeScript types and a JSON Schema for the Solidity AST.**
