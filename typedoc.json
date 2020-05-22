@@ -1,0 +1,11 @@
+{
+  "inputFiles": [
+    "./types.d.ts"
+  ],
+  "out": "docs",
+  "mode": "file",
+  "name": "Solidity AST",
+  "disableSources": true,
+  "includeDeclarations": true,
+  "excludeExternals": true
+}

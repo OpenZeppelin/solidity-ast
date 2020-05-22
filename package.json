@@ -10,15 +10,19 @@
     "/schema.json"
   ],
   "scripts": {
-    "prepare": "json2ts schema.json types.d.ts --strictIndexSignatures",
-    "test": "mocha"
+    "build:docs": "typedoc",
+    "build:types": "bash build-types.sh",
+    "test": "mocha",
+    "prepare": "npm run build:types"
   },
   "devDependencies": {
     "ajv": "^6.12.2",
     "chalk": "^4.0.0",
     "json-schema-to-typescript": "^9.1.0",
     "lodash": "^4.17.15",
-    "mocha": "^7.1.2"
+    "mocha": "^7.1.2",
+    "typedoc": "^0.17.7",
+    "typescript": "^3.9.3"
   },
   "license": "MIT"
 }
