@@ -48,7 +48,7 @@ describe('openzeppelin contracts', function () {
 });
 
 describe('demo contract with solc wasm', function () {
-  const versions = require('./solc-versions.json');
+  const versions = ['v0.6.8+commit.0bbfe453'];
 
   for (const version of versions) {
     it(version, async function () {
