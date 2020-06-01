@@ -16,7 +16,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 10.x
-    - name: npm install and build
+    - name: Install dependencies and build
       run: npm ci
-    - name: test
+    - name: Run tests
       run: npm test
