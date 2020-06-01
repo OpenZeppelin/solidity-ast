@@ -2,3 +2,4 @@ node_modules
 /types.d.ts
 /samples
 /docs
+/.solc-bin
