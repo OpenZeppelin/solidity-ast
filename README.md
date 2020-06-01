@@ -1,6 +1,6 @@
 # Solidity AST Types
 
-[![Docs](https://img.shields.io/badge/docs-%F0%9F%93%84-blue)](https://solidity-ast.netlify.app/)
+[![Docs](https://img.shields.io/badge/docs-%F0%9F%93%84-blue)][docs]
 [![NPM Package](https://img.shields.io/npm/v/solidity-ast.svg)](https://www.npmjs.org/package/solidity-ast)
 
 **TypeScript types and a JSON Schema for the Solidity AST.**
@@ -20,9 +20,10 @@ import type { SourceUnit, ContractDefinition } from 'solidity-ast';
 
 The types included in the NPM package are automatically generated from the JSON
 Schema, so you will not find them in the repository. You can see what they look
-like on [unpkg].
+like on [unpkg] or the [documentation][docs].
 
 [unpkg]: https://unpkg.com/solidity-ast@latest/types.d.ts
+[docs]: https://solidity-ast.netlify.app/
 
 The current version was built for solc 0.6.8. In the short term this project
 will serve to document the changes made to the AST across solc releases, and we
