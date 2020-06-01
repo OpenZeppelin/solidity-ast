@@ -18,5 +18,9 @@ jobs:
         node-version: 10.x
     - name: npm install and build
       run: npm ci
+    - uses: actions/cache@v2
+      with:
+        path: .solc-bin
+        key: ${{ hashFiles('solc-versions.json') }}
     - name: test
       run: npm test
