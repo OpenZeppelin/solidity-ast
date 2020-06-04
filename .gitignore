@@ -6,6 +6,4 @@ node_modules
 
 *.tsbuildinfo
 
-/predicates.js
-/predicates.d.ts
-/predicates.d.ts.map
+/predicates.*
