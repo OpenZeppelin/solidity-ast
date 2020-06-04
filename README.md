@@ -44,5 +44,5 @@ used to filter a list of nodes in a type safe way.
 import type { ContractDefinition } from 'solidity-ast';
 import { isContractDefinition } from 'solidity-ast/predicates';
 
-const contractDefs: ContractDefintion[] = sourceUnit.nodes.filter(isContractDefinition);
+const contractDefs: ContractDefinition[] = sourceUnit.nodes.filter(isContractDefinition);
 ```
