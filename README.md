@@ -6,7 +6,7 @@
 **TypeScript types and a JSON Schema for the Solidity AST.**
 
 _The latest version successfully validates all of [OpenZeppelin Contracts], but
-some types may still be missing. Please report any issues you find._
+some types may still be inaccurate. Please report any issues you find._
 
 [OpenZeppelin Contracts]: https://github.com/OpenZeppelin/openzeppelin-contracts
 
@@ -25,7 +25,23 @@ like on [unpkg] or the [documentation][docs].
 [unpkg]: https://unpkg.com/solidity-ast@latest/types.d.ts
 [docs]: https://solidity-ast.netlify.app/
 
-The current version was built for solc 0.6.8. In the short term this project
-will serve to document the changes made to the AST across solc releases, and we
-will explore the possibility of building adapters to consume ASTs independent
-of the version that produced them.
+## Solidity Versioning
+
+The package at the moment was built for Solidity 0.6.8, so the types may not be
+accurate for other Solidity versions.
+
+The plan is to provide the types for every version and additionally an adapter
+that can be used to consume ASTs with a stable interface regardless of the
+Solidity version that produced them.
+
+## Predicates
+
+Included in the package is a set of predicates with type guards that can be
+used to filter a list of nodes in a type safe way.
+
+```
+import type { ContractDefinition } from 'solidity-ast';
+import { isContractDefinition } from 'solidity-ast/predicates';
+
+const contractDefs: ContractDefintion[] = sourceUnit.nodes.filter(isContractDefinition);
+```
