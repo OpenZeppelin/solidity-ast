@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build:docs": "typedoc",
-    "build:types": "bash build-types.sh",
+    "build:types": "bash scripts/build-types.sh",
     "test": "mocha",
     "prepare": "npm run build:types"
   },
