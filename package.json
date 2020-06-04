@@ -11,7 +11,7 @@
     "/schema.json"
   ],
   "scripts": {
-    "build:docs": "typedoc",
+    "build:docs": "typedoc --tsconfig tsconfig.docs.json",
     "build:types": "bash scripts/build-types.sh",
     "build:predicates": "node scripts/build-predicates.js > predicates.ts",
     "test": "mocha",

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "strict": true
+  },
+  "files": [
+    "types.d.ts"
+  ]
+}
