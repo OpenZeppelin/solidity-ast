@@ -3,3 +3,9 @@ node_modules
 /samples
 /docs
 /.solc-bin
+
+*.tsbuildinfo
+
+/predicates.js
+/predicates.d.ts
+/predicates.d.ts.map

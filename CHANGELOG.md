@@ -2,6 +2,14 @@
 
 ### unreleased
 
+- Added `solidity-ast/predicates` with type guards for type-safe filtering.
+
+```typescript
+import { isContractDefinition } from 'solidity-ast/predicates';
+const contractDefs = sourceUnit.nodes.filter(isContractDefinition);
+// : ContractDefinition[]
+```
+
 - Removed `ParameterTypes`, which was a duplicate of `ParameterList`. The latter should be used instead.
 - Removed `ParameterTypeName`, which wasn't referenced anywhere.
 

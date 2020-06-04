@@ -1,5 +1,15 @@
 {
   "compilerOptions": {
-    "noEmit": true
-  }
+    "noEmit": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "strict": true
+  },
+  "files": [
+    "scripts/build-predicates.js"
+  ],
+  "references": [
+    { "path": "./tsconfig.emit.json" }
+  ]
 }
