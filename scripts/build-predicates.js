@@ -19,7 +19,7 @@ console.log(`type SolidityNode = ${nodeTypes.join(' | ')};`)
 
 for (const nodeType of nodeTypes) {
   console.log(
-`function is${nodeType}(node: SolidityNode): node is ${nodeType} {
+`export function is${nodeType}(node: SolidityNode): node is ${nodeType} {
   return node.nodeType === '${nodeType}';
 }`
   );
