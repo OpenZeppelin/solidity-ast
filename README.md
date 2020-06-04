@@ -14,6 +14,7 @@ some types may still be inaccurate. Please report any issues you find._
 npm install solidity-ast
 ```
 
+
 ```typescript
 import type { SourceUnit, ContractDefinition } from 'solidity-ast';
 ```
@@ -39,7 +40,7 @@ Solidity version that produced them.
 Included in the package is a set of predicates with type guards that can be
 used to filter a list of nodes in a type safe way.
 
-```
+```typescript
 import type { ContractDefinition } from 'solidity-ast';
 import { isContractDefinition } from 'solidity-ast/predicates';
 
