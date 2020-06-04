@@ -2,7 +2,8 @@
 
 ### unreleased
 
-- Removed `ParameterTypes` type, which was a duplicate of `ParameterList`. The latter should be used instead.
+- Removed `ParameterTypes`, which was a duplicate of `ParameterList`. The latter should be used instead.
+- Removed `ParameterTypeName`, which wasn't referenced anywhere.
 
 ### 0.2.1 (2020-06-01)
 

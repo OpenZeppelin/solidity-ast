@@ -988,54 +988,6 @@
       ],
       "title": "FunctionTypeName"
     },
-    "ParameterTypeName": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "ParameterTypeName"
-          ]
-        },
-        "src": {
-          "$ref": "#/definitions/SourceLocation"
-        },
-        "typeDescriptions": {
-          "$ref": "#/definitions/TypeDescriptions"
-        },
-        "stateMutability": {
-          "$ref": "#/definitions/StateMutability"
-        },
-        "parameterTypes": {
-          "$ref": "#/definitions/ParameterList"
-        },
-        "returnParameterTypes": {
-          "$ref": "#/definitions/ParameterList"
-        },
-        "visibility": {
-          "$ref": "#/definitions/Visibility"
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "nodeType",
-        "parameterTypes",
-        "returnParameterTypes",
-        "src",
-        "stateMutability",
-        "typeDescriptions",
-        "visibility"
-      ],
-      "title": "ParameterTypeName"
-    },
     "ForStatement": {
       "type": "object",
       "additionalProperties": false,
