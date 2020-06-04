@@ -1,6 +1,6 @@
 # Changelog
 
-### unreleased
+### 0.3.0 (2020-06-04)
 
 - Added `solidity-ast/predicates` with type guards for type-safe filtering.
 
