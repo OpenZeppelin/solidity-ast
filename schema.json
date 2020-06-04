@@ -967,10 +967,10 @@
           "$ref": "#/definitions/TypeDescriptions"
         },
         "parameterTypes": {
-          "$ref": "#/definitions/ParameterTypes"
+          "$ref": "#/definitions/ParameterList"
         },
         "returnParameterTypes": {
-          "$ref": "#/definitions/ParameterTypes"
+          "$ref": "#/definitions/ParameterList"
         },
         "visibility": {
           "$ref": "#/definitions/Visibility"
@@ -987,37 +987,6 @@
         "visibility"
       ],
       "title": "FunctionTypeName"
-    },
-    "ParameterTypes": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "nodeType": {
-          "type": "string",
-          "enum": [
-            "ParameterList"
-          ]
-        },
-        "parameters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/VariableDeclaration"
-          }
-        },
-        "src": {
-          "$ref": "#/definitions/SourceLocation"
-        }
-      },
-      "required": [
-        "id",
-        "nodeType",
-        "parameters",
-        "src"
-      ],
-      "title": "ParameterTypes"
     },
     "ParameterTypeName": {
       "type": "object",
@@ -1045,10 +1014,10 @@
           "$ref": "#/definitions/StateMutability"
         },
         "parameterTypes": {
-          "$ref": "#/definitions/ParameterTypes"
+          "$ref": "#/definitions/ParameterList"
         },
         "returnParameterTypes": {
-          "$ref": "#/definitions/ParameterTypes"
+          "$ref": "#/definitions/ParameterList"
         },
         "visibility": {
           "$ref": "#/definitions/Visibility"
