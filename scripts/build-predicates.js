@@ -5,7 +5,7 @@
 const schema = require('../schema.json');
 
 /** @type {string[]} */
-const nodeTypes = [];
+const nodeTypes = ['SourceUnit'];
 
 for (const def of Object.values(schema.definitions)) {
   if ('properties' in def && 'nodeType' in def.properties) {
