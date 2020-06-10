@@ -1,5 +1,17 @@
 # Changelog
 
+### Unreleased
+
+- Added `solidity-ast/utils` with the following utility functions:
+  - `isNodeType(nodeType, node)`: a type predicate for type-safe filtering or
+    any kind of narrowing.
+  - `findAll(nodeType, node)`: a generator function that recursively enumerates
+    all of a node's descendents of type `nodeType`.
+  - Both of these functions can be partially applied by supplying only the
+    `nodeType` argument. This is useful for higher order functions like
+    `filter` or `map`, as in `nodes.filter(isNodeType('ContractDefinition'))`.
+- Removed `solidity-ast/predicates`. Use `isNodeType` from `solidity-ast/utils` instead.
+
 ### 0.3.2 (2020-06-12)
 
 - Fix type for `ImportDirective.symbolAliases`.

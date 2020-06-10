@@ -1,14 +1,10 @@
 const finder = require('./finder.json');
 
 function isNodeType(nodeType, node) {
-  if (node === undefined) {
-    return node => node.nodeType === nodeType;
-  } else {
-    return node.nodeType === nodeType;
-  }
+  return node.nodeType === nodeType;
 }
 
-function* findAll(node, nodeType) {
+function* findAll(nodeType, node) {
   if (node.nodeType === nodeType) {
     yield node;
   }
@@ -18,16 +14,26 @@ function* findAll(node, nodeType) {
       const member = node[prop];
       if (Array.isArray(member)) {
         for (const sub2 of member) {
-          yield* findAll(sub2, nodeType);
+          yield* findAll(nodeType, sub2);
         }
       } else {
-        yield* findAll(member, nodeType);
+        yield* findAll(nodeType, member);
       }
     }
   }
 }
 
+function curry2(fn) {
+  return function (nodeType, node) {
+    if (node === undefined) {
+      return node => fn(nodeType, node);
+    } else {
+      return fn(nodeType, node);
+    }
+  };
+}
+
 module.exports = {
-  isNodeType,
-  findAll,
+  isNodeType: curry2(isNodeType),
+  findAll: curry2(findAll),
 };
