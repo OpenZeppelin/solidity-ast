@@ -6,18 +6,22 @@
   "repository": "github:OpenZeppelin/solidity-ast",
   "types": "types.d.ts",
   "files": [
-    "/predicates.{js,d.ts{,.map}}",
+    "/finder.json",
+    "/node.d.ts",
+    "/utils.{js,d.ts}",
     "/types.d.ts",
     "/schema.json"
   ],
   "scripts": {
     "build:docs": "typedoc --tsconfig tsconfig.docs.json",
     "build:types": "bash scripts/build-types.sh",
-    "build:predicates": "node scripts/build-predicates.js > predicates.ts",
+    "build:node-type": "node scripts/build-node-type.js",
+    "build:finder": "node scripts/build-finder.js",
     "test": "mocha",
     "prepare": "bash -x scripts/prepare.sh"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.155",
     "@types/node": "^10.17.24",
     "ajv": "^6.12.2",
     "chalk": "^4.0.0",

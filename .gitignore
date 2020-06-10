@@ -1,9 +1,9 @@
 node_modules
 /types.d.ts
-/samples
+/node.d.ts
+/finder.json
 /docs
 /.solc-bin
 
 *.tsbuildinfo
 
-/predicates.*
