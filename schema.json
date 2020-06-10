@@ -1397,7 +1397,10 @@
           "items": {}
         },
         "referencedDeclaration": {
-          "type": "integer"
+          "anyOf": [
+            { "type": "null" },
+            { "type": "integer" }
+          ]
         },
         "src": {
           "$ref": "#/definitions/SourceLocation"
@@ -1966,7 +1969,23 @@
           "$ref": "#/definitions/SourceLocation"
         },
         "symbolAliases": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "foreign": {
+                "$ref": "#/definitions/Identifier"
+              },
+              "local": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "foreign",
+              "local"
+            ]
+          }
         },
         "unitAlias": {
           "type": "string"
