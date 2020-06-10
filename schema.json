@@ -1265,9 +1265,6 @@
         },
         "typeDescriptions": {
           "$ref": "#/definitions/TypeDescriptions"
-        },
-        "contractScope": {
-          "type": "null"
         }
       },
       "required": [
