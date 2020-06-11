@@ -35,14 +35,37 @@ The plan is to provide the types for every version and additionally an adapter
 that can be used to consume ASTs with a stable interface regardless of the
 Solidity version that produced them.
 
-## Predicates
+## Utilities
 
-Included in the package is a set of predicates with type guards that can be
-used to filter a list of nodes in a type safe way.
+Included in the package is a set of utility function for type-safe interactions
+with nodes based on the node type.
+
+### `isNodeType(nodeType, node)`
+
+A type predicate that can be used for narrowing the type of an
+unknown node, or combined with higher order functions like `filter`.
 
 ```typescript
-import type { ContractDefinition } from 'solidity-ast';
-import { isContractDefinition } from 'solidity-ast/predicates';
+import { isNodeType } from 'solidity-ast/utils';
 
-const contractDefs: ContractDefinition[] = sourceUnit.nodes.filter(isContractDefinition);
+if (isNodeType('ContractDefinition', node)) {
+  // node: ContractDefinition
+}
+
+const contractDefs = sourceUnit.nodes.filter(isNodeType('ContractDefinition'));
+  // contractDefs: ContractDefinition[]
+```
+
+### `findAll(nodeType, node)`
+
+`findAll` is a generator function that will recursively enumerate all
+descendent nodes of a given node type. It does this in an efficient way by
+visiting only the nodes that are necessary for the searched node type.
+
+```typescript
+import { findAll } from 'solidity-ast/utils';
+
+for (const functionDef of findAll('FunctionDefinition', sourceUnit)) {
+  // functionDef: FunctionDefinition
+}
 ```
