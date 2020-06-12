@@ -12,7 +12,7 @@ const _ = require('lodash');
 
 const ajv = new Ajv({ verbose: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
-const validate = ajv.compile(require('./schema.json'));
+const validate = ajv.compile(require('../schema.json'));
 
 function assertValid(ast) {
   if (!validate(ast)) {
@@ -23,7 +23,7 @@ function assertValid(ast) {
 
 describe('schema', function () {
   describe('json samples from solidity repository', function () {
-    const dir = 'solidity/test/libsolidity/ASTJSON';
+    const dir = path.join(__dirname, 'solidity/test/libsolidity/ASTJSON');
 
     // we read all jsons except those marked legacy
     const inputs = fs.readdirSync(dir).filter(e => /^.*(?<!_legacy)\.json$/.test(e));
@@ -40,7 +40,7 @@ describe('schema', function () {
   });
 
   describe('openzeppelin contracts', function () {
-    const { sources } = JSON.parse(fs.readFileSync('openzeppelin-contracts.json', 'utf8'));
+    const { sources } = require('./openzeppelin-contracts.json');
 
     for (const [ path, { ast } ] of Object.entries(sources)) {
       it(path, function () {
@@ -62,7 +62,7 @@ describe('schema', function () {
               language: 'Solidity',
               sources: {
                 'demo.sol': {
-                  content: await fs.readFile('./demo.sol', 'utf8'),
+                  content: await fs.readFile(require.resolve('./demo.sol'), 'utf8'),
                 },
                 'import.sol': {
                   content: await fs.readFile(require.resolve('./import.sol'), 'utf8'),
