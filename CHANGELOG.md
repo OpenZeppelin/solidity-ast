@@ -1,6 +1,6 @@
 # Changelog
 
-### Unreleased
+### 0.4.0 (2020-06-12)
 
 - Added `solidity-ast/utils` with the following utility functions:
   - `isNodeType(nodeType, node)`: a type predicate for type-safe filtering or
