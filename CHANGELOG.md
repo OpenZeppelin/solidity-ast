@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.3.2 (2020-06-12)
+
+- Fix type for `ImportDirective.symbolAliases`.
+
 ### 0.3.1 (2020-06-09)
 
 - Added missing type for `ImportDirective.symbolAliases`.

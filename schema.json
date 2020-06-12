@@ -1975,7 +1975,10 @@
                 "$ref": "#/definitions/Identifier"
               },
               "local": {
-                "type": "string"
+                "anyOf": [
+                  { "type": "null" },
+                  { "type": "string" }
+                ]
               }
             },
             "required": [

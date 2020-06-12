@@ -8,6 +8,7 @@ const chalk = require('chalk');
 const util = require('util');
 const solcWrapper = require('solc/wrapper');
 const assert = require('assert');
+const _ = require('lodash');
 
 const ajv = new Ajv({ verbose: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
@@ -62,6 +63,9 @@ describe('demo contract with solc wasm', function () {
               'demo.sol': {
                 content: await fs.readFile('./demo.sol', 'utf8'),
               },
+              'import.sol': {
+                content: await fs.readFile(require.resolve('./import.sol'), 'utf8'),
+              },
             },
             settings: {
               outputSelection: { '*': { '': ['ast'] } },
@@ -69,7 +73,9 @@ describe('demo contract with solc wasm', function () {
           })
         )
       );
-      assert.ifError(output.errors);
+      if (output.errors) {
+        throw new Error(_.map(output.errors, 'formattedMessage').join('\n'));
+      }
       assertValid(output.sources['demo.sol'].ast);
     });
   }
