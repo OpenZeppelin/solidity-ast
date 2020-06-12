@@ -21,64 +21,66 @@ function assertValid(ast) {
   }
 }
 
-describe('json samples from solidity repository', function () {
-  const dir = 'solidity/test/libsolidity/ASTJSON';
+describe('schema', function () {
+  describe('json samples from solidity repository', function () {
+    const dir = 'solidity/test/libsolidity/ASTJSON';
 
-  // we read all jsons except those marked legacy
-  const inputs = fs.readdirSync(dir).filter(e => /^.*(?<!_legacy)\.json$/.test(e));
+    // we read all jsons except those marked legacy
+    const inputs = fs.readdirSync(dir).filter(e => /^.*(?<!_legacy)\.json$/.test(e));
 
-  for (const f of inputs) {
-    const doc = JSON.parse(fs.readFileSync(path.resolve(dir, f), 'utf8'));
-    // Some of these files are arrays so we use concat to treat them uniformly.
-    for (const ast of [].concat(doc)) {
-      it(f, function () {
+    for (const f of inputs) {
+      const doc = JSON.parse(fs.readFileSync(path.resolve(dir, f), 'utf8'));
+      // Some of these files are arrays so we use concat to treat them uniformly.
+      for (const ast of [].concat(doc)) {
+        it(f, function () {
+          assertValid(ast);
+        });
+      }
+    }
+  });
+
+  describe('openzeppelin contracts', function () {
+    const { sources } = JSON.parse(fs.readFileSync('openzeppelin-contracts.json', 'utf8'));
+
+    for (const [ path, { ast } ] of Object.entries(sources)) {
+      it(path, function () {
         assertValid(ast);
       });
     }
-  }
-});
+  });
 
-describe('openzeppelin contracts', function () {
-  const { sources } = JSON.parse(fs.readFileSync('openzeppelin-contracts.json', 'utf8'));
+  describe('demo contract with solc wasm', function () {
+    const versions = ['v0.6.8+commit.0bbfe453'];
 
-  for (const [ path, { ast } ] of Object.entries(sources)) {
-    it(path, function () {
-      assertValid(ast);
-    });
-  }
-});
-
-describe('demo contract with solc wasm', function () {
-  const versions = ['v0.6.8+commit.0bbfe453'];
-
-  for (const version of versions) {
-    it(version, async function () {
-      this.timeout(0);
-      const solc = await requireSolc(version);
-      const output = JSON.parse(
-        solc.compile(
-          JSON.stringify({
-            language: 'Solidity',
-            sources: {
-              'demo.sol': {
-                content: await fs.readFile('./demo.sol', 'utf8'),
+    for (const version of versions) {
+      it(version, async function () {
+        this.timeout(0);
+        const solc = await requireSolc(version);
+        const output = JSON.parse(
+          solc.compile(
+            JSON.stringify({
+              language: 'Solidity',
+              sources: {
+                'demo.sol': {
+                  content: await fs.readFile('./demo.sol', 'utf8'),
+                },
+                'import.sol': {
+                  content: await fs.readFile(require.resolve('./import.sol'), 'utf8'),
+                },
               },
-              'import.sol': {
-                content: await fs.readFile(require.resolve('./import.sol'), 'utf8'),
+              settings: {
+                outputSelection: { '*': { '': ['ast'] } },
               },
-            },
-            settings: {
-              outputSelection: { '*': { '': ['ast'] } },
-            },
-          })
-        )
-      );
-      if (output.errors) {
-        throw new Error(_.map(output.errors, 'formattedMessage').join('\n'));
-      }
-      assertValid(output.sources['demo.sol'].ast);
-    });
-  }
+            })
+          )
+        );
+        if (output.errors) {
+          throw new Error(_.map(output.errors, 'formattedMessage').join('\n'));
+        }
+        assertValid(output.sources['demo.sol'].ast);
+      });
+    }
+  });
 });
 
 async function requireSolc(version) {
