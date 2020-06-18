@@ -1880,7 +1880,14 @@
         "evmVersion": {
           "type": "string",
           "enum": [
-            "istanbul"
+            "homestead",
+            "tangerineWhistle",
+            "spuriousDragon",
+            "byzantium",
+            "constantinople",
+            "petersburg",
+            "istanbul",
+            "berlin"
           ]
         },
         "externalReferences": {
