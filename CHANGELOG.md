@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.4.1 (2020-06-18)
+
+- Added all EVM versions to `InlineAssembly` node.
+- Fixed `findAll` to check for null property values.
+
 ### 0.4.0 (2020-06-12)
 
 - Added `solidity-ast/utils` with the following utility functions:
