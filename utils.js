@@ -16,7 +16,7 @@ function* findAll(nodeType, node) {
         for (const sub2 of member) {
           yield* findAll(nodeType, sub2);
         }
-      } else {
+      } else if (member) {
         yield* findAll(nodeType, member);
       }
     }
