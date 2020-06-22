@@ -14,7 +14,9 @@ function* findAll(nodeType, node) {
       const member = node[prop];
       if (Array.isArray(member)) {
         for (const sub2 of member) {
-          yield* findAll(nodeType, sub2);
+          if (sub2) {
+            yield* findAll(nodeType, sub2);
+          }
         }
       } else if (member) {
         yield* findAll(nodeType, member);
