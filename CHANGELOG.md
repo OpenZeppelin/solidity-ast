@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.3 (2020-07-02)
+
+- Fixed `body` property of `WhileStatement`: was `Block`, can also be `Statement`.
+
 ### 0.4.2 (2020-07-02)
 
 - Fixed `length` property of `ArrayTypeName`: was `null`, can be any `Expression`.

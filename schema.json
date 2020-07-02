@@ -1187,7 +1187,10 @@
       "additionalProperties": false,
       "properties": {
         "body": {
-          "$ref": "#/definitions/Block"
+          "anyOf": [
+            { "$ref": "#/definitions/Block" },
+            { "$ref": "#/definitions/Statement" }
+          ]
         },
         "condition": {
           "$ref": "#/definitions/Expression"
