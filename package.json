@@ -18,6 +18,7 @@
     "build:node-type": "node scripts/build-node-type.js",
     "build:finder": "node scripts/build-finder.js",
     "test": "mocha",
+    "test:watch": "mocha -w",
     "prepare": "bash -x scripts/prepare.sh"
   },
   "devDependencies": {

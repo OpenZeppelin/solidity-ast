@@ -1,6 +1,6 @@
 {
   "watch-files": [
     "schema.json",
-    "test.js"
+    "test"
   ]
 }
