@@ -1,6 +1,6 @@
 {
   "name": "solidity-ast",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Solidity AST schema and type definitions",
   "author": "Francisco Giordano <frangio.1@gmail.com>",
   "repository": "github:OpenZeppelin/solidity-ast",
