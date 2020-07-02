@@ -6,7 +6,6 @@ const Ajv = require('ajv');
 const lodash = require('lodash');
 const chalk = require('chalk');
 const util = require('util');
-const solcWrapper = require('solc/wrapper');
 const assert = require('assert');
 const _ = require('lodash');
 
@@ -51,15 +50,15 @@ describe('schema', function () {
 
   describe('demo contract with solc wasm', function () {
     const versions = [
-      'v0.6.8+commit.0bbfe453',
-      'v0.6.9+commit.3e3065ac',
-      'v0.6.10+commit.00c0fcaf',
+      '0.6.8',
+      '0.6.9',
+      '0.6.10',
     ];
 
     for (const version of versions) {
       it(version, async function () {
         this.timeout(0);
-        const solc = await requireSolc(version);
+        const solc = require(`solc-${version}`);
         const output = JSON.parse(
           solc.compile(
             JSON.stringify({
@@ -86,23 +85,6 @@ describe('schema', function () {
     }
   });
 });
-
-async function requireSolc(version) {
-  const fileName = `soljson-${version}.js`;
-  const url = `https://solc-bin.ethereum.org/wasm/${fileName}`;
-  const dir = '.solc-bin';
-  const solc = path.resolve(dir, fileName)
-
-  if (!await fs.exists(solc)) {
-    console.error(`downloading solc ${version}...`);
-    await fs.mkdir(dir, { recursive: true });
-    const solcFile = fs.createWriteStream(solc);
-    https.get(url, res => res.pipe(solcFile));
-    await stream.finished(solcFile);
-  }
-
-  return solcWrapper(require(solc));
-}
 
 function formatError(error, doc) {
   const pathComponents = error.dataPath.split('.');
