@@ -50,7 +50,11 @@ describe('schema', function () {
   });
 
   describe('demo contract with solc wasm', function () {
-    const versions = ['v0.6.8+commit.0bbfe453'];
+    const versions = [
+      'v0.6.8+commit.0bbfe453',
+      'v0.6.9+commit.3e3065ac',
+      'v0.6.10+commit.00c0fcaf',
+    ];
 
     for (const version of versions) {
       it(version, async function () {
