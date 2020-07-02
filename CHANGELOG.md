@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.2 (2020-07-02)
+
+- Fixed `length` property of `ArrayTypeName`: was `null`, can be any `Expression`.
+
 ### 0.4.1 (2020-06-18)
 
 - Added all EVM versions to `InlineAssembly` node.

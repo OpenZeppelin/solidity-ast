@@ -1753,7 +1753,8 @@
         },
         "length": {
           "anyOf": [
-            { "type": "null" }
+            { "type": "null" },
+            { "$ref": "#/definitions/Expression" }
           ]
         },
         "nodeType": {
