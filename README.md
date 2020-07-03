@@ -28,12 +28,13 @@ like on [unpkg] or the [documentation][docs].
 
 ## Solidity Versioning
 
-The package at the moment was built for Solidity 0.6.8, so the types may not be
-accurate for other Solidity versions.
+The types are currently accurate and tested for Solidity >=0.6.8, but you can
+very likely use them safely for any version since 0.6.0. For simple traversals
+they will probably work well for 0.5.0 and up as well.
 
-The plan is to provide the types for every version and additionally an adapter
-that can be used to consume ASTs with a stable interface regardless of the
-Solidity version that produced them.
+The versioning story will be gradually improved upon and the ultimate goal is
+to be able to manipulate and traverse the AST in a uniform way that is as
+agnostic to the Solidity version as possible.
 
 ## Utilities
 
