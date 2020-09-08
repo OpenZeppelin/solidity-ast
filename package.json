@@ -37,6 +37,7 @@
     "solc-0.6.8": "npm:solc@0.6.8",
     "solc-0.6.9": "npm:solc@0.6.9",
     "solc-0.7.0": "npm:solc@0.7.0",
+    "solc-0.7.1": "npm:solc@0.7.1",
     "typedoc": "^0.17.7",
     "typescript": "^3.9.3"
   },

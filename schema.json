@@ -1620,7 +1620,8 @@
             "function",
             "receive",
             "constructor",
-            "fallback"
+            "fallback",
+            "freeFunction"
           ]
         },
         "modifiers": {
@@ -2422,6 +2423,7 @@
         "anyOf": [
           { "$ref": "#/definitions/ContractDefinition" },
           { "$ref": "#/definitions/EnumDefinition" },
+          { "$ref": "#/definitions/FunctionDefinition" },
           { "$ref": "#/definitions/ImportDirective" },
           { "$ref": "#/definitions/PragmaDirective" },
           { "$ref": "#/definitions/StructDefinition" }
