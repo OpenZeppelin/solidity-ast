@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.4.4 (2020-09-02)
+
+- Fixed `body` property of `ForStatement`: was `Block`, can also be `Statement`.
+- Added support for Solidity 0.7.1.
+  - Made nullable properties optional. For TypeScript this means that `null` values can now be `undefined`.
+  - Added support for free functions: `FunctionDefinition` is now a potential child in `SourceUnit.nodes`.
+
 ### 0.4.3 (2020-07-02)
 
 - Fixed `body` property of `WhileStatement`: was `Block`, can also be `Statement`.
