@@ -7,6 +7,8 @@ const lodash = require('lodash');
 const chalk = require('chalk');
 const util = require('util');
 const assert = require('assert');
+const proc = require('child_process');
+const events = require('events');
 const _ = require('lodash');
 
 const ajv = new Ajv({ verbose: true });
@@ -57,28 +59,23 @@ describe('schema', function () {
       '0.6.12',
     ];
 
+    before('reading solidity sources', async function () {
+      this.sources = {
+        'demo.sol': {
+          content: await fs.readFile(require.resolve('./demo.sol'), 'utf8'),
+        },
+        'import.sol': {
+          content: await fs.readFile(require.resolve('./import.sol'), 'utf8'),
+        },
+      };
+    });
+
     for (const version of versions) {
       it(version, async function () {
         this.timeout(0);
-        const solc = require(`solc-${version}`);
-        const output = JSON.parse(
-          solc.compile(
-            JSON.stringify({
-              language: 'Solidity',
-              sources: {
-                'demo.sol': {
-                  content: await fs.readFile(require.resolve('./demo.sol'), 'utf8'),
-                },
-                'import.sol': {
-                  content: await fs.readFile(require.resolve('./import.sol'), 'utf8'),
-                },
-              },
-              settings: {
-                outputSelection: { '*': { '': ['ast'] } },
-              },
-            })
-          )
-        );
+        const child = proc.fork(require.resolve('../solc-helper'));
+        child.send({ version, sources: this.sources });
+        const [output] = await events.once(child, 'message');
         if (output.errors) {
           throw new Error(_.map(output.errors, 'formattedMessage').join('\n'));
         }
