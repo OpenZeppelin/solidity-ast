@@ -9,7 +9,7 @@ const util = require('util');
 const assert = require('assert');
 const proc = require('child_process');
 const events = require('events');
-const _ = require('lodash');
+const semver = require('semver');
 
 const ajv = new Ajv({ verbose: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
@@ -57,29 +57,33 @@ describe('schema', function () {
       '0.6.10',
       '0.6.11',
       '0.6.12',
+      '0.7.0',
     ];
 
     before('reading solidity sources', async function () {
-      this.sources = {
-        'demo.sol': {
-          content: await fs.readFile(require.resolve('./demo.sol'), 'utf8'),
-        },
-        'import.sol': {
-          content: await fs.readFile(require.resolve('./import.sol'), 'utf8'),
-        },
-      };
+      const files = await fs.readdir(path.join(__dirname, 'sources'));
+      this.sources = {};
+      this.sourceVersions = {};
+      for (const file of files) {
+        const content = await fs.readFile(path.join(__dirname, 'sources', file), 'utf8');
+        this.sources[file] = { content };
+        this.sourceVersions[file] = content.match(/pragma solidity (.*);/)[1];
+      }
     });
 
     for (const version of versions) {
       it(version, async function () {
         this.timeout(0);
+        const sources = lodash.pickBy(this.sources, (_, f) => semver.satisfies(version, this.sourceVersions[f]));
         const child = proc.fork(require.resolve('../solc-helper'));
-        child.send({ version, sources: this.sources });
+        child.send({ version, sources });
         const [output] = await events.once(child, 'message');
         if (output.errors) {
-          throw new Error(_.map(output.errors, 'formattedMessage').join('\n'));
+          throw new Error(lodash.map(output.errors, 'formattedMessage').join('\n'));
         }
-        assertValid(output.sources['demo.sol'].ast);
+        for (const source of Object.keys(sources)) {
+          assertValid(output.sources[source].ast);
+        }
       });
     }
   });

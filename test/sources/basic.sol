@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 // PragmaDirective
-pragma solidity ^0.6.0;
+pragma solidity *;
 
 // ImportDirective
 import { Import } from 'import.sol';
@@ -129,10 +129,8 @@ contract Foo {
 
 // InheritanceSpecifier
 contract X {}
-contract Y is X {
-  constructor(uint) public {}
-}
-contract Z is X, Y(3) {}
+contract Y is X {}
+contract Z is X, Y {}
 
 // ContractDefinition (.abstract = true)
 abstract contract Abs {
