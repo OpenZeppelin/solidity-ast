@@ -54,8 +54,6 @@
         }
       },
       "required": [
-        "typeIdentifier",
-        "typeString"
       ],
       "title": "TypeDescriptions"
     },
@@ -134,7 +132,6 @@
         }
       },
       "required": [
-        "argumentTypes",
         "id",
         "isConstant",
         "isLValue",
@@ -224,7 +221,6 @@
         }
       },
       "required": [
-        "argumentTypes",
         "commonType",
         "id",
         "isConstant",
@@ -291,7 +287,6 @@
         }
       },
       "required": [
-        "argumentTypes",
         "condition",
         "falseExpression",
         "id",
@@ -353,7 +348,6 @@
         }
       },
       "required": [
-        "argumentTypes",
         "id",
         "isConstant",
         "isLValue",
@@ -416,8 +410,6 @@
         }
       },
       "required": [
-        "argumentTypes",
-        "baseExpression",
         "id",
         "indexExpression",
         "isConstant",
@@ -500,7 +492,6 @@
         }
       },
       "required": [
-        "argumentTypes",
         "arguments",
         "expression",
         "id",
@@ -576,7 +567,6 @@
         }
       },
       "required": [
-        "argumentTypes",
         "expression",
         "id",
         "isConstant",
@@ -656,7 +646,6 @@
         }
       },
       "required": [
-        "argumentTypes",
         "hexValue",
         "id",
         "isConstant",
@@ -666,9 +655,7 @@
         "lValueRequested",
         "nodeType",
         "src",
-        "subdenomination",
-        "typeDescriptions",
-        "value"
+        "typeDescriptions"
       ],
       "title": "Literal"
     },
@@ -728,7 +715,6 @@
         }
       },
       "required": [
-        "argumentTypes",
         "expression",
         "id",
         "isConstant",
@@ -736,7 +722,6 @@
         "isPure",
         "lValueRequested",
         "nodeType",
-        "referencedDeclaration",
         "src",
         "typeDescriptions"
       ],
@@ -789,7 +774,6 @@
         }
       },
       "required": [
-        "argumentTypes",
         "id",
         "isConstant",
         "isLValue",
@@ -855,7 +839,6 @@
         }
       },
       "required": [
-        "argumentTypes",
         "components",
         "id",
         "isConstant",
@@ -929,7 +912,6 @@
         }
       },
       "required": [
-        "argumentTypes",
         "id",
         "isConstant",
         "isLValue",
@@ -1063,7 +1045,6 @@
       },
       "required": [
         "condition",
-        "falseBody",
         "id",
         "nodeType",
         "src",
@@ -1176,7 +1157,6 @@
         "assignments",
         "declarations",
         "id",
-        "initialValue",
         "nodeType",
         "src"
       ],
@@ -1272,7 +1252,6 @@
       },
       "required": [
         "id",
-        "contractScope",
         "name",
         "nodeType",
         "referencedDeclaration",
@@ -1315,7 +1294,6 @@
         }
       },
       "required": [
-        "arguments",
         "baseName",
         "id",
         "nodeType",
@@ -1357,7 +1335,6 @@
         }
       },
       "required": [
-        "arguments",
         "id",
         "modifierName",
         "nodeType",
@@ -1410,12 +1387,10 @@
         }
       },
       "required": [
-        "argumentTypes",
         "id",
         "name",
         "nodeType",
         "overloadedDeclarations",
-        "referencedDeclaration",
         "src",
         "typeDescriptions"
       ],
@@ -1597,7 +1572,6 @@
       },
       "required": [
         "anonymous",
-        "documentation",
         "id",
         "name",
         "nodeType",
@@ -1694,15 +1668,12 @@
         }
       },
       "required": [
-        "body",
-        "documentation",
         "id",
         "implemented",
         "kind",
         "modifiers",
         "name",
         "nodeType",
-        "overrides",
         "parameters",
         "returnParameters",
         "scope",
@@ -1776,7 +1747,6 @@
       "required": [
         "baseType",
         "id",
-        "length",
         "nodeType",
         "src",
         "typeDescriptions"
@@ -1862,11 +1832,9 @@
       },
       "required": [
         "body",
-        "documentation",
         "id",
         "name",
         "nodeType",
-        "overrides",
         "parameters",
         "src",
         "virtual",
@@ -1993,8 +1961,7 @@
               }
             },
             "required": [
-              "foreign",
-              "local"
+              "foreign"
             ]
           }
         },
@@ -2126,7 +2093,6 @@
         "baseContracts",
         "contractDependencies",
         "contractKind",
-        "documentation",
         "fullyImplemented",
         "id",
         "linearizedBaseContracts",
@@ -2321,14 +2287,11 @@
         "mutability",
         "name",
         "nodeType",
-        "overrides",
         "scope",
         "src",
         "stateVariable",
         "storageLocation",
         "typeDescriptions",
-        "typeName",
-        "value",
         "visibility"
       ],
       "title": "VariableDeclaration"
@@ -2470,7 +2433,6 @@
     "absolutePath",
     "exportedSymbols",
     "id",
-    "license",
     "nodeType",
     "nodes",
     "src"
