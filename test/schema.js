@@ -53,6 +53,8 @@ describe('schema', function () {
       '0.6.8',
       '0.6.9',
       '0.6.10',
+      '0.6.11',
+      '0.6.12',
     ];
 
     for (const version of versions) {
