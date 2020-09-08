@@ -15,10 +15,10 @@ const ajv = new Ajv({ verbose: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
 const validate = ajv.compile(require('../schema.json'));
 
-function assertValid(ast) {
+function assertValid(ast, file) {
   if (!validate(ast)) {
     const longest = lodash.maxBy(validate.errors, e => e.dataPath.split('.').length);
-    throw new Error(formatError(longest, ast));
+    throw new Error(formatError(longest, ast, file));
   }
 }
 
@@ -82,19 +82,20 @@ describe('schema', function () {
           throw new Error(lodash.map(output.errors, 'formattedMessage').join('\n'));
         }
         for (const source of Object.keys(sources)) {
-          assertValid(output.sources[source].ast);
+          assertValid(output.sources[source].ast, source);
         }
       });
     }
   });
 });
 
-function formatError(error, doc) {
+function formatError(error, doc, file) {
   const pathComponents = error.dataPath.split('.');
   const nodeTree = pathComponents.map((c, i) => {
     const subPath = pathComponents.slice(1, i + 1).concat('nodeType').join('.');
     const nodeType = lodash.get(doc, subPath) || '';
     const indent = i === 0 ? '' : '   '.repeat(i - 1) + '└─';
+    if (nodeType === 'SourceUnit') c = file;
     return lodash.compact([indent, nodeType, c && chalk.dim(c)]).join(' ');
   }).join('\n');
 
