@@ -3,6 +3,7 @@
 ### 0.4.5 (2020-10-14)
 
 - Disable `additionalProperties` in `Conditional` node.
+- Fix `Return` node for empty return statements.
 
 ### 0.4.4 (2020-09-02)
 

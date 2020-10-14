@@ -2115,7 +2115,10 @@
       "additionalProperties": false,
       "properties": {
         "expression": {
-          "$ref": "#/definitions/Expression"
+          "anyOf": [
+            { "$ref": "#/definitions/Expression" },
+            { "type": "null" }
+          ]
         },
         "functionReturnParameters": {
           "type": "integer"
