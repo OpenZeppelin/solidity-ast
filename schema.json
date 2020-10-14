@@ -237,6 +237,8 @@
       "title": "BinaryOperation"
     },
     "Conditional": {
+      "type": "object",
+      "additionalProperties": false,
       "properties": {
         "argumentTypes": {
           "anyOf": [

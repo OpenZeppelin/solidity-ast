@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.5 (2020-10-14)
+
+- Disable `additionalProperties` in `Conditional` node.
+
 ### 0.4.4 (2020-09-02)
 
 - Fixed `body` property of `ForStatement`: was `Block`, can also be `Statement`.
