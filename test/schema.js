@@ -59,6 +59,8 @@ describe('schema', function () {
       '0.6.12',
       '0.7.0',
       '0.7.1',
+      '0.7.2',
+      '0.7.3',
     ];
 
     before('reading solidity sources', async function () {

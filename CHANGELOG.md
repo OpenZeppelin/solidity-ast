@@ -1,5 +1,9 @@
 # Changelog
 
+### Unreleased
+
+- `NewExpression.isLValue` and `FunctionCallOptions.isLValue` were made optional fields since Solidity 0.7.2.
+
 ### 0.4.6 (2020-10-14)
 
 - Fix type of `ModifierInvocation.arguments`.
