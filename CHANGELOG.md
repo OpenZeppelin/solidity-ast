@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.6 (2020-10-14)
+
+- Fix type of `ModifierInvocation.arguments`.
+
 ### 0.4.5 (2020-10-14)
 
 - Disable `additionalProperties` in `Conditional` node.
