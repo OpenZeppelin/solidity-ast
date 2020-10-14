@@ -1,8 +1,10 @@
 # Changelog
 
-### Unreleased
+### 0.4.7 (2020-10-14)
 
-- `NewExpression.isLValue` and `FunctionCallOptions.isLValue` were made optional fields since Solidity 0.7.2.
+- `NewExpression.isLValue` and `FunctionCallOptions.isLValue` are now optional.
+
+Due to a bug in Solidity 0.7.2, these two properties are missing in the ASTs produced by that version. In order for the types to remain accurate, they have been made optional. When the property is missing its value should be assumed to be `false` (see [ethereum/solidity#9953](https://github.com/ethereum/solidity/pull/9953)).
 
 ### 0.4.6 (2020-10-14)
 
