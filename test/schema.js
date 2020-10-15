@@ -23,33 +23,6 @@ function assertValid(ast, file) {
 }
 
 describe('schema', function () {
-  describe('json samples from solidity repository', function () {
-    const dir = path.join(__dirname, 'solidity/test/libsolidity/ASTJSON');
-
-    // we read all jsons except those marked legacy
-    const inputs = fs.readdirSync(dir).filter(e => /^.*(?<!_legacy)\.json$/.test(e));
-
-    for (const f of inputs) {
-      const doc = JSON.parse(fs.readFileSync(path.resolve(dir, f), 'utf8'));
-      // Some of these files are arrays so we use concat to treat them uniformly.
-      for (const ast of [].concat(doc)) {
-        it(f, function () {
-          assertValid(ast);
-        });
-      }
-    }
-  });
-
-  describe('openzeppelin contracts', function () {
-    const { sources } = require('./openzeppelin-contracts.json');
-
-    for (const [ path, { ast } ] of Object.entries(sources)) {
-      it(path, function () {
-        assertValid(ast);
-      });
-    }
-  });
-
   describe('demo contract with solc wasm', function () {
     const versions = [
       '0.6.8',
@@ -87,6 +60,33 @@ describe('schema', function () {
         for (const source of Object.keys(sources)) {
           assertValid(output.sources[source].ast, source);
         }
+      });
+    }
+  });
+
+  describe('json samples from solidity repository', function () {
+    const dir = path.join(__dirname, 'solidity/test/libsolidity/ASTJSON');
+
+    // we read all jsons except those marked legacy
+    const inputs = fs.readdirSync(dir).filter(e => /^.*(?<!_legacy)\.json$/.test(e));
+
+    for (const f of inputs) {
+      const doc = JSON.parse(fs.readFileSync(path.resolve(dir, f), 'utf8'));
+      // Some of these files are arrays so we use concat to treat them uniformly.
+      for (const ast of [].concat(doc)) {
+        it(f, function () {
+          assertValid(ast);
+        });
+      }
+    }
+  });
+
+  describe('openzeppelin contracts', function () {
+    const { sources } = require('./openzeppelin-contracts.json');
+
+    for (const [ path, { ast } ] of Object.entries(sources)) {
+      it(path, function () {
+        assertValid(ast);
       });
     }
   });
