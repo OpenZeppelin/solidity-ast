@@ -102,6 +102,8 @@ contract Foo {
     Struct memory s2 = Struct({ m1: 1, m2: 2 });
     s1; s2;
 
+    try this.foo1() { } catch Error(string memory) { } catch (bytes memory) { }
+
     // Return
     return v;
   }

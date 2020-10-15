@@ -1231,6 +1231,79 @@
       ],
       "title": "PlaceholderStatement"
     },
+    "TryStatement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "clauses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TryCatchClause"
+          }
+        },
+        "externalCall": {
+          "$ref": "#/definitions/FunctionCall"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "TryStatement"
+          ]
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        }
+      },
+      "required": [
+        "clauses",
+        "externalCall",
+        "id",
+        "nodeType",
+        "src"
+      ],
+      "title": "TryStatement"
+    },
+    "TryCatchClause": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "block": {
+          "$ref": "#/definitions/Block"
+        },
+        "errorName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "TryCatchClause"
+          ]
+        },
+        "parameters": {
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/definitions/ParameterList" }
+          ]
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        }
+      },
+      "required": [
+        "block",
+        "errorName",
+        "id",
+        "nodeType",
+        "src"
+      ],
+      "title": "TryCatchClause"
+    },
     "UserDefinedTypeName": {
       "type": "object",
       "additionalProperties": false,
@@ -1444,6 +1517,7 @@
         { "$ref": "#/definitions/ForStatement" },
         { "$ref": "#/definitions/IfStatement" },
         { "$ref": "#/definitions/WhileStatement" },
+        { "$ref": "#/definitions/TryStatement" },
         { "$ref": "#/definitions/InlineAssembly" },
         { "$ref": "#/definitions/PlaceholderStatement" },
         { "$ref": "#/definitions/Return" },

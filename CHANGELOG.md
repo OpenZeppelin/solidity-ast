@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.9 (2020-10-15)
+
+- Added `TryStatement` as a new type of statement node.
+
 ### 0.4.8 (2020-10-15)
 
 - Fixed types of `ForStatement` properties `condition`, `initializationExpression`, `loopExpression`, allowing them to be empty.
