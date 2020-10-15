@@ -981,16 +981,26 @@
           ]
         },
         "condition": {
-          "$ref": "#/definitions/Expression"
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/definitions/Expression" }
+          ]
         },
         "id": {
           "type": "integer"
         },
         "initializationExpression": {
-          "$ref": "#/definitions/VariableDeclarationStatement"
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/definitions/ExpressionStatement" },
+            { "$ref": "#/definitions/VariableDeclarationStatement" }
+          ]
         },
         "loopExpression": {
-          "$ref": "#/definitions/ExpressionStatement"
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/definitions/ExpressionStatement" }
+          ]
         },
         "nodeType": {
           "type": "string",
@@ -1004,10 +1014,7 @@
       },
       "required": [
         "body",
-        "condition",
         "id",
-        "initializationExpression",
-        "loopExpression",
         "nodeType",
         "src"
       ],

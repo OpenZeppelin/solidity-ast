@@ -87,6 +87,8 @@ contract Foo {
     // ForStatement
     for (uint i = 0; i < 10; i++) {}
     for (uint i = 0; i < 10; i++) z = i;
+    for (;;) {}
+    for (y = 0; ; ) {}
 
     // IfStatement
     if (false) v; else v;

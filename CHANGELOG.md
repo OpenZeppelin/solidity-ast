@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.4.8 (2020-10-15)
+
+- Fixed types of `ForStatement` properties `condition`, `initializationExpression`, `loopExpression`, allowing them to be empty.
+- Fixed type of `ForStatement.initializationExpression` to also potentially contain an `ExpressionStatement`.
+
 ### 0.4.7 (2020-10-14)
 
 - `NewExpression.isLValue` and `FunctionCallOptions.isLValue` are now optional.
