@@ -24,17 +24,10 @@ function assertValid(ast, file) {
 
 describe('schema', function () {
   describe('demo contract with solc wasm', function () {
-    const versions = [
-      '0.6.8',
-      '0.6.9',
-      '0.6.10',
-      '0.6.11',
-      '0.6.12',
-      '0.7.0',
-      '0.7.1',
-      '0.7.2',
-      '0.7.3',
-    ];
+    const versions = Object.keys(require('../package.json').devDependencies)
+      .filter(s => s.startsWith('solc-'))
+      .map(s => s.replace('solc-', ''))
+      .sort(semver.compare);
 
     before('reading solidity sources', async function () {
       const files = await fs.readdir(path.join(__dirname, 'sources'));

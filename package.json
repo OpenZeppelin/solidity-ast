@@ -34,6 +34,8 @@
     "solc-0.6.10": "npm:solc@0.6.10",
     "solc-0.6.11": "npm:solc@0.6.11",
     "solc-0.6.12": "npm:solc@0.6.12",
+    "solc-0.6.6": "npm:solc@0.6.6",
+    "solc-0.6.7": "npm:solc@0.6.7",
     "solc-0.6.8": "npm:solc@0.6.8",
     "solc-0.6.9": "npm:solc@0.6.9",
     "solc-0.7.0": "npm:solc@0.7.0",

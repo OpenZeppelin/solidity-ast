@@ -28,7 +28,7 @@ like on [unpkg] or the [documentation][docs].
 
 ## Solidity Versioning
 
-The types are currently accurate and tested for Solidity >=0.6.8, but you can
+The types are currently accurate and tested for Solidity >=0.6.6, but you can
 very likely use them safely for any version since 0.6.0. For simple traversals
 they will probably work well for 0.5.0 and up as well.
 
