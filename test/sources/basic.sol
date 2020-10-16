@@ -165,6 +165,8 @@ enum E { E1 }
 /// @dev doc
 contract Doc {
   /// @dev fun
+  uint x;
+  /// @dev fun
   function fun() public pure {}
   /// @dev Ev
   event Ev();

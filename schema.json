@@ -2310,6 +2310,12 @@
         "constant": {
           "type": "boolean"
         },
+        "documentation": {
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/definitions/StructuredDocumentation" }
+          ]
+        },
         "functionSelector": {
           "type": "string"
         },

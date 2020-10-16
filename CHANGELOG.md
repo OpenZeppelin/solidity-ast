@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.10 (2020-10-15)
+
+- Added `VariableDeclaration.documentation`, which is available since Solidity 0.6.9.
+
 ### 0.4.9 (2020-10-15)
 
 - Added `TryStatement` as a new type of statement node.
