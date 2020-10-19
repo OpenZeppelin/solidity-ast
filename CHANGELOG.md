@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.11 (2020-10-19)
+
+- Added support for file-level constant `VariableDeclaration` nodes, available since Solidity 0.7.4.
+
 ### 0.4.10 (2020-10-15)
 
 - Added `VariableDeclaration.documentation`, which is available since Solidity 0.6.9.

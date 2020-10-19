@@ -2516,7 +2516,8 @@
           { "$ref": "#/definitions/FunctionDefinition" },
           { "$ref": "#/definitions/ImportDirective" },
           { "$ref": "#/definitions/PragmaDirective" },
-          { "$ref": "#/definitions/StructDefinition" }
+          { "$ref": "#/definitions/StructDefinition" },
+          { "$ref": "#/definitions/VariableDeclaration" }
         ]
       }
     },
