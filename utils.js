@@ -4,7 +4,11 @@ function isNodeType(nodeType, node) {
   return node.nodeType === nodeType;
 }
 
-function* findAll(nodeType, node) {
+function* findAll(nodeType, node, prune) {
+  if (prune && prune(node)) {
+    return;
+  }
+
   if (node.nodeType === nodeType) {
     yield node;
   }
@@ -26,11 +30,11 @@ function* findAll(nodeType, node) {
 }
 
 function curry2(fn) {
-  return function (nodeType, node) {
-    if (node === undefined) {
+  return function (nodeType, ...args) {
+    if (args.length === 0) {
       return node => fn(nodeType, node);
     } else {
-      return fn(nodeType, node);
+      return fn(nodeType, ...args);
     }
   };
 }

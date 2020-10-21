@@ -57,7 +57,7 @@ const contractDefs = sourceUnit.nodes.filter(isNodeType('ContractDefinition'));
   // contractDefs: ContractDefinition[]
 ```
 
-### `findAll(nodeType, node)`
+### `findAll(nodeType, node[, prune])`
 
 `findAll` is a generator function that will recursively enumerate all
 descendent nodes of a given node type. It does this in an efficient way by
@@ -70,3 +70,8 @@ for (const functionDef of findAll('FunctionDefinition', sourceUnit)) {
   // functionDef: FunctionDefinition
 }
 ```
+
+If the optional `prune: (node: Node) => boolean` argument is specified,
+`findAll` will apply the function to each node, if the return value is truthy
+the node will be ignored, neither yielding the node nor recursing into it. Note
+that `prune` is not available when curried.
