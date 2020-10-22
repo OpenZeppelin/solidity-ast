@@ -19,11 +19,11 @@ function* findAll(nodeType, node, prune) {
       if (Array.isArray(member)) {
         for (const sub2 of member) {
           if (sub2) {
-            yield* findAll(nodeType, sub2);
+            yield* findAll(nodeType, sub2, prune);
           }
         }
       } else if (member) {
-        yield* findAll(nodeType, member);
+        yield* findAll(nodeType, member, prune);
       }
     }
   }
