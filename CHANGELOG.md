@@ -1,5 +1,14 @@
 # Changelog
 
+### 0.4.12 (2020-10-22)
+
+- Added an optional argument `prune` to `findAll`.
+
+> If the optional `prune: (node: Node) => boolean` argument is specified,
+> `findAll` will apply the function to each node, if the return value is truthy
+> the node will be ignored, neither yielding the node nor recursing into it. Note
+> that `prune` is not available when curried.
+
 ### 0.4.11 (2020-10-19)
 
 - Added support for file-level constant `VariableDeclaration` nodes, available since Solidity 0.7.4.
