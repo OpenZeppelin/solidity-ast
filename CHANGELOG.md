@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.13 (2020-11-02)
+
+- Fixed `findAll` crash when used with node type `'SourceUnit'`.
+
 ### 0.4.12 (2020-10-22)
 
 - Added an optional argument `prune` to `findAll`.
