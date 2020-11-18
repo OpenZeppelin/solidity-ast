@@ -60,11 +60,14 @@ describe('schema', function () {
   describe('json samples from solidity repository', function () {
     const dir = path.join(__dirname, 'solidity/test/libsolidity/ASTJSON');
 
-    // we read all jsons except those marked legacy
-    const inputs = fs.readdirSync(dir).filter(e => /^.*(?<!_legacy)\.json$/.test(e));
+    // we read all jsons except those marked legacy or parseOnly
+    const inputs = fs.readdirSync(dir)
+      .filter(e => /^.*(?<!_legacy|_parseOnly)\.json$/.test(e));
 
     for (const f of inputs) {
-      const doc = JSON.parse(fs.readFileSync(path.resolve(dir, f), 'utf8'));
+      const text = fs.readFileSync(path.resolve(dir, f), 'utf8');
+      if (text.length === 0) continue;
+      const doc = JSON.parse(text);
       // Some of these files are arrays so we use concat to treat them uniformly.
       for (const ast of [].concat(doc)) {
         it(f, function () {
