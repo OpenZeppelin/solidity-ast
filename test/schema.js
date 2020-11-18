@@ -47,7 +47,7 @@ describe('schema', function () {
         const child = proc.fork(require.resolve('../solc-helper'));
         child.send({ version, sources });
         const [output] = await events.once(child, 'message');
-        if (output.errors) {
+        if (output.errors && output.errors.some(e => e.severity !== 'warning')) {
           throw new Error(lodash.map(output.errors, 'formattedMessage').join('\n'));
         }
         for (const source of Object.keys(sources)) {

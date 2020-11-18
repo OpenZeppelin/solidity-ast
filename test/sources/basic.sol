@@ -46,6 +46,9 @@ contract Foo {
   uint constant x2 = 4;
   uint immutable x3 = 4;
 
+  // Literal (.kind = hexString)
+  bytes public ff = hex"ff";
+
   // FunctionDefinition
   function foo1() public returns (uint) {
 

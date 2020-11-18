@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.14 (2020-11-18)
+
+- Added `hexString`, `unicodeString` as possible values for `Literal.kind`. Available since Solidity 0.7.0.
+
 ### 0.4.13 (2020-11-02)
 
 - Fixed `findAll` crash when used with node type `'SourceUnit'`.

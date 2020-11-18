@@ -618,7 +618,9 @@
           "enum": [
             "bool",
             "number",
-            "string"
+            "string",
+            "hexString",
+            "unicodeString"
           ]
         },
         "lValueRequested": {
