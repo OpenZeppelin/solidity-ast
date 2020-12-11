@@ -2,8 +2,8 @@ const fs = require('promisified/fs');
 const path = require('path');
 const assert = require('assert');
 
-const { latest } = require('./utils/solc-versions');
-const { compile } = require('./utils/solc-compile');
+const { latest } = require('./helpers/solc-versions');
+const { compile } = require('./helpers/solc-compile');
 
 const { findAll } = require('../utils');
 

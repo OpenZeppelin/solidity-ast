@@ -1,4 +1,4 @@
-const { assertValid } = require('./utils/assert-valid');
+const { assertValid } = require('./helpers/assert-valid');
 
 const { sources } = require('./openzeppelin-contracts.json');
 

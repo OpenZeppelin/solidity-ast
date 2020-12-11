@@ -1,7 +1,7 @@
 const fs = require('promisified/fs');
 const path = require('path');
 
-const { assertValid } = require('./utils/assert-valid');
+const { assertValid } = require('./helpers/assert-valid');
 
 const dir = path.join(__dirname, 'solidity/test/libsolidity/ASTJSON');
 

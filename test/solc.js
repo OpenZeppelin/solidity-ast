@@ -3,9 +3,9 @@ const path = require('path');
 const semver = require('semver');
 const lodash = require('lodash');
 
-const { assertValid } = require('./utils/assert-valid');
-const { versions } = require('./utils/solc-versions');
-const { compile } = require('./utils/solc-compile');
+const { assertValid } = require('./helpers/assert-valid');
+const { versions } = require('./helpers/solc-versions');
+const { compile } = require('./helpers/solc-compile');
 
 describe('solc', function () {
   this.timeout(10 * 60 * 1000);
