@@ -15,6 +15,7 @@ const counts = {
 
 describe('findAll', function () {
   before('reading and compiling source file', async function () {
+    this.timeout(10 * 60 * 1000);
     const content = await fs.readFile(source, 'utf8');
     const output = await compile(latest, { 0: { content } });
     this.ast = output.sources[0].ast;
