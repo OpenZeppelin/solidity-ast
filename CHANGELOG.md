@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.15 (2020-12-11)
+
+- Extended `findAll` to enumerate multiple node types simultaneously.
+
 ### 0.4.14 (2020-11-18)
 
 - Added `hexString`, `unicodeString` as possible values for `Literal.kind`. Available since Solidity 0.7.0.

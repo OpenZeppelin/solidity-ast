@@ -32,4 +32,11 @@ describe('findAll', function () {
     const nodes = [...findAll(nodeType)(this.ast)];
     assert.strictEqual(nodes.length, counts[nodeType]);
   });
+
+  it('multiple', async function () {
+    const nodeTypes = Object.keys(counts);
+    const count = Object.values(counts).reduce((a, b) => a + b);
+    const nodes = [...findAll(nodeTypes, this.ast)];
+    assert.strictEqual(nodes.length, count);
+  });
 });

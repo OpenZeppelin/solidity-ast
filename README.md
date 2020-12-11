@@ -75,3 +75,12 @@ If the optional `prune: (node: Node) => boolean` argument is specified,
 `findAll` will apply the function to each node, if the return value is truthy
 the node will be ignored, neither yielding the node nor recursing into it. Note
 that `prune` is not available when curried.
+
+To enumerate multiple node types at the same time, `nodeType` can be an array
+of node types such as `['EnumDefinition', 'StructDefinition']`.
+
+```typescript
+for (const typeDef of findAll(['EnumDefinition', 'StructDefinition'], sourceUnit)) {
+  // typeDef: EnumDefinition | StructDefinition
+}
+```
