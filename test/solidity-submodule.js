@@ -24,7 +24,7 @@ describe('solidity submodule', function () {
       if (text.length === 0) return;
       const doc = JSON.parse(text);
       // Some of these files are arrays so we use concat to treat them uniformly.
-      const asts = [].concat();
+      const asts = [].concat(doc);
       for (const ast of asts) {
         assertValid(ast);
       }
