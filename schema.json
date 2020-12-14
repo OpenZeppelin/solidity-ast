@@ -1306,6 +1306,38 @@
       ],
       "title": "TryCatchClause"
     },
+    "IdentifierPath": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "IdentifierPath"
+          ]
+        },
+        "referencedDeclaration": {
+          "type": "integer"
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "nodeType",
+        "referencedDeclaration",
+        "src"
+      ],
+      "title": "IdentifierPath"
+    },
     "UserDefinedTypeName": {
       "type": "object",
       "additionalProperties": false,
@@ -1325,6 +1357,9 @@
             "UserDefinedTypeName"
           ]
         },
+        "pathNode": {
+          "$ref": "#/definitions/IdentifierPath"
+        },
         "referencedDeclaration": {
           "type": "integer"
         },
@@ -1337,7 +1372,6 @@
       },
       "required": [
         "id",
-        "name",
         "nodeType",
         "referencedDeclaration",
         "src",
@@ -1363,7 +1397,10 @@
           ]
         },
         "baseName": {
-          "$ref": "#/definitions/UserDefinedTypeName"
+          "anyOf": [
+            { "$ref": "#/definitions/UserDefinedTypeName" },
+            { "$ref": "#/definitions/IdentifierPath" }
+          ]
         },
         "id": {
           "type": "integer"
@@ -1407,7 +1444,10 @@
           "type": "integer"
         },
         "modifierName": {
-          "$ref": "#/definitions/Identifier"
+          "anyOf": [
+            { "$ref": "#/definitions/Identifier" },
+            { "$ref": "#/definitions/IdentifierPath" }
+          ]
         },
         "nodeType": {
           "type": "string",
@@ -1540,10 +1580,20 @@
           ]
         },
         "overrides": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/UserDefinedTypeName"
-          }
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserDefinedTypeName"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/IdentifierPath"
+              }
+            }
+          ]
         },
         "src": {
           "$ref": "#/definitions/SourceLocation"
@@ -2281,7 +2331,10 @@
           "type": "integer"
         },
         "libraryName": {
-          "$ref": "#/definitions/UserDefinedTypeName"
+          "anyOf": [
+            { "$ref": "#/definitions/UserDefinedTypeName" },
+            { "$ref": "#/definitions/IdentifierPath" }
+          ]
         },
         "nodeType": {
           "type": "string",
