@@ -1552,6 +1552,37 @@
       ],
       "title": "Block"
     },
+    "UncheckedBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "UncheckedBlock"
+          ]
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        },
+        "statements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Statement"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "nodeType",
+        "src",
+        "statements"
+      ],
+      "title": "UncheckedBlock"
+    },
     "Statement": {
       "anyOf": [
         { "$ref": "#/definitions/EmitStatement" },
@@ -1563,7 +1594,9 @@
         { "$ref": "#/definitions/InlineAssembly" },
         { "$ref": "#/definitions/PlaceholderStatement" },
         { "$ref": "#/definitions/Return" },
-        { "$ref": "#/definitions/VariableDeclarationStatement" }
+        { "$ref": "#/definitions/VariableDeclarationStatement" },
+        { "$ref": "#/definitions/Block" },
+        { "$ref": "#/definitions/UncheckedBlock" }
       ]
     },
     "OverrideSpecifier": {

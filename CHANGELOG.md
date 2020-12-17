@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.4.16 (2020-12-17)
+
+- Added `Block` as a possible kind of `Statement`.
+- Added new Solidity 0.8 constructs:
+  - `IdentifierPath` can show up in places where there previously were `UserDefineTypeName` or `Identifier` nodes.
+  - `UncheckedBlock` is a new kind of `Statement`.
+
 ### 0.4.15 (2020-12-11)
 
 - Extended `findAll` to enumerate multiple node types simultaneously.

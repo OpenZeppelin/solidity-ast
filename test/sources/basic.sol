@@ -107,6 +107,10 @@ contract Foo {
 
     try this.foo1() { } catch Error(string memory) { } catch (bytes memory) { }
 
+    {
+        y = 5;
+    }
+
     // Return
     return v;
   }
