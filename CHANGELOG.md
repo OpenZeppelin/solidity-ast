@@ -4,8 +4,13 @@
 
 - Added `Block` as a possible kind of `Statement`.
 - Added new Solidity 0.8 constructs:
-  - `IdentifierPath` can show up in places where there previously were `UserDefineTypeName` or `Identifier` nodes.
   - `UncheckedBlock` is a new kind of `Statement`.
+  - `IdentifierPath` is a new node type that replaces some instances of `UserDefinedTypeName` and `Identifier`, used in the following places:
+    - `InheritanceSpecifier.baseName`
+    - `ModifierInvocation.modifierName`
+    - `OverrideSpecifier.overrides`
+    - `UsingForDirective.libraryName`
+    - `UserDefinedTypeName.pathNode` (new)
 
 ### 0.4.15 (2020-12-11)
 
