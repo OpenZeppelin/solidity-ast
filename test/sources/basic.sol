@@ -150,10 +150,17 @@ abstract contract Abs {
   // FunctionDefinition (.implemented = false, .virtual = true)
   function abs1() public virtual;
 
+  function x() view external virtual returns (uint) { return 0; }
+
+  modifier foo() virtual { _; }
 }
 
 contract Con is Abs {
   function abs1() public override(Abs) {}
+
+  uint public override x;
+
+  modifier foo() override(Abs) { _; }
 }
 
 // ContractDefinition (.contractKind = interface)

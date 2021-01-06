@@ -1963,6 +1963,17 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "baseModifiers": {
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          ]
+        },
         "body": {
           "$ref": "#/definitions/Block"
         },
@@ -1985,7 +1996,10 @@
           ]
         },
         "overrides": {
-          "type": "null"
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/definitions/OverrideSpecifier" }
+          ]
         },
         "parameters": {
           "$ref": "#/definitions/ParameterList"
@@ -2395,6 +2409,17 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "baseFunctions": {
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          ]
+        },
         "constant": {
           "type": "boolean"
         },
@@ -2426,7 +2451,10 @@
           ]
         },
         "overrides": {
-          "type": "null"
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/definitions/OverrideSpecifier" }
+          ]
         },
         "scope": {
           "type": "integer"

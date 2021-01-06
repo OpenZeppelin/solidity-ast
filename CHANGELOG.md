@@ -1,5 +1,13 @@
 # Changelog
 
+### 0.4.17 (2021-01-05)
+
+- Added missing override-related types and fields:
+  - `ModifierDefinition.baseModifiers: number[]`
+  - `ModifierDefinition.overrides?: OverrideSpecifier`
+  - `VariableDeclaration.baseFunctions: number[]`
+  - `VariableDeclaration.overrides?: OverrideSpecifier`
+
 ### 0.4.16 (2020-12-17)
 
 - Added `Block` as a possible kind of `Statement`.
