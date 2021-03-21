@@ -1650,6 +1650,9 @@
         "name": {
           "type": "string"
         },
+        "nameLocation": {
+          "type": "string"
+        },
         "nodeType": {
           "type": "string",
           "enum": [
@@ -1685,6 +1688,9 @@
           }
         },
         "name": {
+          "type": "string"
+        },
+        "nameLocation": {
           "type": "string"
         },
         "nodeType": {
@@ -1724,6 +1730,9 @@
           "type": "integer"
         },
         "name": {
+          "type": "string"
+        },
+        "nameLocation": {
           "type": "string"
         },
         "nodeType": {
@@ -1797,6 +1806,9 @@
           }
         },
         "name": {
+          "type": "string"
+        },
+        "nameLocation": {
           "type": "string"
         },
         "nodeType": {
@@ -1989,6 +2001,9 @@
         "name": {
           "type": "string"
         },
+        "nameLocation": {
+          "type": "string"
+        },
         "nodeType": {
           "type": "string",
           "enum": [
@@ -2113,6 +2128,9 @@
         "id": {
           "type": "integer"
         },
+        "nameLocation": {
+          "type": "string"
+        },
         "nodeType": {
           "type": "string",
           "enum": [
@@ -2142,6 +2160,9 @@
                   { "type": "null" },
                   { "type": "string" }
                 ]
+              },
+              "nameLocation": {
+                "type": "string"
               }
             },
             "required": [
@@ -2245,6 +2266,9 @@
         "name": {
           "type": "string"
         },
+        "nameLocation": {
+          "type": "string"
+        },
         "nodeType": {
           "type": "string",
           "enum": [
@@ -2340,6 +2364,9 @@
           }
         },
         "name": {
+          "type": "string"
+        },
+        "nameLocation": {
           "type": "string"
         },
         "nodeType": {
@@ -2442,6 +2469,9 @@
           "$ref": "#/definitions/Mutability"
         },
         "name": {
+          "type": "string"
+        },
+        "nameLocation": {
           "type": "string"
         },
         "nodeType": {

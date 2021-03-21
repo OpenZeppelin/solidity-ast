@@ -1,5 +1,18 @@
 # Changelog
 
+### 0.4.18 (2021-03-21)
+
+- Added new Solidity 0.8.2 field `nameLocation` in:
+  - `EnumValue`
+  - `EnumDefinition`
+  - `EventDefinition`
+  - `FunctionDefinition`
+  - `ModifierDefinition`
+  - `ImportDirective` (and entries of `ImportDirective.symbolAliases`)
+  - `ContractDefinition`
+  - `StructDefinition`
+  - `VariableDeclaration`
+
 ### 0.4.17 (2021-01-05)
 
 - Added missing override-related types and fields:
