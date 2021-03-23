@@ -9,3 +9,12 @@ contract Y is X {
   constructor(uint) {}
 }
 contract Z is X, Y(3) {}
+
+contract A {}
+contract B is A {
+  constructor(uint) {}
+}
+contract C is A, B {
+  constructor(uint) A() B(3) {
+  }
+}

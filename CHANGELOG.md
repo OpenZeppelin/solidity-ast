@@ -1,5 +1,13 @@
 # Changelog
 
+### 0.4.19 (2021-03-23)
+
+- Added new Solidity 0.8.3 field `ModifierInvocation.kind`.
+
+Note that there is a bug in 0.8.3 where `kind` never actually has the value
+`"baseConstructorSpecifier"`. This will presumably be fixed in the next
+release.
+
 ### 0.4.18 (2021-03-21)
 
 - Added new Solidity 0.8.2 field `nameLocation` in:

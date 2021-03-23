@@ -1443,6 +1443,13 @@
         "id": {
           "type": "integer"
         },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "modifierInvocation",
+            "baseConstructorSpecifier"
+          ]
+        },
         "modifierName": {
           "anyOf": [
             { "$ref": "#/definitions/Identifier" },
