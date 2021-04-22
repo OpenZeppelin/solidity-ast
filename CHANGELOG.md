@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.4.20 (2021-04-22)
+
+- Added new Solidity 0.8.4 constructs:
+  - `ErrorDefinition` as a new child of `SourceUnit` and `ContractDefinition`
+  - `RevertStatement` as a new kind of statement
+  - `ContractDefinition.usedErrors`
+
 ### 0.4.19 (2021-03-23)
 
 - Added new Solidity 0.8.3 field `ModifierInvocation.kind`.

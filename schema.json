@@ -1601,6 +1601,7 @@
         { "$ref": "#/definitions/InlineAssembly" },
         { "$ref": "#/definitions/PlaceholderStatement" },
         { "$ref": "#/definitions/Return" },
+        { "$ref": "#/definitions/RevertStatement" },
         { "$ref": "#/definitions/VariableDeclarationStatement" },
         { "$ref": "#/definitions/Block" },
         { "$ref": "#/definitions/UncheckedBlock" }
@@ -1719,6 +1720,42 @@
         "src"
       ],
       "title": "EnumDefinition"
+    },
+    "ErrorDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameLocation": {
+          "type": "string"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "ErrorDefinition"
+          ]
+        },
+        "parameters": {
+          "$ref": "#/definitions/ParameterList"
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "nameLocation",
+        "nodeType",
+        "parameters",
+        "src"
+      ],
+      "title": "ErrorDefinition"
     },
     "EventDefinition": {
       "type": "object",
@@ -2287,6 +2324,7 @@
           "items": {
             "anyOf": [
               { "$ref": "#/definitions/EnumDefinition" },
+              { "$ref": "#/definitions/ErrorDefinition" },
               { "$ref": "#/definitions/EventDefinition" },
               { "$ref": "#/definitions/FunctionDefinition" },
               { "$ref": "#/definitions/ModifierDefinition" },
@@ -2301,6 +2339,12 @@
         },
         "src": {
           "$ref": "#/definitions/SourceLocation"
+        },
+        "usedErrors": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
         }
       },
       "required": [
@@ -2353,6 +2397,34 @@
         "src"
       ],
       "title": "Return"
+    },
+    "RevertStatement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "errorCall": {
+          "$ref": "#/definitions/FunctionCall"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "RevertStatement"
+          ]
+        },
+        "src": {
+          "$ref": "#/definitions/SourceLocation"
+        }
+      },
+      "required": [
+        "errorCall",
+        "id",
+        "nodeType",
+        "src"
+      ],
+      "title": "RevertStatement"
     },
     "StructDefinition": {
       "type": "object",
@@ -2666,6 +2738,7 @@
         "anyOf": [
           { "$ref": "#/definitions/ContractDefinition" },
           { "$ref": "#/definitions/EnumDefinition" },
+          { "$ref": "#/definitions/ErrorDefinition" },
           { "$ref": "#/definitions/FunctionDefinition" },
           { "$ref": "#/definitions/ImportDirective" },
           { "$ref": "#/definitions/PragmaDirective" },
