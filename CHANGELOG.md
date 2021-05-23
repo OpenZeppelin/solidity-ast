@@ -4,6 +4,7 @@
 
 - Rewrote schema in JavaScript in a more modular way.
 - Fix `IndexAccess.baseExpression`: was optional but is required.
+- Add missing values for `Assignment.operator`: `-=`, `*=`, `%=`, `|=`, `&=`, `^=`.
 
 ### 0.4.20 (2021-04-22)
 

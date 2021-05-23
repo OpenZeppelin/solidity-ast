@@ -172,7 +172,13 @@ module.exports = {
         operator: literal( // TODO: missing a few
           '=',
           '+=',
+          '-=',
+          '*=',
           '/=',
+          '%=',
+          '|=',
+          '&=',
+          '^=',
         ),
         rightHandSide: ref('Expression'),
       },
