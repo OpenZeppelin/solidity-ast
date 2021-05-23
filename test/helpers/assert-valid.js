@@ -9,13 +9,13 @@ const validate = ajv.compile(require('../../schema'));
 
 function assertValid(ast, file) {
   if (!validate(ast)) {
-    const longest = lodash.maxBy(validate.errors, e => e.dataPath.split('.').length);
+    const longest = lodash.maxBy(validate.errors, e => e.instancePath.split('/').length);
     throw new Error(formatError(longest, ast, file));
   }
 }
 
 function formatError(error, doc, file) {
-  const pathComponents = error.dataPath.split('.');
+  const pathComponents = error.instancePath.split('/');
   const nodeTree = pathComponents.map((c, i) => {
     const subPath = pathComponents.slice(1, i + 1).concat('nodeType').join('.');
     const nodeType = lodash.get(doc, subPath) || '';
