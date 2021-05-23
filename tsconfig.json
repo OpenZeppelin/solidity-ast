@@ -2,7 +2,6 @@
   "compilerOptions": {
     "noEmit": true,
     "allowJs": true,
-    "checkJs": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "lib": ["es2019"],

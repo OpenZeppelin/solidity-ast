@@ -1,15 +1,17 @@
+#!/usr/bin/env node
+
+'use strict';
+
 const boolean = { type: 'boolean' };
 const string = { type: 'string' };
 const integer = { type: 'integer' };
+const _null = { type: 'null' };
+
 const pattern = pat => ({ type: 'string', pattern: pat.source });
 const literal = (...values) => ({ type: 'string', enum: values });
 const array = items => ({ type: 'array', items });
 const record = values => ({ type: 'object', additionalProperties: values });
-
-const _null = { type: 'null' };
-
 const anyOf = (...types) => ({ 'anyOf': types });
-
 const ref = id => ({ $ref: `#/definitions/${id}` });
 
 const $optional = Symbol('optional');
@@ -28,8 +30,7 @@ const baseNode = {
   src: ref('SourceLocation'),
 };
 
-const node = (type, props) =>
-  object({ ...baseNode, ...props, nodeType: literal(type) });
+const node = (type, props) => object({ ...baseNode, ...props, nodeType: literal(type) });
 
 const mapValues = (obj, fn) =>
   Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, fn(v, k)]));

@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+
+// @ts-check
 'use strict';
 
 const fs = require('fs');
@@ -6,7 +8,7 @@ const _ = require('lodash');
 
 const reachable = {};
 
-const schema = require('../schema');
+const schema = require('../schema.json');
 
 for (const def of Object.values(schema.definitions).concat(schema)) {
   if ('properties' in def && 'nodeType' in def.properties) {

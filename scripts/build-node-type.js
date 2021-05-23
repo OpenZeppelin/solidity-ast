@@ -1,8 +1,10 @@
 #!/usr/bin/env node
+
+// @ts-check
 'use strict';
 
 const fs = require('fs');
-const schema = require('../schema');
+const schema = require('../schema.json');
 
 const nodeTypes = schema.properties.nodeType.enum;
 

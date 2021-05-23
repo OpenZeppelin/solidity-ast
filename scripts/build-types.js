@@ -3,7 +3,7 @@
 const json2ts = require('json-schema-to-typescript');
 const fs = require('fs');
 
-const schema = require('../schema');
+const schema = require('../schema.json');
 
 json2ts.compile(schema, schema.title, {
   strictIndexSignatures: true,
