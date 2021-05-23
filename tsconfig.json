@@ -5,6 +5,7 @@
     "checkJs": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
+    "lib": ["es2019"],
     "strict": true,
     "noImplicitAny": false
   },

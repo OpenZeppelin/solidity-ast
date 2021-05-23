@@ -6,7 +6,7 @@ const _ = require('lodash');
 
 const reachable = {};
 
-const schema = require('../schema.json');
+const schema = require('../schema');
 
 for (const def of Object.values(schema.definitions).concat(schema)) {
   if ('properties' in def && 'nodeType' in def.properties) {

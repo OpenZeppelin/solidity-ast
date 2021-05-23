@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.21
+
+- Rewrote schema in JavaScript in a more modular way.
+
 ### 0.4.20 (2021-04-22)
 
 - Added new Solidity 0.8.4 constructs:
