@@ -319,7 +319,7 @@ module.exports = {
         baseFunctions: optional(array(integer)),
         body: nullable(ref('Block')),
         documentation,
-        functionSelector: optional(string), // TODO: optional?
+        functionSelector: optional(string),
         implemented: boolean,
         kind: literal(
           'function',
@@ -387,7 +387,7 @@ module.exports = {
 
       IndexAccess: {
         ...baseExpressionL,
-        baseExpression: optional(ref('Expression')), // TODO: optional?
+        baseExpression: ref('Expression'),
         indexExpression: ref('Expression'),
       },
 
@@ -493,7 +493,7 @@ module.exports = {
       },
 
       Return: {
-        expression: nullable(ref('Expression')), // TODO: schema.json says nullable but required
+        expression: anyOf(_null, ref('Expression')),
         functionReturnParameters: integer,
       },
 

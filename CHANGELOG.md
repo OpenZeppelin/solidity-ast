@@ -3,6 +3,7 @@
 ### 0.4.21
 
 - Rewrote schema in JavaScript in a more modular way.
+- Fix `IndexAccess.baseExpression`: was optional but is required.
 
 ### 0.4.20 (2021-04-22)
 
