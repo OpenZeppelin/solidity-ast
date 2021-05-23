@@ -65,7 +65,9 @@ const baseTypeName = {
   typeDescriptions: ref('TypeDescriptions'),
 };
 
-module.exports = {
+const schema = {
+  $schema: 'http://json-schema.org/draft-06/schema#', 
+
   title: 'SourceUnit',
 
   ...node('SourceUnit', {
@@ -603,3 +605,10 @@ module.exports = {
     }),
   },
 };
+
+if (require.main === module) {
+  const fs = require('fs');
+  fs.writeFileSync('schema.json', JSON.stringify(schema, null, 2));
+}
+
+module.exports = schema;

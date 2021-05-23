@@ -10,10 +10,11 @@
     "/node.d.ts",
     "/utils.{js,d.ts}",
     "/types.d.ts",
-    "/schema.js"
+    "/schema.json"
   ],
   "scripts": {
     "build:docs": "typedoc --tsconfig tsconfig.docs.json",
+    "build:schema": "node scripts/build-schema.js",
     "build:types": "node scripts/build-types.js",
     "build:node-type": "node scripts/build-node-type.js",
     "build:finder": "node scripts/build-finder.js",

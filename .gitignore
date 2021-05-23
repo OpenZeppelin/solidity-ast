@@ -1,4 +1,5 @@
 node_modules
+/schema.json
 /types.d.ts
 /node.d.ts
 /finder.json
