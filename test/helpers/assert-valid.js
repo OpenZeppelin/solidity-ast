@@ -5,7 +5,7 @@ const util = require('util');
 
 const ajv = new Ajv({ verbose: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
-const validate = ajv.compile(require('../../schema.json'));
+const validate = ajv.compile(require('../../scripts/build-schema'));
 
 function assertValid(ast, file) {
   if (!validate(ast)) {

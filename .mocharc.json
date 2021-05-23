@@ -1,6 +1,6 @@
 {
   "watch-files": [
-    "schema.js",
+    "scripts/build-schema.js",
     "test"
   ]
 }
