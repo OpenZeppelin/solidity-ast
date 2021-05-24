@@ -26,7 +26,7 @@ function formatError(error, doc, file) {
 
   const params = Object.values(error.params).join(', ');
 
-  const dataString = util.inspect(error.data, { compact: false, depth: null });
+  const dataString = util.inspect(error.data, { compact: false, depth: 0 });
 
   return `${error.message} (${params})\n\n${nodeTree}\n\n${dataString}`;
 }
