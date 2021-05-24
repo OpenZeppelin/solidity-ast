@@ -1,6 +1,6 @@
 # Changelog
 
-### 0.4.21
+### 0.4.21 (2021-05-23)
 
 - Rewrote schema in JavaScript in a more modular way.
 - Fixed `IndexAccess.baseExpression`: was optional but is required.
