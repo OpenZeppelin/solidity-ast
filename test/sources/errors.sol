@@ -2,6 +2,7 @@
 
 pragma solidity >=0.8.4;
 
+/// @dev docs
 error InsufficientBalance(uint available, uint required);
 
 contract Foo {

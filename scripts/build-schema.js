@@ -62,6 +62,10 @@ const baseExpressionL = {
   isLValue: boolean,
 };
 
+const baseStatement = {
+  documentation: optional(string),
+};
+
 const baseTypeName = {
   typeDescriptions: ref('TypeDescriptions'),
 };
@@ -213,7 +217,8 @@ const schema = {
       },
 
       Block: {
-        statements: array(ref('Statement')),
+        ...baseStatement,
+        statements: nullable(array(ref('Statement'))),
       },
 
       Conditional: {
@@ -258,6 +263,7 @@ const schema = {
       },
 
       EmitStatement: {
+        ...baseStatement,
         eventCall: ref('FunctionCall'),
       },
 
@@ -286,10 +292,12 @@ const schema = {
       },
 
       ExpressionStatement: {
+        ...baseStatement,
         expression: ref('Expression'),
       },
 
       ForStatement: {
+        ...baseStatement,
         body: anyOf(
           ref('Block'),
           ref('Statement'),
@@ -369,6 +377,7 @@ const schema = {
       },
 
       IfStatement: {
+        ...baseStatement,
         condition: ref('Expression'),
         falseBody: nullable(anyOf(
           ref('Statement'),
@@ -409,6 +418,7 @@ const schema = {
       },
 
       InlineAssembly: {
+        ...baseStatement,
         AST: { type: 'object' },
         evmVersion: literal(
           'homestead',
@@ -495,18 +505,22 @@ const schema = {
         parameters: array(ref('VariableDeclaration')),
       },
 
-      PlaceholderStatement: {},
+      PlaceholderStatement: {
+        ...baseStatement,
+      },
 
       PragmaDirective: {
         literals: array(string),
       },
 
       Return: {
-        expression: anyOf(_null, ref('Expression')),
+        ...baseStatement,
+        expression: nullable(ref('Expression')),
         functionReturnParameters: integer,
       },
 
       RevertStatement: {
+        ...baseStatement,
         errorCall: ref('FunctionCall'),
       },
 
@@ -529,6 +543,7 @@ const schema = {
       },
 
       TryStatement: {
+        ...baseStatement,
         clauses: array(ref('TryCatchClause')),
         externalCall: ref('FunctionCall'),
       },
@@ -553,6 +568,7 @@ const schema = {
       },
 
       UncheckedBlock: {
+        ...baseStatement,
         statements: array(ref('Statement')),
       },
 
@@ -591,12 +607,14 @@ const schema = {
       },
 
       VariableDeclarationStatement: {
+        ...baseStatement,
         assignments: array(nullable(integer)),
         declarations: array(nullable(ref('VariableDeclaration'))),
         initialValue: nullable(ref('Expression')),
       },
 
       WhileStatement: {
+        ...baseStatement,
         body: anyOf(
           ref('Block'),
           ref('Statement'),
