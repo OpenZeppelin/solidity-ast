@@ -10,7 +10,7 @@ const reachable = {};
 
 const schema = require('../schema.json');
 
-for (const def of Object.values(schema.definitions).concat(schema)) {
+for (const def of [...Object.values(schema.definitions), schema]) {
   if ('properties' in def && 'nodeType' in def.properties) {
     const parentType = def.properties.nodeType.enum[0];
     _.defaults(reachable, { [parentType]: {} });
