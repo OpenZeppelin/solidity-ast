@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.22 (2021-05-30)
+
+- Added Yul types for typing `InlineAssembly.AST`.
+
 ### 0.4.21 (2021-05-23)
 
 - Rewrote schema in JavaScript in a more modular way.

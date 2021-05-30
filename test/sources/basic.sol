@@ -199,6 +199,35 @@ contract Doc {
 contract Asm {
   function fun() public pure {
     assembly {
+        let x0
+        let x1 := 1
+        let x2 := "abc"
+        let x3 := add(1, x0)
+        let x4 := x3
+        x4 := x1
+        {}
+
+        function f(x) -> r {
+            r := 0
+            leave
+        }
+
+        if false {
+            revert(0, 0)
+        }
+
+        switch calldataload(4)
+        case 0 {
+            x0 := true
+        }
+        default {
+            x0 := false
+        }
+
+        for { } false { } {
+            break
+            continue
+        }
     }
   }
 }

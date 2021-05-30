@@ -8,7 +8,7 @@ const integer = { type: 'integer' };
 const _null = { type: 'null' };
 
 const pattern = pat => ({ type: 'string', pattern: pat.source });
-const literal = (...values) => ({ type: 'string', enum: values });
+const literal = (...values) => ({ enum: values });
 const array = items => ({ type: 'array', items });
 const record = values => ({ type: 'object', additionalProperties: values });
 const anyOf = (...types) => ({ 'anyOf': types });
@@ -18,7 +18,7 @@ const $optional = Symbol('optional');
 const optional = schema => ({ ...schema, [$optional]: true });
 const nullable = schema => schema ? optional(anyOf(schema, _null)) : optional(_null);
 
-const object = properties => ({
+const object = (properties = {}) => ({
   type: 'object',
   additionalProperties: false,
   properties,
@@ -32,10 +32,17 @@ const baseNode = {
 
 const node = (type, props) => object({ ...baseNode, ...props, nodeType: literal(type) });
 
-const mapValues = (obj, fn) =>
-  Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, fn(v, k)]));
+const baseYulNode = {
+  src: ref('SourceLocation'),
+};
 
-const nodes = (defs) => mapValues(defs, (props, type) => node(type, props));
+const yulNode = (type, props) => object({ ...baseYulNode, ...props, nodeType: literal(type) });
+
+const mapValues = (obj, fn) =>
+  Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, fn(k, v)]));
+
+const nodes = (defs) => mapValues(defs, node);
+const yulNodes = (defs) => mapValues(defs, yulNode);
 
 const documentation = nullable(ref('StructuredDocumentation'));
 const typeDescriptions = ref('TypeDescriptions');
@@ -419,7 +426,7 @@ const schema = {
 
       InlineAssembly: {
         ...baseStatement,
-        AST: { type: 'object' },
+        AST: ref('YulBlock'),
         evmVersion: literal(
           'homestead',
           'tangerineWhistle',
@@ -620,6 +627,105 @@ const schema = {
           ref('Statement'),
         ),
         condition: ref('Expression'),
+      },
+    }),
+
+    YulStatement: anyOf(
+      ref('YulAssignment'),
+      ref('YulBlock'),
+      ref('YulBreak'),
+      ref('YulContinue'),
+      ref('YulExpressionStatement'),
+      ref('YulLeave'),
+      ref('YulForLoop'),
+      ref('YulFunctionDefinition'),
+      ref('YulIf'),
+      ref('YulSwitch'),
+      ref('YulVariableDeclaration'),
+    ),
+
+    YulExpression: anyOf(
+      ref('YulFunctionCall'),
+      ref('YulIdentifier'),
+      ref('YulLiteral'),
+    ),
+
+    ...yulNodes({
+      YulAssignment: {
+        value: ref('YulExpression'),
+        variableNames: array(ref('YulIdentifier')),
+      },
+
+      YulBlock: {
+        statements: array(ref('YulStatement')),
+      },
+
+      YulBreak: {},
+
+      YulCase: {
+        body: ref('YulBlock'),
+        value: anyOf(
+          literal('default'),
+          ref('YulLiteral'),
+        ),
+      },
+
+      YulContinue: {},
+
+      YulExpressionStatement: {
+        expression: ref('YulExpression'),
+      },
+
+      YulFunctionCall: {
+        arguments: array(ref('YulExpression')),
+        functionName: ref('YulIdentifier'),
+      },
+
+      YulForLoop: {
+        body: ref('YulBlock'),
+        condition: ref('YulExpression'),
+        post: ref('YulBlock'),
+        pre: ref('YulBlock'),
+      },
+
+      YulFunctionDefinition: {
+        body: ref('YulBlock'),
+        name: string,
+        parameters: array(ref('YulTypedName')),
+        returnVariables: array(ref('YulTypedName')),
+      },
+
+      YulIdentifier: {
+        name: string,
+      },
+
+      YulIf: {
+        body: ref('YulBlock'),
+        condition: ref('YulExpression'),
+      },
+
+      YulLeave: {
+      },
+
+      YulLiteral: {
+        kind: literal('number', 'string', 'bool'),
+        type: string,
+        value: string,
+      },
+
+      YulSwitch: {
+        cases: array(ref('YulCase')),
+        expression: ref('YulExpression'),
+      },
+
+      YulTypedName: {
+        name: string,
+        type: string,
+      },
+
+      YulVariableDeclaration: {
+        value: nullable(ref('YulExpression')),
+        variables: array(ref('YulTypedName')),
       },
     }),
   },
