@@ -142,6 +142,7 @@ const schema = {
       ref('FunctionCallOptions'),
       ref('Identifier'),
       ref('IndexAccess'),
+      ref('IndexRangeAccess'),
       ref('Literal'),
       ref('MemberAccess'),
       ref('NewExpression'),
@@ -193,6 +194,8 @@ const schema = {
           '|=',
           '&=',
           '^=',
+          '>>=',
+          '<<='
         ),
         rightHandSide: ref('Expression'),
       },
@@ -217,6 +220,8 @@ const schema = {
           '>',
           '>=',
           '^',
+          '&',
+          '|',
           '<<',
           '>>'
         ),
@@ -416,6 +421,13 @@ const schema = {
         indexExpression: ref('Expression'),
       },
 
+      IndexRangeAccess: {
+        ...baseExpressionL,
+        baseExpression: ref('Expression'),
+        endExpression: nullable(ref('Expression')),
+        startExpression: nullable(ref('Expression')),
+      },
+
       InheritanceSpecifier: {
         arguments: nullable(array(ref('Expression'))),
         baseName: anyOf(
@@ -443,6 +455,7 @@ const schema = {
           isSlot: boolean,
           src: ref('SourceLocation'),
           valueSize: integer,
+          suffix: optional(literal('slot', 'offset')),
         })),
       },
 

@@ -117,7 +117,11 @@ contract Foo {
         y |= 2;
         y &= 2;
         y ^= 2;
+        y >>= 2;
+        y <<= 3;
     }
+
+    msg.data[:];
 
     // Return
     return v;

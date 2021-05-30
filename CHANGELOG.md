@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.4.23 (2021-05-30)
+
+- Added missing values for `Assignment.operator`: `>>=`, `<<=`
+- Added missing values for `BinaryOperation.operator`: `&`, `|`
+- Added missing kind of `Expression`: `IndexRangeAccess` (e.g. `msg.data[start:end]`)
+- Added missing field in members of `InlineAssembly.externalReferences`: `suffix` (`'slot'` and `'offset'`)
+
 ### 0.4.22 (2021-05-30)
 
 - Added Yul types for typing `InlineAssembly.AST`.
