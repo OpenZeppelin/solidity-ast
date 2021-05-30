@@ -650,6 +650,24 @@ const schema = {
       ref('YulLiteral'),
     ),
 
+    YulLiteral: anyOf(
+      ref('YulLiteralValue'),
+      ref('YulLiteralHexValue'),
+    ),
+
+    YulLiteralValue: yulNode('YulLiteral', {
+      value: string,
+      kind: literal('number', 'string', 'bool'),
+      type: string,
+    }),
+
+    YulLiteralHexValue: yulNode('YulLiteral', {
+      hexValue: string,
+      kind: literal('number', 'string', 'bool'),
+      type: string,
+      value: optional(string),
+    }),
+
     ...yulNodes({
       YulAssignment: {
         value: ref('YulExpression'),
@@ -705,12 +723,6 @@ const schema = {
       },
 
       YulLeave: {
-      },
-
-      YulLiteral: {
-        kind: literal('number', 'string', 'bool'),
-        type: string,
-        value: string,
       },
 
       YulSwitch: {

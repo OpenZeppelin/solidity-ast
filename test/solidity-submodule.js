@@ -22,7 +22,7 @@ describe('solidity submodule', function () {
     it(f, function () {
       const text = this.inputContents[f];
       if (text.length === 0) return;
-      const doc = JSON.parse(text);
+      const doc = JSON.parse(text.replace(/%EVMVERSION%/g, JSON.stringify('berlin')));
       // Some of these files are arrays so we use concat to treat them uniformly.
       const asts = [].concat(doc);
       for (const ast of asts) {
