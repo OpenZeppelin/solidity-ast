@@ -183,7 +183,7 @@ const schema = {
       Assignment: {
         ...baseExpressionL,
         leftHandSide: ref('Expression'),
-        operator: literal( // TODO: missing a few
+        operator: literal(
           '=',
           '+=',
           '-=',
