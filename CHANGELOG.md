@@ -3,6 +3,7 @@
 ### 0.4.22 (2021-05-30)
 
 - Added Yul types for typing `InlineAssembly.AST`.
+- Fixed `Identifier.overloadedDeclarations`: was `unknown` and is now `number`.
 
 ### 0.4.21 (2021-05-23)
 

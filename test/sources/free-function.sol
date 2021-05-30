@@ -15,3 +15,8 @@ function sum(uint[] storage items) view returns (uint s) {
     for (uint i = 0; i < items.length; i++)
         s += items[i];
 }
+
+function bar(uint x, uint y) {
+    // Identifier.overloadedDeclarations
+    min(x, y);
+}

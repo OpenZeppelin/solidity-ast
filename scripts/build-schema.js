@@ -373,7 +373,7 @@ const schema = {
       Identifier: {
         argumentTypes: nullable(array(ref('TypeDescriptions'))),
         name: string,
-        overloadedDeclarations: array({}), // TODO
+        overloadedDeclarations: array(integer),
         referencedDeclaration: nullable(integer),
         typeDescriptions,
       },
