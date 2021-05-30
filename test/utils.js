@@ -11,6 +11,8 @@ const source = path.join(__dirname, 'sources/find-all.sol');
 const counts = {
   SourceUnit: 1,
   StructDefinition: 2,
+  FunctionDefinition: 1,
+  YulVariableDeclaration: 1,
 };
 
 describe('findAll', function () {
