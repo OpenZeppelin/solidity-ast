@@ -6,13 +6,17 @@
 const fs = require('fs');
 const schema = require('../schema.json');
 
-const nodeTypes = schema.properties.nodeType.enum;
+const nodeTypesSet = new Set(schema.properties.nodeType.enum);
 
 for (const def of Object.values(schema.definitions)) {
   if ('properties' in def && 'nodeType' in def.properties) {
-    nodeTypes.push(...def.properties.nodeType.enum);
+    for (const type of def.properties.nodeType.enum) {
+      nodeTypesSet.add(type);
+    }
   }
 }
+
+const nodeTypes = [...nodeTypesSet];
 
 const lines = [];
 

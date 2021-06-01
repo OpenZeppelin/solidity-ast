@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.24 (2021-06-01)
+
+- Fixed duplicate type name in generated declaration file.
+
 ### 0.4.23 (2021-05-30)
 
 - Added missing values for `Assignment.operator`: `>>=`, `<<=`

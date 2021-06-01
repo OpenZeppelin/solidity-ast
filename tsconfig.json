@@ -5,6 +5,7 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "lib": ["es2019"],
+    "downlevelIteration": true,
     "strict": true,
     "noImplicitAny": false
   },
