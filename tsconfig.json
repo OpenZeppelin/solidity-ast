@@ -9,7 +9,8 @@
     "noImplicitAny": false
   },
   "include": [
-    "scripts/*.js"
+    "scripts/*.js",
+    "*.d.ts"
   ],
   "references": [
     { "path": "./tsconfig.docs.json" }
