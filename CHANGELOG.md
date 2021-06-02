@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.25 (2021-06-01)
+
+- Remove Yul nodes from `Node` and `NodeType`, export them separately as `YulNode` and `YulNodeType`.
+
 ### 0.4.24 (2021-06-01)
 
 - Fixed duplicate type name in generated declaration file.
