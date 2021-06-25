@@ -84,3 +84,24 @@ for (const typeDef of findAll(['EnumDefinition', 'StructDefinition'], sourceUnit
   // typeDef: EnumDefinition | StructDefinition
 }
 ```
+
+### `astDereferencer(solcOutput) => (nodeType, id) => Node`
+
+`astDereferencer` looks up AST nodes based on their id. Notably, it works
+across multiple source files, which is why it needs the entire solc JSON output
+with the ASTs for all source files in a compilation.
+
+> On Hardhat, the solc JSON output can be found in [build info files].
+
+[build info files]: https://hardhat.org/guides/compile-contracts.html#build-info-files
+
+```typescript
+const deref = astDereferencer(solcOutput);
+
+deref('ContractDefinition', 4);
+
+for (const contractDef of findAll('ContractDefinition', sourceUnit)) {
+  const baseContracts = contractDef.linearizedBaseContracts.map(deref('ContractDefinition'));
+  ...
+}
+```

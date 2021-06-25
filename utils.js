@@ -57,7 +57,9 @@ function curry2(fn) {
   };
 }
 
-module.exports = {
-  isNodeType: curry2(isNodeType),
-  findAll: curry2(findAll),
-};
+module.exports.isNodeType = curry2(isNodeType);
+module.exports.findAll = curry2(findAll);
+
+const { astDereferencer } = require('./dist/ast-dereferencer');
+
+module.exports.astDereferencer = astDereferencer;

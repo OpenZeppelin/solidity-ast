@@ -1,12 +1,8 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "noEmit": true,
     "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "lib": ["es2019"],
-    "downlevelIteration": true,
-    "strict": true,
     "noImplicitAny": false
   },
   "include": [
@@ -14,6 +10,7 @@
     "*.d.ts"
   ],
   "references": [
-    { "path": "./tsconfig.docs.json" }
+    { "path": "./tsconfig.docs.json" },
+    { "path": "./tsconfig.emit.json" }
   ]
 }

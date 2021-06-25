@@ -5,6 +5,7 @@ node_modules
 /finder.json
 /docs
 /.solc-bin
+/dist
 
 *.tsbuildinfo
 

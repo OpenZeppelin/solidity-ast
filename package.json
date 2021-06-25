@@ -7,9 +7,9 @@
   "types": "types.d.ts",
   "files": [
     "/finder.json",
-    "/node.d.ts",
-    "/utils.{js,d.ts}",
-    "/types.d.ts",
+    "/*.d.ts",
+    "/utils.js",
+    "/dist/**/*.{js,d.ts}{,.map}",
     "/schema.json"
   ],
   "scripts": {

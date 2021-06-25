@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.26 (2021-06-25)
+
+- Add a new utility for looking up AST nodes based on their id and type.
+
 ### 0.4.25 (2021-06-01)
 
 - Remove Yul nodes from `Node` and `NodeType`, export them separately as `YulNode` and `YulNodeType`.

@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "target": "es2019",
+    "downlevelIteration": true,
+    "strict": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+  }
+}
