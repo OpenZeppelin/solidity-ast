@@ -102,9 +102,8 @@ describe('ast dereferencer', function () {
 
   it('curried', function () {
     const deref = astDereferencer(this.output);
-    for (const cDef of findAll('ContractDefinition', this.ast)) {
-      const baseContracts = cDef.linearizedBaseContracts.map(deref('ContractDefinition'));
-      console.log(baseContracts);
-    }
+    const c3 = [...findAll('ContractDefinition', this.ast)].find(c => c.name === 'C3');
+    const baseContracts = c3.linearizedBaseContracts.map(deref('ContractDefinition'));
+    assert.deepEqual(baseContracts.map(c => c.name), ['C3', 'C2', 'C1']);
   });
 });
