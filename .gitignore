@@ -6,6 +6,8 @@ node_modules
 /docs
 /.solc-bin
 /dist
+/referrers.js
+/referrers.d.ts
 
 *.tsbuildinfo
 
