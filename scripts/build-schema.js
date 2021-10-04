@@ -94,6 +94,7 @@ const schema = {
       ref('ImportDirective'),
       ref('PragmaDirective'),
       ref('StructDefinition'),
+      ref('UserDefinedValueTypeDefinition'),
       ref('VariableDeclaration'),
     )),
   }),
@@ -244,6 +245,7 @@ const schema = {
         ...baseDefinition,
         abstract: boolean,
         baseContracts: array(ref('InheritanceSpecifier')),
+        canonicalName: optional(string),
         contractDependencies: array(integer),
         contractKind: literal('contract', 'interface', 'library'),
         documentation,
@@ -256,6 +258,7 @@ const schema = {
           ref('FunctionDefinition'),
           ref('ModifierDefinition'),
           ref('StructDefinition'),
+          ref('UserDefinedValueTypeDefinition'),
           ref('UsingForDirective'),
           ref('VariableDeclaration'),
         )),
@@ -447,7 +450,8 @@ const schema = {
           'constantinople',
           'petersburg',
           'istanbul',
-          'berlin'
+          'berlin',
+          'london',
         ),
         externalReferences: array(object({
           declaration: integer,
@@ -598,6 +602,12 @@ const schema = {
         name: optional(string),
         pathNode: optional(ref('IdentifierPath')),
         referencedDeclaration: integer,
+      },
+
+      UserDefinedValueTypeDefinition: {
+        ...baseDefinition,
+        canonicalName: optional(string),
+        underlyingType: ref('TypeName'),
       },
 
       UsingForDirective: {

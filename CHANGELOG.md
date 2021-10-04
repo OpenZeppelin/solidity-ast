@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.4.27 (2021-06-25)
+
+- Added `UserDefinedValueTypeDefinition` which can appear in `SourceUnit` and `ContractDefinition`.
+- Added `ContractDefinition.canonicalName` from Solidity 0.8.9.
+- Added new EVM version `'london'`.
+
 ### 0.4.26 (2021-06-25)
 
 - Add a new utility for looking up AST nodes based on their id and type.
