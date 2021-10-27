@@ -99,7 +99,12 @@ contract Foo {
     if (false) {}
 
     // WhileStatement
-    while (true) v;
+    while (true) {
+      continue;
+      break;
+    }
+
+    do { } while (true);
 
     Struct memory s1 = Struct(1, 2);
     Struct memory s2 = Struct({ m1: 1, m2: 2 });

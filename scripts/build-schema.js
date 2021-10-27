@@ -153,6 +153,9 @@ const schema = {
 
     Statement: anyOf(
       ref('Block'),
+      ref('Break'),
+      ref('Continue'),
+      ref('DoWhileStatement'),
       ref('EmitStatement'),
       ref('ExpressionStatement'),
       ref('ForStatement'),
@@ -234,11 +237,19 @@ const schema = {
         statements: nullable(array(ref('Statement'))),
       },
 
+      Break: {
+        ...baseStatement,
+      },
+
       Conditional: {
         ...baseExpressionL,
         condition: ref('Expression'),
         falseExpression: ref('Expression'),
         trueExpression: ref('Expression'),
+      },
+
+      Continue: {
+        ...baseStatement,
       },
 
       ContractDefinition: {
@@ -264,6 +275,15 @@ const schema = {
         )),
         scope: integer,
         usedErrors: optional(array(integer)),
+      },
+
+      DoWhileStatement: {
+        ...baseStatement,
+        body: anyOf(
+          ref('Block'),
+          ref('Statement'),
+        ),
+        condition: ref('Expression'),
       },
 
       ElementaryTypeName: {
