@@ -11,15 +11,15 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
   const asts = Array.from(Object.values(solcOutput.sources), s => s.ast);
   const cache = new Map<number, Node>();
 
-  function deref<T extends NodeType>(nodeType: T | T[], id: number): NodeTypeMap[T] {
-    if (!Array.isArray(nodeType)) {
+  function deref<T extends NodeType>(nodeType: T | readonly T[], id: number): NodeTypeMap[T] {
+    if (!isArray(nodeType)) {
       nodeType = [nodeType];
     }
 
     const cached = cache.get(id);
 
     if (cached) {
-      if ((nodeType as NodeType[]).includes(cached.nodeType)) {
+      if ((nodeType as readonly NodeType[]).includes(cached.nodeType)) {
         return cached as NodeTypeMap[T];
       }
     }
@@ -56,3 +56,5 @@ export function curry2<A, B, T>(fn: (a: A, b: B) => T): Curried<A, B, T> {
   }
   return curried;
 }
+
+const isArray: (arg: any) => arg is any[] | readonly any[]  = Array.isArray;
