@@ -1,8 +1,8 @@
 import { SolcOutput } from './solc';
 import { Node, NodeType, NodeTypeMap, YulNode, YulNodeType, YulNodeTypeMap } from './node';
 
-export function isNodeType<N extends Node, T extends NodeType>(nodeType: T): (node: N) => node is N & NodeTypeMap[T];
-export function isNodeType<N extends Node, T extends NodeType>(nodeType: T, node: N): node is N & NodeTypeMap[T];
+export function isNodeType<N extends Node, T extends NodeType>(nodeType: T | readonly T[]): (node: N) => node is N & NodeTypeMap[T];
+export function isNodeType<N extends Node, T extends NodeType>(nodeType: T | readonly T[], node: N): node is N & NodeTypeMap[T];
 
 export function findAll<T extends NodeType>(nodeType: T | readonly T[]): (node: Node) => Generator<NodeTypeMap[T]>;
 export function findAll<T extends NodeType>(nodeType: T | readonly T[], node: Node, prune?: (node: Node) => boolean): Generator<NodeTypeMap[T]>;

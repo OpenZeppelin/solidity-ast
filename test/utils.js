@@ -5,7 +5,30 @@ const assert = require('assert');
 const { latest } = require('./helpers/solc-versions');
 const { compile } = require('./helpers/solc-compile');
 
-const { findAll, astDereferencer } = require('../utils');
+const { isNodeType, findAll, astDereferencer } = require('../utils');
+
+describe('isNodeType', function () {
+  it('single', function () {
+    assert(isNodeType('SourceUnit', { nodeType: 'SourceUnit' }));
+    assert(!isNodeType('SourceUnit', { nodeType: 'ContractDefinition' }));
+  });
+
+  it('multiple', function () {
+    assert(isNodeType(['SourceUnit', 'ContractDefinition'], { nodeType: 'SourceUnit' }));
+    assert(isNodeType(['SourceUnit', 'ContractDefinition'], { nodeType: 'ContractDefinition' }));
+    assert(!isNodeType(['SourceUnit', 'ContractDefinition'], { nodeType: 'ImportDirective' }));
+  });
+
+  it('single curried', function () {
+    assert(isNodeType('SourceUnit')({ nodeType: 'SourceUnit' }));
+  });
+
+  it('multiple curried', function () {
+    const curried = isNodeType(['SourceUnit', 'ContractDefinition']);
+    assert(curried({ nodeType: 'SourceUnit' }));
+    assert(curried({ nodeType: 'ContractDefinition' }));
+  });
+});
 
 describe('findAll', function () {
   const source = path.join(__dirname, 'sources/find-all.sol');

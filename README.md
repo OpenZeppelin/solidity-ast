@@ -46,6 +46,8 @@ with nodes based on the node type.
 A type predicate that can be used for narrowing the type of an
 unknown node, or combined with higher order functions like `filter`.
 
+An array of node types can be used as well to check if the node matches one of them.
+
 ```typescript
 import { isNodeType } from 'solidity-ast/utils';
 

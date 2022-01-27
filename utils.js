@@ -1,7 +1,11 @@
 const finder = require('./finder.json');
 
 function isNodeType(nodeType, node) {
-  return node.nodeType === nodeType;
+  if (Array.isArray(nodeType)) {
+    return nodeType.includes(node.nodeType);
+  } else {
+    return node.nodeType === nodeType;
+  }
 }
 
 function* findAll(nodeType, node, prune) {

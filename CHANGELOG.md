@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.30 (2022-01-27)
+- Support an array of node types in `isNodeType`.
+
 ### 0.4.29 (2021-12-24)
 
 - Made input array types `readonly` in `utils` module.
