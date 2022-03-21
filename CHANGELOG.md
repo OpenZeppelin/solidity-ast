@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.31 (2022-03-20)
+- Add `SolcInput` interface.
+
 ### 0.4.30 (2022-01-27)
 - Support an array of node types in `isNodeType`.
 

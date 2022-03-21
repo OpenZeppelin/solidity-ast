@@ -8,3 +8,13 @@ export interface SolcOutput {
     };
   };
 }
+
+export interface SolcInput {
+  sources: {
+    [file in string]: {
+      keccak256?: string;
+      content?: string;
+      urls?: string[];
+    };
+  };
+}
