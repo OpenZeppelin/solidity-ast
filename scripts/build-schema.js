@@ -95,6 +95,7 @@ const schema = {
       ref('PragmaDirective'),
       ref('StructDefinition'),
       ref('UserDefinedValueTypeDefinition'),
+      ref('UsingForDirective'),
       ref('VariableDeclaration'),
     )),
   }),
@@ -315,6 +316,7 @@ const schema = {
       ErrorDefinition: {
         ...baseDefinition,
         documentation,
+        errorSelector: optional(string),
         parameters,
         nameLocation: string,
       },
@@ -322,6 +324,7 @@ const schema = {
       EventDefinition: {
         ...baseDefinition,
         anonymous: boolean,
+        eventSelector: optional(string),
         documentation,
         parameters,
       },
@@ -481,6 +484,7 @@ const schema = {
           valueSize: integer,
           suffix: optional(literal('slot', 'offset')),
         })),
+        flags: optional(array(literal('memory-safe'))),
       },
 
       Literal: {
@@ -631,6 +635,7 @@ const schema = {
       },
 
       UsingForDirective: {
+        global: optional(boolean),
         libraryName: anyOf(
           ref('UserDefinedTypeName'),
           ref('IdentifierPath'),

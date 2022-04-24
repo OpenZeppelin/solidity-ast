@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.4.32 (2022-04-24)
+- Added `EventDefinition.eventSelector` and `ErrorDefinition.errorSelector`.
+- Added `InlineAssembly.flags` which can now indicate assembly as memory safe.
+- Added `UsingForDirective.global`.
+
 ### 0.4.31 (2022-03-20)
 - Add `SolcInput` interface.
 

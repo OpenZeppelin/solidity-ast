@@ -54,6 +54,10 @@
     "solc-0.8.6": "npm:solc@0.8.6",
     "solc-0.8.8": "npm:solc@0.8.8",
     "solc-0.8.9": "npm:solc@0.8.9",
+    "solc-0.8.10": "npm:solc@0.8.10",
+    "solc-0.8.11": "npm:solc@0.8.11",
+    "solc-0.8.12": "npm:solc@0.8.12",
+    "solc-0.8.13": "npm:solc@0.8.13",
     "typedoc": "^0.17.7",
     "typescript": "^4.2.4"
   },
