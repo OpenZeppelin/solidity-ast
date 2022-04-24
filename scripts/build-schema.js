@@ -635,12 +635,15 @@ const schema = {
       },
 
       UsingForDirective: {
+        functionList: optional(array(object({
+          function: ref('IdentifierPath'),
+        }))),
         global: optional(boolean),
-        libraryName: anyOf(
+        libraryName: optional(anyOf(
           ref('UserDefinedTypeName'),
           ref('IdentifierPath'),
-        ),
-        typeName: ref('TypeName'),
+        )),
+        typeName: nullable(ref('TypeName')),
       },
 
       VariableDeclaration: {

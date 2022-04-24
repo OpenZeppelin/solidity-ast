@@ -17,6 +17,7 @@ contract Foo {
 
   // UsingForDirective
   using Lib for Struct;
+  using Lib for *;
 
   // EventDefinition
   event Ev(uint);

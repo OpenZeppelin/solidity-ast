@@ -4,6 +4,8 @@
 - Added `EventDefinition.eventSelector` and `ErrorDefinition.errorSelector`.
 - Added `InlineAssembly.flags` which can now indicate assembly as memory safe.
 - Added `UsingForDirective.global`.
+- In `UsingForDirective` added `functionList` and made `libraryName` optional. These properties are exclusive: exactly one of them should be present, though this is not encoded in the type.
+- Fixed `UsingForDirective.typeName`: it should have always been nullable to account for `using ... for *`.
 
 ### 0.4.31 (2022-03-20)
 - Add `SolcInput` interface.
