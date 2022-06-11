@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.33 (2022-06-11)
+- Removed circular dependency from utils.
+
 ### 0.4.32 (2022-04-24)
 - Added `EventDefinition.eventSelector` and `ErrorDefinition.errorSelector`.
 - Added `InlineAssembly.flags` which can now indicate assembly as memory safe.
