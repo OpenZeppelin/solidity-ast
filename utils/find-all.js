@@ -1,4 +1,4 @@
-const finder = require('./finder.json');
+const finder = require('../finder.json');
 
 function* findAll(nodeType, node, prune) {
   if (!Array.isArray(nodeType)) {
