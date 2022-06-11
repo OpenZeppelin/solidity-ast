@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.34 (2022-06-11)
+- Add missing files to package.
+
 ### 0.4.33 (2022-06-11)
 - Removed circular dependency from utils.
 

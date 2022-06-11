@@ -9,6 +9,7 @@
     "/finder.json",
     "/*.d.ts",
     "/utils.js",
+    "/utils",
     "/dist/**/*.{js,d.ts}{,.map}",
     "/schema.json"
   ],
