@@ -1,4 +1,4 @@
-import { findAll } from '../utils';
+import { findAll } from '../utils/find-all';
 import type { ASTDereferencer } from '../utils';
 import type { Node, NodeType, NodeTypeMap } from '../node';
 import type { SolcOutput } from '../solc';
