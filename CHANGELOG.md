@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.35 (2022-06-23)
+- Make `IndexAccess.indexExpression` nullable, which shows up when array types are used with `abi.decode`.
+
 ### 0.4.34 (2022-06-11)
 - Add missing files to package.
 

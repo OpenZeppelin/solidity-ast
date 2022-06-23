@@ -444,7 +444,7 @@ const schema = {
       IndexAccess: {
         ...baseExpressionL,
         baseExpression: ref('Expression'),
-        indexExpression: ref('Expression'),
+        indexExpression: nullable(ref('Expression')),
       },
 
       IndexRangeAccess: {

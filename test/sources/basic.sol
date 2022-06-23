@@ -77,6 +77,7 @@ contract Foo {
 
     // IndexAccess
     v = xs1[0];
+    uint[] memory xs = abi.decode(msg.data, (uint[]));
 
     // NewExpression
     new X();
