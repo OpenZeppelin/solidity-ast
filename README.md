@@ -5,11 +5,6 @@
 
 **TypeScript types and a JSON Schema for the Solidity AST.**
 
-_The latest version successfully validates all of [OpenZeppelin Contracts], but
-some types may still be inaccurate. Please report any issues you find._
-
-[OpenZeppelin Contracts]: https://github.com/OpenZeppelin/openzeppelin-contracts
-
 ```
 npm install solidity-ast
 ```
