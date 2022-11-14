@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.36 (2022-11-14)
+- Fix error in `findAll` when the code contains user defined value types.
+
 ### 0.4.35 (2022-06-23)
 - Make `IndexAccess.indexExpression` nullable, which shows up when array types are used with `abi.decode`.
 

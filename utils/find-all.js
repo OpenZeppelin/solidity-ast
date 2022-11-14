@@ -28,19 +28,16 @@ function* findAll(nodeType, node, prune) {
 }
 
 function getNextProps(wantedNodeTypes, currentNodeType) {
-  if (wantedNodeTypes.length === 1) {
-    return finder[wantedNodeTypes[0]][currentNodeType] || [];
-  } else {
-    const next = new Set();
-    for (const wantedNodeType of wantedNodeTypes) {
-      if (currentNodeType in finder[wantedNodeType]) {
-        for (const nextNodeType of finder[wantedNodeType][currentNodeType]) {
-          next.add(nextNodeType);
-        }
+  const next = new Set();
+  for (const wantedNodeType of wantedNodeTypes) {
+    const wantedFinder = finder[wantedNodeType];
+    if (wantedFinder && currentNodeType in wantedFinder) {
+      for (const nextNodeType of wantedFinder[currentNodeType]) {
+        next.add(nextNodeType);
       }
     }
-    return next;
   }
+  return next;
 }
 
 module.exports = {
