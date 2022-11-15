@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.38 (2022-11-15)
+- Add missing types for `srcDecoder`.
+
 ### 0.4.37 (2022-11-15)
 - Add `srcDecoder`, a new util to decode source locations in AST nodes.
 

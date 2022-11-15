@@ -1,7 +1,6 @@
 import path from 'path';
 import type { SolcOutput, SolcInput } from '../solc';
-
-export type SrcDecoder = (node: { src: string }) => string;
+import type { SrcDecoder } from '../utils';
 
 interface Source {
   name: string;

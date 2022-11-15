@@ -1,4 +1,4 @@
-import { SolcOutput } from './solc';
+import { SolcInput, SolcOutput } from './solc';
 import { Node, NodeType, NodeTypeMap } from './node';
 
 export { findAll } from './utils/find-all';
@@ -12,3 +12,7 @@ export interface ASTDereferencer {
 }
 
 export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer;
+
+export type SrcDecoder = (node: { src: string }) => string;
+
+export function srcDecoder(solcInput: SolcInput, solcOutput: SolcOutput): SrcDecoder;
