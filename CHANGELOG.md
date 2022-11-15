@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.37 (2022-11-15)
+- Add `srcDecoder`, a new util to decode source locations in AST nodes.
+
 ### 0.4.36 (2022-11-14)
 - Fix error in `findAll` when the code contains user defined value types.
 

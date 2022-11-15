@@ -20,5 +20,7 @@ module.exports.isNodeType = curry2(isNodeType);
 module.exports.findAll = curry2(require('./utils/find-all').findAll);
 
 const { astDereferencer } = require('./dist/ast-dereferencer');
-
 module.exports.astDereferencer = astDereferencer;
+
+const { srcDecoder } = require('./dist/src-decoder');
+module.exports.srcDecoder = srcDecoder;

@@ -5,7 +5,7 @@ const assert = require('assert');
 const { latest } = require('./helpers/solc-versions');
 const { compile } = require('./helpers/solc-compile');
 
-const { isNodeType, findAll, astDereferencer } = require('../utils');
+const { isNodeType, findAll, astDereferencer, srcDecoder } = require('../utils');
 
 describe('isNodeType', function () {
   it('single', function () {
@@ -128,5 +128,29 @@ describe('ast dereferencer', function () {
     const c3 = [...findAll('ContractDefinition', this.ast)].find(c => c.name === 'C3');
     const baseContracts = c3.linearizedBaseContracts.map(deref('ContractDefinition'));
     assert.deepEqual(baseContracts.map(c => c.name), ['C3', 'C2', 'C1']);
+  });
+});
+
+describe('src decoder', function () {
+  const source = path.join(__dirname, 'sources/src-decoder.sol');
+
+  before('reading and compiling source file', async function () {
+    this.timeout(10 * 60 * 1000);
+    const content = await fs.readFile(source, 'utf8');
+    this.input = { sources: { 'file.sol': { content } } };
+    this.output = await compile(latest, this.input.sources);
+    this.ast = this.output.sources['file.sol'].ast;
+  });
+
+  it('ascii', function () {
+    const decodeSrc = srcDecoder(this.input, this.output);
+    const line5 = [...findAll('ContractDefinition', this.ast)].find(c => c.name === 'Line5');
+    assert.strictEqual(decodeSrc(line5), 'file.sol:5');
+  });
+
+  it('multi-byte utf8', function () {
+    const decodeSrc = srcDecoder(this.input, this.output);
+    const line8 = [...findAll('ContractDefinition', this.ast)].find(c => c.name === 'Line8');
+    assert.strictEqual(decodeSrc(line8), 'file.sol:8');
   });
 });

@@ -102,3 +102,20 @@ for (const contractDef of findAll('ContractDefinition', sourceUnit)) {
   ...
 }
 ```
+
+### `srcDecoder(solcInput, solcOutput, basePath = '.') => (node: Node) => string`
+
+`srcDecoder` allows decoding of the `src` property of a node, which looks
+something like `123:4:0`, into a human-readable description of the location of
+that node, such as `file.sol:10`.
+
+> On Hardhat, the solc JSON input and output can be found in [build info files].
+
+[build info files]: https://hardhat.org/guides/compile-contracts.html#build-info-files
+
+```typescript
+const decodeSrc = srcDecoder(solcInput, solcOutput);
+...
+const location = decodeSrc(contractDefinition);
+console.log('found contract at ' + location);
+```
