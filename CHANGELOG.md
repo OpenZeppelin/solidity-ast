@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.39 (2022-12-16)
+- Optimize `findAll` for multiple wanted node types.
+
 ### 0.4.38 (2022-11-15)
 - Add missing types for `srcDecoder`.
 
