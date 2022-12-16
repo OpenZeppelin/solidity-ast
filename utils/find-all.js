@@ -27,7 +27,19 @@ function* findAll(nodeType, node, prune) {
   }
 }
 
+const nextPropsCache = new WeakMap();
+
 function getNextProps(wantedNodeTypes, currentNodeType) {
+  if (typeof wantedNodeTypes === 'string') {
+    return finder[wantedNodeType] ?? [];
+  }
+  let cache = nextPropsCache.get(wantedNodeTypes);
+  if (!cache) {
+    cache = {};
+    nextPropsCache.set(wantedNodeTypes, cache);
+  } else if (currentNodeType in cache) {
+    return cache[currentNodeType];
+  }
   const next = new Set();
   for (const wantedNodeType of wantedNodeTypes) {
     const wantedFinder = finder[wantedNodeType];
@@ -37,6 +49,7 @@ function getNextProps(wantedNodeTypes, currentNodeType) {
       }
     }
   }
+  cache[currentNodeType] = next;
   return next;
 }
 
