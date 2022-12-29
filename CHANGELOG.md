@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.40 (2022-12-29)
+- Further optimize `findAll` for multiple wanted node types.
+
 ### 0.4.39 (2022-12-16)
 - Optimize `findAll` for multiple wanted node types.
 
