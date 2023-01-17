@@ -16,3 +16,5 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer;
 export type SrcDecoder = (node: { src: string }) => string;
 
 export function srcDecoder(solcInput: SolcInput, solcOutput: SolcOutput): SrcDecoder;
+
+export { NodeInfoResolver, NODEINFO} from "./src/node-info";
