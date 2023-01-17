@@ -1,6 +1,4 @@
-import {ContractDefinition, SourceLocation, SourceUnit} from '../types';
-import { findAll } from '../utils';
-import { Node, NodeType, NodeTypeMap } from '../node';
+import { Node, NodeType } from '../node';
 import type { SolcOutput } from '../solc';
 
 const util = require('util')
@@ -42,7 +40,7 @@ export class NodeInfoResolver {
                 // @ts-ignore
                 const member: Node[] = Array.isArray(node[key]) ? node[key] : [node[key]];
                 for (const item of member) {
-                    if (('id' in item) && ('src' in item)) {
+                    if (item && ('id' in item) && ('src' in item)) {
                         this.addProps(path, node, item);
                     }
                 }
