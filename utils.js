@@ -24,3 +24,6 @@ module.exports.astDereferencer = astDereferencer;
 
 const { srcDecoder } = require('./dist/src-decoder');
 module.exports.srcDecoder = srcDecoder;
+
+const { NodeInfoResolver } = require('./dist/node-info');
+module.exports.NodeInfoResolver = NodeInfoResolver;

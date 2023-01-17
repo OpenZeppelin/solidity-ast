@@ -11,6 +11,7 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
   const asts = Array.from(Object.values(solcOutput.sources), s => s.ast);
   const cache = new Map<number, Node>();
 
+
   function deref<T extends NodeType>(nodeType: T | readonly T[], id: number): NodeTypeMap[T] {
     if (!isArray(nodeType)) {
       nodeType = [nodeType];

@@ -5,7 +5,7 @@ const assert = require('assert');
 const { latest } = require('./helpers/solc-versions');
 const { compile } = require('./helpers/solc-compile');
 
-const { isNodeType, findAll, astDereferencer, srcDecoder } = require('../utils');
+const { isNodeType, findAll, astDereferencer, srcDecoder, NodeInfoResolver } = require('../utils');
 
 describe('isNodeType', function () {
   it('single', function () {
@@ -154,3 +154,46 @@ describe('src decoder', function () {
     assert.strictEqual(decodeSrc(line8), 'file.sol:8');
   });
 });
+
+describe('fast node info lookup', function () {
+  const source = path.join(__dirname, 'sources/ast-deref.sol');
+
+  before('reading and compiling source file', async function () {
+    this.timeout(10 * 60 * 1000);
+    const content = await fs.readFile(source, 'utf8');
+    this.output = await compile(latest, { 0: { content } });
+    this.ast = this.output.sources[0].ast;
+    this.nodeInfoResolver = new NodeInfoResolver(this.output);
+  });
+
+  it('finds contracts', function () {
+    for (const c of findAll('ContractDefinition', this.ast)) {
+      const node = this.nodeInfoResolver.getNodeInfo(c.id).node;
+      assert.strictEqual(c, node);
+      assert.strictEqual(node.nodeType, 'ContractDefinition');
+    }
+  });
+
+  it('finds functions', function () {
+    for (const c of findAll('FunctionDefinition', this.ast)) {
+      const node = this.nodeInfoResolver.getNodeInfo(c.id).node;
+      assert.strictEqual(c, node);
+      assert.strictEqual(node.nodeType, 'FunctionDefinition');
+    }
+  });
+
+  it('errors on unknown id', function () {
+    assert(
+        (() => this.nodeInfoResolver.getNodeInfo(1e10) === undefined));
+  });
+
+  it('curried', function () {
+    const c3 = [...findAll('ContractDefinition', this.ast)].find(c => c.name === 'C3');
+    const baseContracts = c3.linearizedBaseContracts.map(
+        (contractID) => {
+          return this.nodeInfoResolver.getNodeInfo(contractID).node ?? '';
+        });
+    assert.deepEqual(baseContracts.map(c => c.name), ['C3', 'C2', 'C1']);
+  });
+});
+
