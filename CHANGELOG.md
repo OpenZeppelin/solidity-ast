@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.41 (2023-01-20)
+- Optimize AST dereferencer.
+
 ### 0.4.40 (2022-12-29)
 - Further optimize `findAll` for multiple wanted node types.
 

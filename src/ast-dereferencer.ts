@@ -8,8 +8,28 @@ import type { SolcOutput } from '../solc';
 // UserDefinedTypeName, etc.) to look up a variable definition or type definition.
 
 export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
-  const asts = Array.from(Object.values(solcOutput.sources), s => s.ast);
   const cache = new Map<number, Node>();
+
+  const asts = Array.from(
+    Object.values(solcOutput.sources),
+    s => s.ast,
+  ).sort((a, b) => a.id - b.id);
+
+  // To look for a given node we iterate over all nodes in all ASTs. As an optimization, we try to find the ideal first
+  // candidate based on the observation that node ids are assigned in postorder, therefore a SourceUnit's own id is always
+  // larger than that of the nodes in it. As a fallback mechanism in case this assumption breaks, if the node is not found
+  // in the first one we proceed to check all ASTs.
+  function* astCandidates(id: number) {
+    const first = asts.find(a => (id <= a.id));
+    if (first) {
+      yield first;
+    }
+    for (const ast of asts) {
+      if (ast !== first) {
+        yield ast;
+      }
+    }
+  }
 
   function deref<T extends NodeType>(nodeType: T | readonly T[], id: number): NodeTypeMap[T] {
     if (!isArray(nodeType)) {
@@ -24,7 +44,7 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
       }
     }
 
-    for (const ast of asts) {
+    for (const ast of astCandidates(id)) {
       for (const node of findAll(nodeType, ast)) {
         if (node.id === id) {
           cache.set(id, node);
