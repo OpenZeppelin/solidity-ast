@@ -1,4 +1,4 @@
-import { Node, NodeType } from '../node';
+import { Node } from '../node';
 import type { SolcOutput } from '../solc';
 
 const util = require('util')
@@ -37,8 +37,8 @@ export class NodeInfoResolver {
         // console.log(util.inspect(nodeKeys, { showHidden: false, depth: null, colors: true }));
         nodeKeys.forEach( ( key ) => {
             if (key in node) {
-                // @ts-ignore
-                const member: Node[] = Array.isArray(node[key]) ? node[key] : [node[key]];
+                const childNode = node[key as keyof Node];
+                const member: Node[] = Array.isArray(childNode) ? childNode as Node[] : [childNode as unknown as Node];
                 for (const item of member) {
                     if (item && ('id' in item) && ('src' in item)) {
                         this.addProps(path, node, item);
