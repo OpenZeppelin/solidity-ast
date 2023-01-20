@@ -358,6 +358,7 @@ const schema = {
           'structConstructorCall',
         ),
         names: array(string),
+        nameLocations: optional(array(string)),
         tryCall: boolean,
         typeDescriptions,
       },
@@ -411,6 +412,7 @@ const schema = {
 
       IdentifierPath: {
         name: string,
+        nameLocations: optional(array(string)),
         referencedDeclaration: integer,
       },
 
@@ -511,6 +513,7 @@ const schema = {
         ...baseExpressionL,
         expression: ref('Expression'),
         memberName: string,
+        memberLocation: optional(string),
         referencedDeclaration: nullable(integer),
       },
 

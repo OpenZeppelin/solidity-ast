@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.4.43 (2023-01-20)
+
+- Added `FunctionCall.nameLocations` and `IdentifierPath.nameLocations` from Solidity 0.8.16.
+- Added `MemberAccess.memberLocation` from Solidity 0.8.16.
+
 ### 0.4.42 (2023-01-20)
 
 - Revert optimizations to `findAll` from 0.4.40.

@@ -4,7 +4,6 @@ library Lib {
 }
 
 using Lib for uint;
-using Lib for uint global;
 
 contract C {
     function foo() external {
