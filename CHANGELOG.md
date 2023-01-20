@@ -1,36 +1,47 @@
 # Changelog
 
 ### 0.4.42 (2023-01-20)
+
 - Revert optimizations to `findAll` from 0.4.40.
 
 ### 0.4.41 (2023-01-20)
+
 - Optimize AST dereferencer.
 
 ### 0.4.40 (2022-12-29)
+
 - Further optimize `findAll` for multiple wanted node types.
 
 ### 0.4.39 (2022-12-16)
+
 - Optimize `findAll` for multiple wanted node types.
 
 ### 0.4.38 (2022-11-15)
+
 - Add missing types for `srcDecoder`.
 
 ### 0.4.37 (2022-11-15)
+
 - Add `srcDecoder`, a new util to decode source locations in AST nodes.
 
 ### 0.4.36 (2022-11-14)
+
 - Fix error in `findAll` when the code contains user defined value types.
 
 ### 0.4.35 (2022-06-23)
+
 - Make `IndexAccess.indexExpression` nullable, which shows up when array types are used with `abi.decode`.
 
 ### 0.4.34 (2022-06-11)
+
 - Add missing files to package.
 
 ### 0.4.33 (2022-06-11)
+
 - Removed circular dependency from utils.
 
 ### 0.4.32 (2022-04-24)
+
 - Added `EventDefinition.eventSelector` and `ErrorDefinition.errorSelector`.
 - Added `InlineAssembly.flags` which can now indicate assembly as memory safe.
 - Added `UsingForDirective.global`.
@@ -38,9 +49,11 @@
 - Fixed `UsingForDirective.typeName`: it should have always been nullable to account for `using ... for *`.
 
 ### 0.4.31 (2022-03-20)
+
 - Add `SolcInput` interface.
 
 ### 0.4.30 (2022-01-27)
+
 - Support an array of node types in `isNodeType`.
 
 ### 0.4.29 (2021-12-24)
@@ -234,7 +247,7 @@ Due to a bug in Solidity 0.7.2, these two properties are missing in the ASTs pro
 - Added `solidity-ast/predicates` with type guards for type-safe filtering.
 
 ```typescript
-import { isContractDefinition } from 'solidity-ast/predicates';
+import { isContractDefinition } from "solidity-ast/predicates";
 const contractDefs = sourceUnit.nodes.filter(isContractDefinition);
 // : ContractDefinition[]
 ```
