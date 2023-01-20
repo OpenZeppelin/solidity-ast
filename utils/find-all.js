@@ -27,17 +27,16 @@ function* findAll(nodeType, node, prune) {
   }
 }
 
-const nextPropsCache = new Map();
+const nextPropsCache = new WeakMap();
 
 function getNextProps(wantedNodeTypes, currentNodeType) {
   if (typeof wantedNodeTypes === 'string') {
     return finder[wantedNodeType] ?? [];
   }
-  const cacheKey = JSON.stringify(wantedNodeTypes);
-  let cache = nextPropsCache.get(cacheKey);
+  let cache = nextPropsCache.get(wantedNodeTypes);
   if (!cache) {
     cache = {};
-    nextPropsCache.set(cacheKey, cache);
+    nextPropsCache.set(wantedNodeTypes, cache);
   } else if (currentNodeType in cache) {
     return cache[currentNodeType];
   }

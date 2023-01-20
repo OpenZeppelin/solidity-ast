@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.42 (2023-01-20)
+- Revert optimizations to `findAll` from 0.4.40.
+
 ### 0.4.41 (2023-01-20)
 - Optimize AST dereferencer.
 
