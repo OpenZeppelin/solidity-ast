@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.44 (2023-01-30)
+
+- Added `'~'` as a possible value for `UnaryOperation.operator`.
+
 ### 0.4.43 (2023-01-20)
 
 - Added `FunctionCall.nameLocations` and `IdentifierPath.nameLocations` from Solidity 0.8.16.
