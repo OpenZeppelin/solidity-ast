@@ -612,7 +612,8 @@ const schema = {
           '--',
           '-',
           '!',
-          'delete'
+          'delete',
+          '~'
         ),
         prefix: boolean,
         subExpression: ref('Expression'),
