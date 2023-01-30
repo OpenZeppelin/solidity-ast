@@ -88,7 +88,7 @@ contract Foo {
 
     // UnaryOperation
     y = -3;
-    y = ~uint8(8);
+    y = ~int8(8);
 
     // ForStatement
     for (uint i = 0; i < 10; i++) {}
