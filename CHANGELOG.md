@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.4.45 (2023-02-01)
+
+- Added `'paris'` as a possible value for `InlineAssembly.evmVersion`.
+- Added new `Mapping` fields `keyName`, `keyNameLocation`, `valueName`, `valueNameLocation` from Solidity 0.8.18.
+
 ### 0.4.44 (2023-01-30)
 
 - Added `'~'` as a possible value for `UnaryOperation.operator`.

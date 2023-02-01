@@ -477,6 +477,7 @@ const schema = {
           'istanbul',
           'berlin',
           'london',
+          'paris',
         ),
         externalReferences: array(object({
           declaration: integer,
@@ -507,6 +508,10 @@ const schema = {
         ...baseTypeName,
         keyType: ref('TypeName'),
         valueType: ref('TypeName'),
+        keyName: optional(string),
+        keyNameLocation: optional(string),
+        valueName: optional(string),
+        valueNameLocation: optional(string),
       },
 
       MemberAccess: {
