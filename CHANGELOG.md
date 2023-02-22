@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.4.46 (2023-02-22)
+
+- Added new variant of `UsingForDirective` for user-defined operators.
+- Added `BinaryOperation.function` and `UnaryOperation.function` for user-defined operators.
+
 ### 0.4.45 (2023-02-01)
 
 - Added `'paris'` as a possible value for `InlineAssembly.evmVersion`.

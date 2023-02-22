@@ -231,6 +231,7 @@ const schema = {
           '>>'
         ),
         rightExpression: ref('Expression'),
+        function: optional(integer),
       },
 
       Block: {
@@ -622,6 +623,7 @@ const schema = {
         ),
         prefix: boolean,
         subExpression: ref('Expression'),
+        function: optional(integer),
       },
 
       UncheckedBlock: {
@@ -644,9 +646,31 @@ const schema = {
       },
 
       UsingForDirective: {
-        functionList: optional(array(object({
-          function: ref('IdentifierPath'),
-        }))),
+        functionList: optional(array(anyOf(
+          object({
+            function: ref('IdentifierPath'),
+          }),
+          object({
+            operator: literal(
+              '&',
+              '|',
+              '^',
+              '~',
+              '+',
+              '-',
+              '*',
+              '/',
+              '%',
+              '==',
+              '!=',
+              '<',
+              '<=',
+              '>',
+              '>=',
+            ),
+            definition: ref('IdentifierPath'),
+          }),
+        ))),
         global: optional(boolean),
         libraryName: optional(anyOf(
           ref('UserDefinedTypeName'),
