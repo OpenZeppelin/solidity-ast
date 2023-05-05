@@ -103,6 +103,14 @@ for (const contractDef of findAll('ContractDefinition', sourceUnit)) {
 }
 ```
 
+It is also possible to obtain the source unit that contains the dereferenced node:
+
+```typescript
+const deref = astDereferencer(solcOutput);
+
+const { node, sourceUnit } = deref.withSourceUnit('ContractDefinition', 4);
+```
+
 ### `srcDecoder(solcInput, solcOutput, basePath = '.') => (node: Node) => string`
 
 `srcDecoder` allows decoding of the `src` property of a node, which looks

@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.47 (2023-05-04)
+
+- Added `ASTDereferencer.withSourceUnit` to be able to obtain the source unit that contains a node with a given id.
+
 ### 0.4.46 (2023-02-22)
 
 - Added new variant of `UsingForDirective` for user-defined operators.

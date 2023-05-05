@@ -1,14 +1,15 @@
 import { findAll } from '../utils/find-all';
-import type { ASTDereferencer } from '../utils';
-import type { Node, NodeType, NodeTypeMap } from '../node';
+import type { ASTDereferencer, NodeWithSourceUnit } from '../utils';
+import type { Node, NodeType } from '../node';
 import type { SolcOutput } from '../solc';
+import { SourceUnit } from '../types';
 
 // An ASTDereferencer is a function that looks up an AST node given its id, in all of the source files involved in a
 // solc run. It will generally be used together with the AST property `referencedDeclaration` (found in Identifier,
 // UserDefinedTypeName, etc.) to look up a variable definition or type definition.
 
 export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
-  const cache = new Map<number, Node>();
+  const cache = new Map<number, NodeWithSourceUnit>();
 
   const asts = Array.from(
     Object.values(solcOutput.sources),
@@ -31,7 +32,7 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
     }
   }
 
-  function deref<T extends NodeType>(nodeType: T | readonly T[], id: number): NodeTypeMap[T] {
+  function deref(nodeType: NodeType | readonly NodeType[], id: number): NodeWithSourceUnit {
     if (!isArray(nodeType)) {
       nodeType = [nodeType];
     }
@@ -39,16 +40,17 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
     const cached = cache.get(id);
 
     if (cached) {
-      if ((nodeType as readonly NodeType[]).includes(cached.nodeType)) {
-        return cached as NodeTypeMap[T];
+      if (nodeType.includes(cached.node.nodeType)) {
+        return cached;
       }
     }
 
     for (const ast of astCandidates(id)) {
       for (const node of findAll(nodeType, ast)) {
         if (node.id === id) {
-          cache.set(id, node);
-          return node;
+          const nodeWithSourceUnit = { node, sourceUnit: ast };
+          cache.set(id, nodeWithSourceUnit);
+          return nodeWithSourceUnit;
         }
       }
     }
@@ -56,7 +58,14 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
     throw new Error(`No node with id ${id} of type ${nodeType}`);
   }
 
-  return curry2(deref);
+  function derefNode(nodeType: NodeType | readonly NodeType[], id: number) {
+    return deref(nodeType, id).node;
+  }
+
+  return Object.assign(
+    curry2(derefNode),
+    { withSourceUnit: deref }
+  );
 }
 
 export interface Curried<A, B, T> {

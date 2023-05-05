@@ -131,6 +131,31 @@ describe('ast dereferencer', function () {
   });
 });
 
+describe('ast dereferencer with source unit', function () {
+  const source0 = path.join(__dirname, 'sources/ast-deref.sol');
+  const source1 = path.join(__dirname, 'sources/ast-deref-2.sol');
+
+  before('reading and compiling source file', async function () {
+    this.timeout(10 * 60 * 1000);
+    const content0 = await fs.readFile(source0, 'utf8');
+    const content1 = await fs.readFile(source1, 'utf8');
+    this.output = await compile(latest, { 0: { content: content0 }, 1: { content: content1 } });
+    this.ast = this.output.sources[0].ast;
+  });
+
+
+  it('finds contracts', function () {
+    const deref = astDereferencer(this.output);
+    for (const { ast } of Object.values(this.output.sources)) {
+      for (const c of findAll('ContractDefinition', ast)) {
+        const { node, sourceUnit } = deref.withSourceUnit('ContractDefinition', c.id);
+        assert.strictEqual(c, node);
+        assert.strictEqual(sourceUnit, ast);
+      }
+    }
+  });
+});
+
 describe('src decoder', function () {
   const source = path.join(__dirname, 'sources/src-decoder.sol');
 
