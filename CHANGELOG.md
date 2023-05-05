@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.48 (2023-05-04)
+
+- Fix return type of `ASTDereferencer.withSourceUnit`.
+
 ### 0.4.47 (2023-05-04)
 
 - Added `ASTDereferencer.withSourceUnit` to be able to obtain the source unit that contains a node with a given id.

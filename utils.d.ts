@@ -7,8 +7,8 @@ export { findAll } from './utils/find-all';
 export function isNodeType<N extends Node, T extends NodeType>(nodeType: T | readonly T[]): (node: N) => node is N & NodeTypeMap[T];
 export function isNodeType<N extends Node, T extends NodeType>(nodeType: T | readonly T[], node: N): node is N & NodeTypeMap[T];
 
-export interface NodeWithSourceUnit<T extends Node = Node> {
-  node: Node;
+export interface NodeWithSourceUnit<N extends Node = Node> {
+  node: N;
   sourceUnit: SourceUnit;
 }
 
