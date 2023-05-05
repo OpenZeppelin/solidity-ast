@@ -1,6 +1,6 @@
 import { findAll } from '../utils/find-all';
 import type { ASTDereferencer, NodeWithSourceUnit } from '../utils';
-import type { Node, NodeType } from '../node';
+import type { Node, NodeType, NodeTypeMap } from '../node';
 import type { SolcOutput } from '../solc';
 import { SourceUnit } from '../types';
 
@@ -32,6 +32,7 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
     }
   }
 
+  function deref<T extends NodeType>(nodeType: T | readonly T[], id: number): NodeWithSourceUnit<NodeTypeMap[T]>;
   function deref(nodeType: NodeType | readonly NodeType[], id: number): NodeWithSourceUnit {
     if (!isArray(nodeType)) {
       nodeType = [nodeType];
@@ -55,7 +56,7 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
       }
     }
 
-    throw new Error(`No node with id ${id} of type ${nodeType}`);
+    throw new ASTDereferencerError(id, nodeType);
   }
 
   function derefNode(nodeType: NodeType | readonly NodeType[], id: number) {
@@ -87,3 +88,9 @@ export function curry2<A, B, T>(fn: (a: A, b: B) => T): Curried<A, B, T> {
 }
 
 const isArray: (arg: any) => arg is any[] | readonly any[]  = Array.isArray;
+
+export class ASTDereferencerError extends Error {
+  constructor(readonly id: number, readonly nodeType: readonly NodeType[]) {
+    super(`No node with id ${id} of type ${nodeType}`);
+  }
+}

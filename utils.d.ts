@@ -20,6 +20,11 @@ export interface ASTDereferencer {
 
 export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer;
 
+export class ASTDereferencerError extends Error {
+  readonly id: number;
+  readonly nodeType: readonly NodeType[];
+}
+
 export type SrcDecoder = (node: { src: string }) => string;
 
 export function srcDecoder(solcInput: SolcInput, solcOutput: SolcOutput): SrcDecoder;

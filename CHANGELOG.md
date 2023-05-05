@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.49 (2023-05-04)
+
+- Add a custom Error subclass for ASTDereferencer errors.
+
 ### 0.4.48 (2023-05-04)
 
 - Fix return type of `ASTDereferencer.withSourceUnit`.
