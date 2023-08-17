@@ -16,7 +16,7 @@ function findAll(nodeType, node, prune) {
 
   return (
     function* findAllInner(node) {
-      if (prune && prune(node)) {
+      if (typeof node !== 'object' || (prune && prune(node))) {
         return;
       }
 
@@ -28,22 +28,16 @@ function findAll(nodeType, node, prune) {
         yield node;
       }
 
-      if (node.nodeType === undefined) {
-        if ('foreign' in node) {
-          yield* findAllInner(node.foreign);
-        }
-      } else {
-        for (const prop of getNextProps(nodeType, node.nodeType, cache)) {
-          const member = node[prop];
-          if (Array.isArray(member)) {
-            for (const sub2 of member) {
-              if (sub2) {
-                yield* findAllInner(sub2);
-              }
+      for (const prop of getNextProps(nodeType, node.nodeType ?? '$other', cache)) {
+        const member = node[prop];
+        if (Array.isArray(member)) {
+          for (const sub2 of member) {
+            if (sub2) {
+              yield* findAllInner(sub2);
             }
-          } else if (member) {
-            yield* findAllInner(member);
           }
+        } else if (member) {
+          yield* findAllInner(member);
         }
       }
     }

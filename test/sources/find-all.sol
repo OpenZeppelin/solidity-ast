@@ -2,6 +2,8 @@
 
 pragma solidity *;
 
+import {Import} from "./import.sol";
+
 struct S1 {
     uint x;
 }

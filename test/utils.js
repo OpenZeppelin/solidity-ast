@@ -31,21 +31,23 @@ describe('isNodeType', function () {
 });
 
 describe('findAll', function () {
-  const source = path.join(__dirname, 'sources/find-all.sol');
   const counts = {
     SourceUnit: 1,
     StructDefinition: 2,
     FunctionDefinition: 1,
     YulVariableDeclaration: 1,
+    Identifier: 1,
   };
 
-  const starCount = 18;
+  const starCount = 20;
 
   before('reading and compiling source file', async function () {
     this.timeout(10 * 60 * 1000);
-    const content = await fs.readFile(source, 'utf8');
-    const output = await compile(latest, { 0: { content } });
-    this.ast = output.sources[0].ast;
+    const output = await compile(latest, {
+      ['find-all.sol']: { content: await fs.readFile(path.join(__dirname, 'sources/find-all.sol'), 'utf8') },
+      ['import.sol']: { content: await fs.readFile(path.join(__dirname, 'sources/import.sol'), 'utf8') },
+    });
+    this.ast = output.sources['find-all.sol'].ast;
   });
 
   it('basic', function () {

@@ -16,9 +16,12 @@ for (const def of [...Object.values(schema.definitions), schema]) {
     _.defaults(reachable, { [parentType]: {} });
 
     for (const prop in def.properties) {
-      for (const containedType of getReachableNodeTypes(def.properties[prop])) {
-        _.set(reachable, [containedType, parentType, prop], true);
+      for (const contained of getReachableNodeTypes(def.properties[prop])) {
+        _.set(reachable, [contained.nodeType, parentType, prop], true);
         _.set(reachable, ['*', parentType, prop], true);
+        for (const nonNodeParent of contained.nonNodeParents) {
+          _.set(reachable, [contained.nodeType, '$other', nonNodeParent], true);
+        }
       }
     }
   }
@@ -28,30 +31,40 @@ const finder = _.mapValues(reachable, f => _.mapValues(f, Object.keys));
 
 fs.writeFileSync('finder.json', JSON.stringify(finder, null, 2));
 
-function* getReachableNodeTypes(nodeSchema, visited = new Set()) {
-  yield* _.get(nodeSchema, ['properties', 'nodeType', 'enum'], []);
+function* getReachableNodeTypes(nodeSchema, nonNodeParents = [], visited = new Set()) {
+  const nodeTypes = nodeSchema?.properties?.nodeType?.enum;
+
+  if (nodeTypes) {
+    yield* nodeTypes.map(nodeType => ({ nodeType, nonNodeParents }));
+  }
 
   if ('$ref' in nodeSchema) {
     const [ ref ] = nodeSchema['$ref'].match(/[^\/]+$/);
     if (!visited.has(ref)) {
       visited.add(ref);
-      yield* getReachableNodeTypes(schema.definitions[ref], visited);
+      yield* getReachableNodeTypes(schema.definitions[ref], nonNodeParents, visited);
     }
   }
 
   if ('anyOf' in nodeSchema) {
     for (const subSchema of nodeSchema['anyOf']) {
-      yield* getReachableNodeTypes(subSchema, visited);
+      yield* getReachableNodeTypes(subSchema, nonNodeParents, visited);
     }
   }
 
   if ('properties' in nodeSchema) {
-    for (const prop of Object.values(nodeSchema.properties)) {
-      yield* getReachableNodeTypes(prop, visited);
+    for (const [subprop, subpropSchema] of Object.entries(nodeSchema.properties)) {
+      if (!nodeTypes) {
+        nonNodeParents.push(subprop);
+      }
+      yield* getReachableNodeTypes(subpropSchema, nonNodeParents, visited);
+      if (!nodeTypes) {
+        nonNodeParents.pop();
+      }
     }
   }
 
   if ('items' in nodeSchema) {
-    yield* getReachableNodeTypes(nodeSchema.items, visited);
+    yield* getReachableNodeTypes(nodeSchema.items, nonNodeParents, visited);
   }
 }
