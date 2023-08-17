@@ -1,4 +1,4 @@
-import { findAll } from '../utils/find-all';
+import { findAll, ExtendedNodeType, ExtendedNodeTypeMap } from '../utils/find-all';
 import type { ASTDereferencer, NodeWithSourceUnit } from '../utils';
 import type { Node, NodeType, NodeTypeMap } from '../node';
 import type { SolcOutput } from '../solc';
@@ -32,30 +32,32 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
     }
   }
 
-  function deref<T extends NodeType>(nodeType: T | readonly T[], id: number): NodeWithSourceUnit<NodeTypeMap[T]>;
-  function deref(nodeType: NodeType | readonly NodeType[], id: number): NodeWithSourceUnit {
-    if (!isArray(nodeType)) {
-      nodeType = [nodeType];
-    }
-
+  function deref<T extends ExtendedNodeType>(nodeType: T | readonly T[], id: number): NodeWithSourceUnit<ExtendedNodeTypeMap[T]>;
+  function deref(nodeType: ExtendedNodeType | readonly ExtendedNodeType[], id: number): NodeWithSourceUnit {
     const cached = cache.get(id);
 
     if (cached) {
-      if (nodeType.includes(cached.node.nodeType)) {
+      if (
+        nodeType === cached.node.nodeType ||
+        nodeType === "*" ||
+        (Array.isArray(nodeType) && nodeType.includes(cached.node.nodeType))
+      ) {
         return cached;
       }
-    }
-
-    for (const ast of astCandidates(id)) {
-      for (const node of findAll(nodeType, ast)) {
-        if (node.id === id) {
-          const nodeWithSourceUnit = { node, sourceUnit: ast };
-          cache.set(id, nodeWithSourceUnit);
-          return nodeWithSourceUnit;
+    } else {
+      for (const ast of astCandidates(id)) {
+        for (const node of findAll(nodeType, ast)) {
+          if (node.id === id) {
+            const nodeWithSourceUnit = { node, sourceUnit: ast };
+            cache.set(id, nodeWithSourceUnit);
+            return nodeWithSourceUnit;
+          }
         }
       }
+
     }
 
+    nodeType = Array.isArray(nodeType) ? nodeType : [nodeType];
     throw new ASTDereferencerError(id, nodeType);
   }
 
@@ -90,7 +92,7 @@ export function curry2<A, B, T>(fn: (a: A, b: B) => T): Curried<A, B, T> {
 const isArray: (arg: any) => arg is any[] | readonly any[]  = Array.isArray;
 
 export class ASTDereferencerError extends Error {
-  constructor(readonly id: number, readonly nodeType: readonly NodeType[]) {
+  constructor(readonly id: number, readonly nodeType: readonly ExtendedNodeType[]) {
     super(`No node with id ${id} of type ${nodeType}`);
   }
 }

@@ -1,43 +1,60 @@
 const finder = require('../finder.json');
 
-function* findAll(nodeType, node, prune) {
-  if (!Array.isArray(nodeType)) {
-    nodeType = [nodeType];
-  }
+const nextPropsCache = new Map();
 
-  if (prune && prune(node)) {
-    return;
-  }
+function findAll(nodeType, node, prune) {
+  let cache;
 
-  if (nodeType.includes(node.nodeType)) {
-    yield node;
-  }
-
-  for (const prop of getNextProps(nodeType, node.nodeType)) {
-    const member = node[prop];
-    if (Array.isArray(member)) {
-      for (const sub2 of member) {
-        if (sub2) {
-          yield* findAll(nodeType, sub2, prune);
-        }
-      }
-    } else if (member) {
-      yield* findAll(nodeType, member, prune);
+  if (Array.isArray(nodeType)) {
+    const cacheKey = JSON.stringify(nodeType);
+    cache = nextPropsCache.get(cacheKey);
+    if (!cache) {
+      cache = {};
+      nextPropsCache.set(cacheKey, cache);
     }
   }
+
+  return (
+    function* findAllInner(node) {
+      if (prune && prune(node)) {
+        return;
+      }
+
+      if (
+        nodeType === node.nodeType ||
+        nodeType === "*" ||
+        (Array.isArray(nodeType) && nodeType.includes(node.nodeType))
+      ) {
+        yield node;
+      }
+
+      if (node.nodeType === undefined) {
+        if ('foreign' in node) {
+          yield* findAllInner(node.foreign);
+        }
+      } else {
+        for (const prop of getNextProps(nodeType, node.nodeType, cache)) {
+          const member = node[prop];
+          if (Array.isArray(member)) {
+            for (const sub2 of member) {
+              if (sub2) {
+                yield* findAllInner(sub2);
+              }
+            }
+          } else if (member) {
+            yield* findAllInner(member);
+          }
+        }
+      }
+    }
+  )(node);
 }
 
-const nextPropsCache = new WeakMap();
-
-function getNextProps(wantedNodeTypes, currentNodeType) {
+function getNextProps(wantedNodeTypes, currentNodeType, cache) {
   if (typeof wantedNodeTypes === 'string') {
-    return finder[wantedNodeType] ?? [];
+    return finder[wantedNodeTypes][currentNodeType] ?? [];
   }
-  let cache = nextPropsCache.get(wantedNodeTypes);
-  if (!cache) {
-    cache = {};
-    nextPropsCache.set(wantedNodeTypes, cache);
-  } else if (currentNodeType in cache) {
+  if (currentNodeType in cache) {
     return cache[currentNodeType];
   }
   const next = new Set();
@@ -49,8 +66,7 @@ function getNextProps(wantedNodeTypes, currentNodeType) {
       }
     }
   }
-  cache[currentNodeType] = next;
-  return next;
+  return cache[currentNodeType] = [...next];
 }
 
 module.exports = {

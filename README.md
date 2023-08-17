@@ -82,6 +82,9 @@ for (const typeDef of findAll(['EnumDefinition', 'StructDefinition'], sourceUnit
 }
 ```
 
+To enumerate all subnodes regardless of node type, `nodeType` can be `'*'` (a
+string with a single asterisk).
+
 ### `astDereferencer(solcOutput) => (nodeType, id) => Node`
 
 `astDereferencer` looks up AST nodes based on their id. Notably, it works
@@ -110,6 +113,8 @@ const deref = astDereferencer(solcOutput);
 
 const { node, sourceUnit } = deref.withSourceUnit('ContractDefinition', 4);
 ```
+
+If the node type is unknown you can specify `'*'` for `nodeType`.
 
 ### `srcDecoder(solcInput, solcOutput, basePath = '.') => (node: Node) => string`
 

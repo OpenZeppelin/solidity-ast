@@ -18,6 +18,7 @@ for (const def of [...Object.values(schema.definitions), schema]) {
     for (const prop in def.properties) {
       for (const containedType of getReachableNodeTypes(def.properties[prop])) {
         _.set(reachable, [containedType, parentType, prop], true);
+        _.set(reachable, ['*', parentType, prop], true);
       }
     }
   }

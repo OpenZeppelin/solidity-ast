@@ -39,6 +39,8 @@ describe('findAll', function () {
     YulVariableDeclaration: 1,
   };
 
+  const starCount = 18;
+
   before('reading and compiling source file', async function () {
     this.timeout(10 * 60 * 1000);
     const content = await fs.readFile(source, 'utf8');
@@ -64,6 +66,11 @@ describe('findAll', function () {
     const count = Object.values(counts).reduce((a, b) => a + b);
     const nodes = [...findAll(nodeTypes, this.ast)];
     assert.strictEqual(nodes.length, count);
+  });
+
+  it('star', function () {
+    const nodes = [...findAll('*', this.ast)];
+    assert.strictEqual(nodes.length, starCount);
   });
 });
 

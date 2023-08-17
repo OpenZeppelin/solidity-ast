@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.4.50 (2023-08-17)
+
+- Optimize `findAll`.
+- Add ability to enumerate all nodes with `findAll('*', node)` or dereference an unknown node type with `deref('*', id)`.
+
 ### 0.4.49 (2023-05-04)
 
 - Add a custom Error subclass for ASTDereferencer errors.
