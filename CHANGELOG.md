@@ -2,9 +2,9 @@
 
 ### 0.4.50 (2023-08-17)
 
-- Optimize `findAll`.
-- Add ability to enumerate all nodes with `findAll('*', node)` or dereference an unknown node type with `deref('*', id)`.
-- Fix `findAll` exhaustivity around objects in the AST that are not AST nodes.
+- Significantly optimized `findAll` and `astDereferencer`.
+- Added ability to enumerate all nodes with `findAll('*', node)` or dereference an unknown node type with `deref('*', id)`.
+- Fixed `findAll` exhaustivity around objects in the AST that are not AST nodes.
 
 ### 0.4.49 (2023-05-04)
 

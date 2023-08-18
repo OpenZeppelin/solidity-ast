@@ -1,3 +1,4 @@
+const { isNodeType } = require('./is-node-type');
 const finder = require('../finder.json');
 
 const nextPropsCache = new Map();
@@ -26,11 +27,7 @@ function* findAll(nodeType, node, prune) {
       continue;
     }
 
-    if (
-      nodeType === node.nodeType ||
-      nodeType === "*" ||
-      (Array.isArray(nodeType) && nodeType.includes(node.nodeType))
-    ) {
+    if (isNodeType(nodeType, node)) {
       yield node;
     }
 

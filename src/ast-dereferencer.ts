@@ -1,8 +1,11 @@
-import { findAll, ExtendedNodeType, ExtendedNodeTypeMap } from '../utils/find-all';
+import { isNodeType, ExtendedNodeType, ExtendedNodeTypeMap } from '../utils/is-node-type';
+import { findAll } from '../utils/find-all';
 import type { ASTDereferencer, NodeWithSourceUnit } from '../utils';
 import type { Node, NodeType, NodeTypeMap } from '../node';
 import type { SolcOutput } from '../solc';
 import { SourceUnit } from '../types';
+
+import findLast from 'array.prototype.findlast';
 
 // An ASTDereferencer is a function that looks up an AST node given its id, in all of the source files involved in a
 // solc run. It will generally be used together with the AST property `referencedDeclaration` (found in Identifier,
@@ -16,45 +19,66 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
     s => s.ast,
   ).sort((a, b) => a.id - b.id);
 
-  // To look for a given node we iterate over all nodes in all ASTs. As an optimization, we try to find the ideal first
-  // candidate based on the observation that node ids are assigned in postorder, therefore a SourceUnit's own id is always
-  // larger than that of the nodes in it. As a fallback mechanism in case this assumption breaks, if the node is not found
-  // in the first one we proceed to check all ASTs.
-  function* astCandidates(id: number) {
-    const first = asts.find(a => (id <= a.id));
-    if (first) {
-      yield first;
-    }
-    for (const ast of asts) {
-      if (ast !== first) {
-        yield ast;
-      }
-    }
-  }
-
   function deref<T extends ExtendedNodeType>(nodeType: T | readonly T[], id: number): NodeWithSourceUnit<ExtendedNodeTypeMap[T]>;
   function deref(nodeType: ExtendedNodeType | readonly ExtendedNodeType[], id: number): NodeWithSourceUnit {
     const cached = cache.get(id);
 
     if (cached) {
-      if (
-        nodeType === cached.node.nodeType ||
-        nodeType === "*" ||
-        (Array.isArray(nodeType) && nodeType.includes(cached.node.nodeType))
-      ) {
+      if (isNodeType(nodeType, cached.node)) {
         return cached;
       }
-    } else {
-      for (const ast of astCandidates(id)) {
-        for (const node of findAll(nodeType, ast)) {
-          if (node.id === id) {
-            const nodeWithSourceUnit = { node, sourceUnit: ast };
-            cache.set(id, nodeWithSourceUnit);
-            return nodeWithSourceUnit;
+    } else if (id >= 0) {
+      // Node ids appear to be assigned in postorder. This means that a node's own id is always
+      // larger than that of the nodes under it. We descend through the AST guided by this
+      // assumption. Among a set of sibling nodes we choose the one with the smallest id that
+      // is larger than the id we're looking for.
+
+      let ast = asts.find(ast => (id <= ast.id));
+      let root: Node | Node[] | undefined = ast;
+
+      while (root) {
+        if (Array.isArray(root)) {
+          root = root.find(n => n && (id <= n.id));
+        } else if (root.id === id) {
+          break;
+        } else {
+          let next, nextId;
+          for (const cand of Object.values(root)) {
+            if (typeof cand !== "object") continue;
+            const candId = Array.isArray(cand) ? findLast(cand, n => n)?.id : cand.id;
+            if (candId === undefined) continue;
+            if (id <= candId && (nextId === undefined || candId <= nextId)) {
+              next = cand;
+              nextId = candId;
+            }
+          }
+          root = next;
+        }
+      }
+
+      let found: Node | undefined = root;
+
+      // As a fallback mechanism in case the postorder assumption breaks, if the node is not found
+      // we proceed to check all nodes in all ASTs.
+
+      if (found === undefined) {
+        outer: for (ast of asts) {
+          for (const node of findAll(nodeType, ast)) {
+            if (node.id === id) {
+              found = node;
+              break outer;
+            }
           }
         }
       }
 
+      if (found !== undefined) {
+        const nodeWithSourceUnit = { node: found, sourceUnit: ast! };
+        cache.set(id, nodeWithSourceUnit);
+        if (isNodeType(nodeType, found)) {
+          return nodeWithSourceUnit;
+        }
+      }
     }
 
     nodeType = Array.isArray(nodeType) ? nodeType : [nodeType];

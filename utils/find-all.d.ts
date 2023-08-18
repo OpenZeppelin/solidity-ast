@@ -1,10 +1,5 @@
-import { Node, NodeType, NodeTypeMap, YulNode, YulNodeType, YulNodeTypeMap } from '../node';
-
-export type ExtendedNodeType = '*' | NodeType;
-
-export interface ExtendedNodeTypeMap extends NodeTypeMap {
-  '*': Node;
-}
+import { Node, YulNode, YulNodeType, YulNodeTypeMap } from '../node';
+import { ExtendedNodeType, ExtendedNodeTypeMap } from './is-node-type';
 
 export function findAll<T extends ExtendedNodeType>(nodeType: T | readonly T[]): (node: Node) => Generator<ExtendedNodeTypeMap[T]>;
 export function findAll<T extends ExtendedNodeType>(nodeType: T | readonly T[], node: Node, prune?: (node: Node) => boolean): Generator<ExtendedNodeTypeMap[T]>;

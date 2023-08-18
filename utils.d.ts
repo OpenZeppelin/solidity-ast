@@ -2,11 +2,10 @@ import { SolcInput, SolcOutput } from './solc';
 import { Node, NodeType, NodeTypeMap } from './node';
 import { SourceUnit } from './types';
 
-import { findAll, ExtendedNodeType, ExtendedNodeTypeMap } from './utils/find-all';
-export { findAll, ExtendedNodeType, ExtendedNodeTypeMap };
+import { isNodeType, ExtendedNodeType, ExtendedNodeTypeMap } from './utils/is-node-type';
+export { isNodeType, ExtendedNodeType, ExtendedNodeTypeMap };
 
-export function isNodeType<N extends Node, T extends NodeType>(nodeType: T | readonly T[]): (node: N) => node is N & NodeTypeMap[T];
-export function isNodeType<N extends Node, T extends NodeType>(nodeType: T | readonly T[], node: N): node is N & NodeTypeMap[T];
+export { findAll } from './utils/find-all';
 
 export interface NodeWithSourceUnit<N extends Node = Node> {
   node: N;

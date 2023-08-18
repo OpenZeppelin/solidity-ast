@@ -24,6 +24,9 @@
     "test:watch": "mocha -w",
     "prepare": "bash -x scripts/prepare.sh"
   },
+  "dependencies": {
+    "array.prototype.findlast": "^1.2.2"
+  },
   "devDependencies": {
     "@types/lodash": "^4.14.155",
     "@types/node": "^14.18.33",
@@ -66,7 +69,7 @@
     "solc-0.8.18": "npm:solc@0.8.18",
     "solc-0.8.19": "npm:solc@0.8.19",
     "typedoc": "^0.17.7",
-    "typescript": "^4.2.4"
+    "typescript": "^4.9.5"
   },
   "license": "MIT"
 }
