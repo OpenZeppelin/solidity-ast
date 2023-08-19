@@ -2,9 +2,9 @@
 
 ### 0.4.50 (2023-08-19)
 
+- Fixed `findAll` exhaustivity around objects in the AST that are not AST nodes. Affected queries for `IdentifierPath` nodes under `UsingForDirective.functionList` and for `Identifier` nodes under `ImportDirective.symbolAliases.foreign`.
 - Significantly optimized `findAll` and `astDereferencer`.
 - Added ability to enumerate all nodes with `findAll('*', node)` or dereference an unknown node type with `deref('*', id)`.
-- Fixed `findAll` exhaustivity around objects in the AST that are not AST nodes.
 - Added `SourceUnit.experimentalSolidity`, available since Solidity 0.8.21.
 - Added `ContractDefinition.usedEvents` and `ContractDefinition.internalFunctionIDs`, available since Solidity 0.8.20.
 - Added `StructDefinition.documentation`, available since Solidity 0.8.20.
