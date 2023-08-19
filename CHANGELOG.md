@@ -1,6 +1,6 @@
 # Changelog
 
-### 0.4.50 (2023-08-17)
+### 0.4.50 (2023-08-19)
 
 - Significantly optimized `findAll` and `astDereferencer`.
 - Added ability to enumerate all nodes with `findAll('*', node)` or dereference an unknown node type with `deref('*', id)`.
@@ -13,11 +13,11 @@
 
 ### 0.4.49 (2023-05-04)
 
-- Add a custom Error subclass for ASTDereferencer errors.
+- Added a custom Error subclass for ASTDereferencer errors.
 
 ### 0.4.48 (2023-05-04)
 
-- Fix return type of `ASTDereferencer.withSourceUnit`.
+- Fixed return type of `ASTDereferencer.withSourceUnit`.
 
 ### 0.4.47 (2023-05-04)
 
@@ -44,39 +44,39 @@
 
 ### 0.4.42 (2023-01-20)
 
-- Revert optimizations to `findAll` from 0.4.40.
+- Reverted optimizations to `findAll` from 0.4.40.
 
 ### 0.4.41 (2023-01-20)
 
-- Optimize AST dereferencer.
+- Optimized AST dereferencer.
 
 ### 0.4.40 (2022-12-29)
 
-- Further optimize `findAll` for multiple wanted node types.
+- Further optimized `findAll` for multiple wanted node types.
 
 ### 0.4.39 (2022-12-16)
 
-- Optimize `findAll` for multiple wanted node types.
+- Optimized `findAll` for multiple wanted node types.
 
 ### 0.4.38 (2022-11-15)
 
-- Add missing types for `srcDecoder`.
+- Added missing types for `srcDecoder`.
 
 ### 0.4.37 (2022-11-15)
 
-- Add `srcDecoder`, a new util to decode source locations in AST nodes.
+- Added `srcDecoder`, a new util to decode source locations in AST nodes.
 
 ### 0.4.36 (2022-11-14)
 
-- Fix error in `findAll` when the code contains user defined value types.
+- Fixed error in `findAll` when the code contains user defined value types.
 
 ### 0.4.35 (2022-06-23)
 
-- Make `IndexAccess.indexExpression` nullable, which shows up when array types are used with `abi.decode`.
+- Made `IndexAccess.indexExpression` nullable, which shows up when array types are used with `abi.decode`.
 
 ### 0.4.34 (2022-06-11)
 
-- Add missing files to package.
+- Added missing files to package.
 
 ### 0.4.33 (2022-06-11)
 
@@ -92,11 +92,11 @@
 
 ### 0.4.31 (2022-03-20)
 
-- Add `SolcInput` interface.
+- Added `SolcInput` interface.
 
 ### 0.4.30 (2022-01-27)
 
-- Support an array of node types in `isNodeType`.
+- Added support for an array of node types in `isNodeType`.
 
 ### 0.4.29 (2021-12-24)
 
@@ -114,11 +114,11 @@
 
 ### 0.4.26 (2021-06-25)
 
-- Add a new utility for looking up AST nodes based on their id and type.
+- Added a new utility for looking up AST nodes based on their id and type.
 
 ### 0.4.25 (2021-06-01)
 
-- Remove Yul nodes from `Node` and `NodeType`, export them separately as `YulNode` and `YulNodeType`.
+- Removed Yul nodes from `Node` and `NodeType`, export them separately as `YulNode` and `YulNodeType`.
 
 ### 0.4.24 (2021-06-01)
 
@@ -237,12 +237,12 @@ Due to a bug in Solidity 0.7.2, these two properties are missing in the ASTs pro
 
 ### 0.4.6 (2020-10-14)
 
-- Fix type of `ModifierInvocation.arguments`.
+- Fixed type of `ModifierInvocation.arguments`.
 
 ### 0.4.5 (2020-10-14)
 
-- Disable `additionalProperties` in `Conditional` node.
-- Fix `Return` node for empty return statements.
+- Disabled `additionalProperties` in `Conditional` node.
+- Fixed `Return` node for empty return statements.
 
 ### 0.4.4 (2020-09-02)
 
@@ -278,7 +278,7 @@ Due to a bug in Solidity 0.7.2, these two properties are missing in the ASTs pro
 
 ### 0.3.2 (2020-06-12)
 
-- Fix type for `ImportDirective.symbolAliases`.
+- Fixed type for `ImportDirective.symbolAliases`.
 
 ### 0.3.1 (2020-06-09)
 
@@ -299,11 +299,11 @@ const contractDefs = sourceUnit.nodes.filter(isContractDefinition);
 
 ### 0.2.1 (2020-06-01)
 
-- Add missing `>>` operator.
+- Added missing `>>` operator.
 
 ### 0.2.0 (2020-05-18)
 
-- Complete schema to successfully validate OpenZeppelin Contracts.
+- Completed schema to successfully validate OpenZeppelin Contracts.
 
 ### 0.1.0 (2020-05-15)
 
