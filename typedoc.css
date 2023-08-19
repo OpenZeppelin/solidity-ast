@@ -2,14 +2,22 @@
   --light-color-background: rgb(248 250 252);
   --light-color-background-secondary: rgb(241 245 249);
   --light-color-accent: rgb(226 232 240);
-  --light-color-active-menu-item: rgb(224 242 254);
 }
 
 * {
   scrollbar-width: unset;
+  scrollbar-color: unset;
 }
 
-.tsd-filter-visibility {
+.tsd-page-toolbar {
+  background: var(--color-background);
+}
+
+#tsd-search.has-focus {
+  background: var(--color-background-secondary);
+}
+
+.tsd-filter-visibility, .tsd-hierarchy {
   display: none;
 }
 
