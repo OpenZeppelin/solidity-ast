@@ -1,0 +1,24 @@
+:root {
+  --light-color-background: rgb(248 250 252);
+  --light-color-background-secondary: rgb(241 245 249);
+  --light-color-accent: rgb(226 232 240);
+  --light-color-active-menu-item: rgb(224 242 254);
+}
+
+* {
+  scrollbar-width: unset;
+}
+
+.tsd-filter-visibility {
+  display: none;
+}
+
+.tsd-signature {
+  padding: 0;
+  border: none;
+}
+
+.tsd-navigation a.current, .tsd-page-navigation a.current {
+  border-radius: calc(6px + 0.25rem);
+  padding-right: 0.5rem;
+}

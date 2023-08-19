@@ -1,11 +1,10 @@
 {
-  "inputFiles": [
+  "entryPoints": [
     "./types.d.ts"
   ],
   "out": "docs",
-  "mode": "file",
   "name": "Solidity AST",
+  "customCss": "./typedoc.css",
   "disableSources": true,
-  "includeDeclarations": true,
   "excludeExternals": true
 }
