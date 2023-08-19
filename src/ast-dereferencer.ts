@@ -34,29 +34,29 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
       // is larger than the id we're looking for.
 
       let ast = asts.find(ast => (id <= ast.id));
-      let root: Node | Node[] | undefined = ast;
+      let searchRoot: Node | Node[] | undefined = ast;
 
-      while (root) {
-        if (Array.isArray(root)) {
-          root = root.find(n => n && (id <= n.id));
-        } else if (root.id === id) {
+      while (searchRoot) {
+        if (Array.isArray(searchRoot)) {
+          searchRoot = searchRoot.find(child => child && (id <= child.id));
+        } else if (searchRoot.id === id) {
           break;
         } else {
-          let next, nextId;
-          for (const cand of Object.values(root)) {
-            if (typeof cand !== "object") continue;
-            const candId = Array.isArray(cand) ? findLast(cand, n => n)?.id : cand.id;
-            if (candId === undefined) continue;
-            if (id <= candId && (nextId === undefined || candId <= nextId)) {
-              next = cand;
-              nextId = candId;
+          let nextRoot, nextRootId;
+          for (const child of Object.values(searchRoot)) {
+            if (typeof child !== "object") continue;
+            const childId = Array.isArray(child) ? findLast(child, n => n)?.id : child?.id;
+            if (childId === undefined) continue;
+            if (id <= childId && (nextRootId === undefined || childId <= nextRootId)) {
+              nextRoot = child;
+              nextRootId = childId;
             }
           }
-          root = next;
+          searchRoot = nextRoot;
         }
       }
 
-      let found: Node | undefined = root;
+      let found: Node | undefined = searchRoot;
 
       // As a fallback mechanism in case the postorder assumption breaks, if the node is not found
       // we proceed to check all nodes in all ASTs.
