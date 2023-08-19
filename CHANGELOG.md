@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.51 (2023-08-19)
+
+- Fixed bug in AST dereferencer reading a property of null.
+
 ### 0.4.50 (2023-08-19)
 
 - Fixed `findAll` exhaustivity around objects in the AST that are not AST nodes. Affected queries for `IdentifierPath` nodes under `UsingForDirective.functionList` and for `Identifier` nodes under `ImportDirective.symbolAliases.foreign`.
