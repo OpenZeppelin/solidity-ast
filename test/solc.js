@@ -14,6 +14,7 @@ describe('solc', function () {
     const files = await fs.readdir(path.join(__dirname, 'sources'));
     this.sources = {};
     this.sourceVersions = {};
+    this.experimental = {};
     for (const file of files) {
       const content = await fs.readFile(
         path.join(__dirname, 'sources', file),
@@ -21,17 +22,28 @@ describe('solc', function () {
       );
       this.sources[file] = { content };
       this.sourceVersions[file] = content.match(/pragma solidity (.*);/)[1];
+      this.experimental[file] = /pragma experimental solidity;/.test(content);
     }
   });
 
   for (const version of versions) {
     it(version, async function () {
       const sources = lodash.pickBy(this.sources, (_, f) =>
-        semver.satisfies(version, this.sourceVersions[f]),
+        semver.satisfies(version, this.sourceVersions[f]) && !this.experimental[f],
       );
       const output = await compile(version, sources);
       for (const source of Object.keys(sources)) {
         assertValid(output.sources[source].ast, source);
+      }
+
+      const experimentalSources = lodash.pickBy(this.sources, (_, f) =>
+        semver.satisfies(version, this.sourceVersions[f]) && this.experimental[f],
+      );
+      if (experimentalSources.length > 0) {
+        const experimentalOutput = await compile(version, experimentalSources);
+        for (const source of Object.keys(sources)) {
+          assertValid(output.sources[source].ast, source);
+        }
       }
     });
   }

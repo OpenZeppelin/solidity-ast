@@ -36,7 +36,12 @@ const baseYulNode = {
   src: ref('SourceLocation'),
 };
 
-const yulNode = (type, props) => object({ ...baseYulNode, ...props, nodeType: literal(type) });
+const yulNode = (type, props) => object({
+  ...baseYulNode,
+  ...props,
+  nodeType: literal(type),
+  nativeSrc: optional(ref('SourceLocation')),
+});
 
 const mapValues = (obj, fn) =>
   Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, fn(k, v)]));
@@ -85,6 +90,7 @@ const schema = {
   ...node('SourceUnit', {
     absolutePath: string,
     exportedSymbols: record(array(integer)),
+    experimentalSolidity: optional(boolean),
     license: nullable(string),
     nodes: array(anyOf(
       ref('ContractDefinition'),
@@ -277,6 +283,8 @@ const schema = {
         )),
         scope: integer,
         usedErrors: optional(array(integer)),
+        usedEvents: optional(array(integer)),
+        internalFunctionIDs: optional(record(integer)),
       },
 
       DoWhileStatement: {
@@ -479,6 +487,7 @@ const schema = {
           'berlin',
           'london',
           'paris',
+          'shanghai',
         ),
         externalReferences: array(object({
           declaration: integer,
@@ -587,6 +596,7 @@ const schema = {
         members: array(ref('VariableDeclaration')),
         scope: integer,
         visibility,
+        documentation, // nullable but in practice just optional
       },
 
       StructuredDocumentation: {
