@@ -1,6 +1,6 @@
 function isNodeType(nodeType, node) {
   return nodeType === node.nodeType ||
-    nodeType === "*" ||
+    (nodeType === "*" && node.nodeType != undefined) ||
     (Array.isArray(nodeType) && nodeType.includes(node.nodeType));
 }
 

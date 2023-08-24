@@ -48,7 +48,7 @@ function* findAll(nodeType, node, prune) {
 
 function getNextProps(wantedNodeTypes, currentNodeType, cache) {
   if (typeof wantedNodeTypes === 'string') {
-    return finder[wantedNodeTypes][currentNodeType] ?? [];
+    return finder[wantedNodeTypes]?.[currentNodeType] ?? [];
   }
   if (currentNodeType in cache) {
     return cache[currentNodeType];

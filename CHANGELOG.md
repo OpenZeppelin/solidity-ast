@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.52 (2023-08-24)
+
+- Fixed behavior of `findAll('*', ...)` around `UsingForDirective.functionList` and `ImportDirective.symbolAliases`, which missed some identifiers and returned non-nodes.
+
 ### 0.4.51 (2023-08-19)
 
 - Fixed bug in AST dereferencer reading a property of null.

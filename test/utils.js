@@ -1,6 +1,7 @@
 const fs = require('promisified/fs');
 const path = require('path');
 const assert = require('assert');
+const fc = require('fast-check');
 
 const { latest } = require('./helpers/solc-versions');
 const { compile } = require('./helpers/solc-compile');
@@ -32,14 +33,25 @@ describe('isNodeType', function () {
 
 describe('findAll', function () {
   const counts = {
+    Block: 1,
+    ContractDefinition: 1,
+    ElementaryTypeName: 2,
+    FunctionDefinition: 1,
+    Identifier: 1,
+    ImportDirective: 1,
+    InlineAssembly: 1,
+    ParameterList: 2,
+    PragmaDirective: 1,
     SourceUnit: 1,
     StructDefinition: 2,
-    FunctionDefinition: 1,
+    VariableDeclaration: 2,
+    YulBlock: 1,
+    YulLiteral: 1,
+    YulTypedName: 1,
     YulVariableDeclaration: 1,
-    Identifier: 1,
   };
 
-  const starCount = 20;
+  const starCount = Object.values(counts).reduce((a, b) => a + b, 0);
 
   before('reading and compiling source file', async function () {
     this.timeout(10 * 60 * 1000);
@@ -65,9 +77,13 @@ describe('findAll', function () {
 
   it('multiple', function () {
     const nodeTypes = Object.keys(counts);
-    const count = Object.values(counts).reduce((a, b) => a + b);
-    const nodes = [...findAll(nodeTypes, this.ast)];
-    assert.strictEqual(nodes.length, count);
+    fc.assert(
+      fc.property(fc.shuffledSubarray(nodeTypes), nodeTypes => {
+        const count = nodeTypes.map(t => counts[t]).reduce((a, b) => a + b, 0);
+        const nodes = [...findAll(nodeTypes, this.ast)];
+        assert.strictEqual(nodes.length, count);
+      })
+    );
   });
 
   it('star', function () {

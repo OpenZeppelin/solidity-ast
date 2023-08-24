@@ -21,6 +21,7 @@ for (const def of [...Object.values(schema.definitions), schema]) {
         _.set(reachable, ['*', parentType, prop], true);
         for (const nonNodeParent of contained.nonNodeParents) {
           _.set(reachable, [contained.nodeType, '$other', nonNodeParent], true);
+          _.set(reachable, ['*', '$other', nonNodeParent], true);
         }
       }
     }
