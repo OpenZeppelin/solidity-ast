@@ -33,7 +33,7 @@ agnostic to the Solidity version as possible.
 
 ## Utilities
 
-Included in the package is a set of utility function for type-safe interactions
+Included in the package is a set of utility functions for type-safe interactions
 with nodes based on the node type.
 
 ### `isNodeType(nodeType, node)`
