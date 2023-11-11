@@ -21,6 +21,8 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
       with:
+        token: ${{ secrets.PR_PAT }}
         branch: update-solc
         title: Update solc
-        token: ${{ secrets.PR_PAT }}
+        body: |
+          Check for AST changes in [`Changelog.md`](https://github.com/ethereum/solidity/blob/develop/Changelog.md)!
