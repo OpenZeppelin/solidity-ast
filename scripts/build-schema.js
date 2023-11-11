@@ -355,6 +355,7 @@ const schema = {
           ref('VariableDeclarationStatement'),
         )),
         loopExpression: nullable(ref('ExpressionStatement')),
+        isSimpleCounterLoop: optional(boolean),
       },
 
       FunctionCall: {
