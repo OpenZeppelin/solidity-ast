@@ -17,7 +17,7 @@ jobs:
         node-version: 18.x
         cache: npm
     - run: |
-        npm install -D $(npm view --json solc | jq -r '.versions[] | select(test("0[.]([7-9]|1[0-9]+)[.]|1[0-9]*[.][0-9]+[.]") and (contains("-") | not)) | "solc-" + . + "@npm:solc@" + .')
+        npm install -DE $(npm view --json solc | jq -r '.versions[] | select(test("0[.]([7-9]|1[0-9]+)[.]|1[0-9]*[.][0-9]+[.]") and (contains("-") | not)) | "solc-" + . + "@npm:solc@" + .')
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
       with:
