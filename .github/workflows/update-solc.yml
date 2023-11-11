@@ -32,5 +32,5 @@ jobs:
         branch: update-solc
         title: Update solc
         body: |
-          - [ ] If tests are failing: fix the schema and update the changelog accordingly.
           - [ ] Review the [latest Solidity changes](https://github.com/ethereum/solidity/blob/develop/Changelog.md) and add test files for any new language constructs.
+          - [ ] If tests are failing: fix the schema and update the changelog accordingly.
