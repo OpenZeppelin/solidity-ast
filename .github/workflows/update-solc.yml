@@ -23,3 +23,4 @@ jobs:
       with:
         branch: update-solc
         title: Update solc
+        token: ${{ secrets.PR_PAT }}
