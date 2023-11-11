@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.53 (2023-11-10)
+
+- Added `ForStatement.isSimpleCounterLoop`, available since Solidity 0.8.22.
+
 ### 0.4.52 (2023-08-24)
 
 - Fixed behavior of `findAll('*', ...)` around `UsingForDirective.functionList` and `ImportDirective.symbolAliases`, which missed some identifiers and returned non-nodes.
