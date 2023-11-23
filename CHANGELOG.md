@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.54 (2023-11-23)
+
+- Fixed `Literal.subdenomination`, previously typed as `null`, now typed with values `'seconds'`, `'minutes'`, etc.
+
 ### 0.4.53 (2023-11-10)
 
 - Added `ForStatement.isSimpleCounterLoop`, available since Solidity 0.8.22.

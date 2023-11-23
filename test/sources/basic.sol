@@ -243,3 +243,9 @@ contract Asm {
     }
   }
 }
+
+contract Subdenomination {
+    // Literal.subdenomination
+    uint constant internal subden_time = 1 seconds + 1 minutes + 1 hours + 1 days + 1 weeks;
+    uint constant internal subden_ether = 1 wei + 1 ether;
+}

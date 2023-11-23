@@ -511,7 +511,18 @@ const schema = {
           'hexString',
           'unicodeString'
         ),
-        subdenomination: nullable(),
+        subdenomination: nullable(literal(
+          'seconds',
+          'minutes',
+          'hours',
+          'days',
+          'weeks',
+          'wei',
+          'gwei',
+          'ether',
+          'finney',
+          'szabo',
+        )),
         value: nullable(string),
       },
 
