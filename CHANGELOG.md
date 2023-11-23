@@ -3,6 +3,7 @@
 ### 0.4.54 (2023-11-23)
 
 - Fixed `Literal.subdenomination`, previously typed as `null`, now typed with values `'seconds'`, `'minutes'`, etc.
+- Added `EnumDefinition.documentation`.
 
 ### 0.4.53 (2023-11-10)
 

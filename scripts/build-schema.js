@@ -316,6 +316,7 @@ const schema = {
         ...baseDefinition,
         canonicalName: string,
         members: array(ref('EnumValue')),
+        documentation, // nullable but in practice just optional
       },
 
       EnumValue: {
