@@ -2,6 +2,7 @@
 
 [![Docs](https://img.shields.io/badge/docs-%F0%9F%93%84-blue)][docs]
 [![NPM Package](https://img.shields.io/npm/v/solidity-ast.svg)](https://www.npmjs.org/package/solidity-ast)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f75316b8-4824-488b-a526-46951bedc2b1/deploy-status)](https://app.netlify.com/sites/solidity-ast/deploys)
 
 **TypeScript types and a JSON Schema for the Solidity AST.**
 
