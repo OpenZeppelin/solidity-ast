@@ -630,7 +630,7 @@ const schema = {
 
       TupleExpression: {
         ...baseExpressionL,
-        components: array(ref('Expression')),
+        components: array(nullable(ref('Expression'))),
         isInlineArray: boolean,
       },
 

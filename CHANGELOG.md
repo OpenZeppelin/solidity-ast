@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.4.55 (2023-11-25)
+
+- Fixed `TupleExpression.components`: array members are nullable.
+
+
 ### 0.4.54 (2023-11-23)
 
 - Fixed `Literal.subdenomination`, previously typed as `null`, now typed with values `'seconds'`, `'minutes'`, etc.

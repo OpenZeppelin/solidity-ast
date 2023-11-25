@@ -84,6 +84,7 @@ contract Foo {
 
     // TupleExpression
     (int y, uint z) = (1, 3);
+    (y,) = (1, 3);
     y; z;
 
     // UnaryOperation
