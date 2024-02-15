@@ -67,6 +67,7 @@
     "solc-0.8.21": "npm:solc@0.8.21",
     "solc-0.8.22": "npm:solc@0.8.22",
     "solc-0.8.23": "npm:solc@0.8.23",
+    "solc-0.8.24": "npm:solc@0.8.24",
     "solc-0.8.3": "npm:solc@0.8.3",
     "solc-0.8.4": "npm:solc@0.8.4",
     "solc-0.8.5": "npm:solc@0.8.5",
