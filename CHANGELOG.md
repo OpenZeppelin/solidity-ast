@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.56 (2024-03-14)
+
+- Added `'cancun'` as a possible value for `InlineAssembly.evmVersion`.
+
 ### 0.4.55 (2023-11-25)
 
 - Fixed `TupleExpression.components`: array members are nullable.
