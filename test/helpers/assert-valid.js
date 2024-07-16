@@ -1,6 +1,5 @@
 const Ajv = require('ajv');
 const lodash = require('lodash');
-const chalk = require('chalk');
 const util = require('util');
 
 const ajv = new Ajv({ verbose: true });
@@ -21,7 +20,7 @@ function formatError(error, doc, file) {
     const nodeType = lodash.get(doc, subPath) || '';
     const indent = i === 0 ? '' : '   '.repeat(i - 1) + '└─';
     if (nodeType === 'SourceUnit') c = file;
-    return lodash.compact([indent, nodeType, c && chalk.dim(c)]).join(' ');
+    return lodash.compact([indent, nodeType, c && util.styleText('dim', c).dim(c)]).join(' ');
   }).join('\n');
 
   const params = Object.values(error.params).join(', ');
