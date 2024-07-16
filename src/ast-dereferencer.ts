@@ -5,8 +5,6 @@ import type { Node, NodeType, NodeTypeMap } from '../node';
 import type { SolcOutput } from '../solc';
 import { SourceUnit } from '../types';
 
-import findLast from 'array.prototype.findlast';
-
 // An ASTDereferencer is a function that looks up an AST node given its id, in all of the source files involved in a
 // solc run. It will generally be used together with the AST property `referencedDeclaration` (found in Identifier,
 // UserDefinedTypeName, etc.) to look up a variable definition or type definition.
@@ -45,7 +43,7 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
           let nextRoot, nextRootId;
           for (const child of Object.values(searchRoot)) {
             if (typeof child !== "object") continue;
-            const childId = Array.isArray(child) ? findLast(child, n => n)?.id : child?.id;
+            const childId = Array.isArray(child) ? child.findLast(n => n)?.id : child?.id;
             if (childId === undefined) continue;
             if (id <= childId && (nextRootId === undefined || childId <= nextRootId)) {
               nextRoot = child;
