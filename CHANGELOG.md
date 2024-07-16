@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.57 (2024-07-16)
+
+- Fixed `ModifierDefinition.body`: made nullable to support Solidity 0.6.7 virtual modifiers with empty body.
+
 ### 0.4.56 (2024-03-14)
 
 - Added `'cancun'` as a possible value for `InlineAssembly.evmVersion`.
