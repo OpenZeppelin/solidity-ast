@@ -549,7 +549,7 @@ const schema = {
       ModifierDefinition: {
         ...baseDefinition,
         baseModifiers: nullable(array(integer)),
-        body: ref('Block'),
+        body: nullable(ref('Block')),
         documentation,
         overrides,
         parameters,
