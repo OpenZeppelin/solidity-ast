@@ -1,11 +1,8 @@
 import { isNodeType, ExtendedNodeType, ExtendedNodeTypeMap } from '../utils/is-node-type';
 import { findAll } from '../utils/find-all';
 import type { ASTDereferencer, NodeWithSourceUnit } from '../utils';
-import type { Node, NodeType, NodeTypeMap } from '../node';
+import type { Node, NodeType } from '../node';
 import type { SolcOutput } from '../solc';
-import { SourceUnit } from '../types';
-
-import findLast from 'array.prototype.findlast';
 
 // An ASTDereferencer is a function that looks up an AST node given its id, in all of the source files involved in a
 // solc run. It will generally be used together with the AST property `referencedDeclaration` (found in Identifier,
@@ -45,7 +42,7 @@ export function astDereferencer(solcOutput: SolcOutput): ASTDereferencer {
           let nextRoot, nextRootId;
           for (const child of Object.values(searchRoot)) {
             if (typeof child !== "object") continue;
-            const childId = Array.isArray(child) ? findLast(child, n => n)?.id : child?.id;
+            const childId = Array.isArray(child) ? child.findLast(n => n)?.id : child?.id;
             if (childId === undefined) continue;
             if (id <= childId && (nextRootId === undefined || childId <= nextRootId)) {
               nextRoot = child;
@@ -112,8 +109,6 @@ export function curry2<A, B, T>(fn: (a: A, b: B) => T): Curried<A, B, T> {
   }
   return curried;
 }
-
-const isArray: (arg: any) => arg is any[] | readonly any[]  = Array.isArray;
 
 export class ASTDereferencerError extends Error {
   constructor(readonly id: number, readonly nodeType: readonly ExtendedNodeType[]) {

@@ -3,6 +3,7 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "target": "es2022",
+    "lib": ["es2022", "es2023.array"],
     "downlevelIteration": true,
     "strict": true,
     "module": "commonjs",
