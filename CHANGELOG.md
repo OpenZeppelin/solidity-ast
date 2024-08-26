@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.58 (2024-08-26)
+
+- Fixed `YulFunctionDefinition.parameters` and `returnVariables`: made optional, used when empty.
+
 ### 0.4.57 (2024-07-16)
 
 - Fixed `ModifierDefinition.body`: made nullable to support Solidity 0.6.7 virtual modifiers with empty body.
