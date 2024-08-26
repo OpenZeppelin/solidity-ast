@@ -498,7 +498,7 @@ const schema = {
           isSlot: boolean,
           src: ref('SourceLocation'),
           valueSize: integer,
-          suffix: optional(literal('slot', 'offset')),
+          suffix: optional(literal('slot', 'offset', 'length')),
         })),
         flags: optional(array(literal('memory-safe'))),
       },
