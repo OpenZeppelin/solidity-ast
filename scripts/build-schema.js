@@ -498,7 +498,7 @@ const schema = {
           isSlot: boolean,
           src: ref('SourceLocation'),
           valueSize: integer,
-          suffix: optional(literal('slot', 'offset')),
+          suffix: optional(literal('slot', 'offset', 'length')),
         })),
         flags: optional(array(literal('memory-safe'))),
       },
@@ -817,8 +817,8 @@ const schema = {
       YulFunctionDefinition: {
         body: ref('YulBlock'),
         name: string,
-        parameters: array(ref('YulTypedName')),
-        returnVariables: array(ref('YulTypedName')),
+        parameters: optional(array(ref('YulTypedName'))),
+        returnVariables: optional(array(ref('YulTypedName'))),
       },
 
       YulIdentifier: {

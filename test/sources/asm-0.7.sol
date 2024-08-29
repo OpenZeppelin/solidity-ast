@@ -7,6 +7,10 @@ contract Asm {
         assembly {
             let x := s.slot
             let y := s.offset
+
+            function fail() {
+                revert(0, 0)
+            }
         }
     }
 }
