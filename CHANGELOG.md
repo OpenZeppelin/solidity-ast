@@ -1,6 +1,6 @@
 # Changelog
 
-### 0.4.58 (2024-08-26)
+### 0.4.58 (2024-08-29)
 
 - Fixed `YulFunctionDefinition.parameters` and `returnVariables`: made optional, used when empty.
 - Fixed `InlineAssembly.externalReferences[].suffix`: added `'length'` option.
