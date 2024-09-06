@@ -127,6 +127,7 @@ const schema = {
       'default',
       'memory',
       'storage',
+      'transient',
     ),
 
     Visibility: literal(
