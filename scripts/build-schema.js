@@ -491,7 +491,8 @@ const schema = {
           'london',
           'paris',
           'shanghai',
-          'cancun'
+          'cancun',
+          'prague',
         ),
         externalReferences: array(object({
           declaration: integer,
