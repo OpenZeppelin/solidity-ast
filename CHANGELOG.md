@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.4.59 (2024-09-06)
+
+- Added `'transient'` as a possible value for `VariableDeclaration.storageLocation`, available since Solidity 0.8.27.
+- Added `'prague'` as a possible value for `InlineAssembly.evmVersion`.
+
 ### 0.4.58 (2024-08-29)
 
 - Fixed `YulFunctionDefinition.parameters` and `returnVariables`: made optional, used when empty.
