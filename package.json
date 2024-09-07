@@ -3,6 +3,7 @@
   "version": "0.4.59",
   "description": "Solidity AST schema and type definitions",
   "author": "Francisco Giordano <frangio.1@gmail.com>",
+  "homepage": "https://solidity-ast.info/",
   "repository": "github:OpenZeppelin/solidity-ast",
   "types": "types.d.ts",
   "files": [
