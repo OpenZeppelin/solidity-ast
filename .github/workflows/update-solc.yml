@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       with:
         node-version: 22.x
         cache: npm
@@ -26,7 +26,7 @@ jobs:
         }
         npm install -DE $(all_versions | exclude_unwanted | sed 's/\S*/solc-&@npm:solc@&/')
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5
+      uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ secrets.PR_PAT }}
         branch: update-solc
