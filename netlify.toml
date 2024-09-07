@@ -1,3 +1,5 @@
-[build]
-publish = "docs"
-command = "npm run build:types && npm run build:docs"
+[[redirects]]
+from = "/*"
+to = "https://solidity-ast.info/:splat"
+status = 302
+force = true
