@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.60 (2025-03-15)
+
+- Added `ContractDefinition.storageLayout`, available since Solidity 0.8.29, corresponding to `layout at`.
+
 ### 0.4.59 (2024-09-06)
 
 - Added `'transient'` as a possible value for `VariableDeclaration.storageLocation`, available since Solidity 0.8.27.

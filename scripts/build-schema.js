@@ -289,6 +289,11 @@ const schema = {
         usedErrors: optional(array(integer)),
         usedEvents: optional(array(integer)),
         internalFunctionIDs: optional(record(integer)),
+        storageLayout: optional(ref('StorageLayoutSpecifier')),
+      },
+
+      StorageLayoutSpecifier: {
+        baseSlotExpression: ref('Expression'),
       },
 
       DoWhileStatement: {
