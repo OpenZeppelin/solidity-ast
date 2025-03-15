@@ -1,4 +1,4 @@
-const fs = require('promisified/fs');
+const fs = require('fs/promises');
 const path = require('path');
 const assert = require('assert');
 const fc = require('fast-check');

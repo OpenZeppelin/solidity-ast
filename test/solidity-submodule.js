@@ -1,4 +1,4 @@
-const fs = require('promisified/fs');
+const fs = require('fs');
 const path = require('path');
 
 const { assertValid } = require('./helpers/assert-valid');
@@ -11,7 +11,7 @@ describe('solidity submodule', function () {
     .filter(e => /^.*(?<!_legacy|_parseOnly)\.json$/.test(e));
 
   before('read inputs', async function () {
-    const contents = await Promise.all(inputs.map(f => fs.readFile(path.resolve(dir, f), 'utf8')));
+    const contents = await Promise.all(inputs.map(f => fs.promises.readFile(path.resolve(dir, f), 'utf8')));
     this.inputContents = {};
     for (const [i, content] of contents.entries()) {
       this.inputContents[inputs[i]] = content;

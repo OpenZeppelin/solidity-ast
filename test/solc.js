@@ -1,4 +1,4 @@
-const fs = require('promisified/fs');
+const fs = require('fs/promises');
 const path = require('path');
 const semver = require('semver');
 const lodash = require('lodash');
