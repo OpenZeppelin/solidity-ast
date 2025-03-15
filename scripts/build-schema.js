@@ -16,6 +16,9 @@ const ref = id => ({ $ref: `#/definitions/${id}` });
 
 const $optional = Symbol('optional');
 const optional = schema => ({ ...schema, [$optional]: true });
+
+// Older compiler versions returned null for missing fields, whereas newer
+// releases omit them. Generally `optional` should be used instead of `nullable`.
 const nullable = schema => schema ? optional(anyOf(schema, _null)) : optional(_null);
 
 const object = (properties = {}) => ({
