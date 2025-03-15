@@ -1,6 +1,6 @@
 {
   "name": "solidity-ast",
-  "version": "0.4.59",
+  "version": "0.4.60",
   "description": "Solidity AST schema and type definitions",
   "author": "Francisco Giordano <frangio.1@gmail.com>",
   "homepage": "https://solidity-ast.info/",
