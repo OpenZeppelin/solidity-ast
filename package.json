@@ -4,7 +4,10 @@
   "description": "Solidity AST schema and type definitions",
   "author": "Francisco Giordano <frangio.1@gmail.com>",
   "homepage": "https://solidity-ast.info/",
-  "repository": "github:OpenZeppelin/solidity-ast",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenZeppelin/solidity-ast.git"
+  },
   "types": "types.d.ts",
   "files": [
     "/finder.json",
