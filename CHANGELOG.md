@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.61 (2025-09-05)
+
+- Added `EnumValue.documentation`, available since Solidity 0.8.30.
+
 ### 0.4.60 (2025-03-15)
 
 - Added `ContractDefinition.storageLayout`, available since Solidity 0.8.29, corresponding to `layout at`.
