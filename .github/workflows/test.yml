@@ -23,20 +23,4 @@ jobs:
     - name: Install dependencies and build
       run: npm ci
     - name: Run tests
-      run: npm test -- --exclude test/solc.js
-
-  # Solc tests run significantly faster in Node 18
-  test-solc:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        submodules: true
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 18.x
-        cache: npm
-    - name: Install dependencies and build
-      run: npm ci
-    - name: Run tests
-      run: npm test -- test/solc.js
+      run: npm test
