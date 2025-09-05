@@ -330,6 +330,7 @@ const schema = {
 
       EnumValue: {
         ...baseDefinition,
+        documentation,
       },
 
       ErrorDefinition: {
