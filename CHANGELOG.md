@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.62 (2026-03-15)
+
+- Added `'osaka'` as a possible value for `InlineAssembly.evmVersion`.
+
 ### 0.4.61 (2025-09-05)
 
 - Added `EnumValue.documentation`, available since Solidity 0.8.30.
