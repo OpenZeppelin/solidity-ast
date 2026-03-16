@@ -1,3 +1,5 @@
+const { describe, it } = require('node:test');
+
 const { assertValid } = require('./helpers/assert-valid');
 
 const { sources } = require('./openzeppelin-contracts.json');

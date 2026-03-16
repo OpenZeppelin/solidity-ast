@@ -24,8 +24,8 @@
     "build:types": "node scripts/build-types.js",
     "build:node-type": "node scripts/build-node-type.js",
     "build:finder": "node scripts/build-finder.js",
-    "test": "mocha",
-    "test:watch": "mocha -w",
+    "test": "node --test test/*.js",
+    "test:watch": "node --test --watch test/*.js",
     "prepare": "bash -x scripts/prepare.sh"
   },
   "devDependencies": {
@@ -36,7 +36,6 @@
     "fast-check": "^3.20.0",
     "json-schema-to-typescript": "^14.1.0",
     "lodash": "^4.17.21",
-    "mocha": "^10.6.0",
     "semver": "^7.6.2",
     "solc-0.6.10": "npm:solc@0.6.10",
     "solc-0.6.11": "npm:solc@0.6.11",
